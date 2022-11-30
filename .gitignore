@@ -1,0 +1,36 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+
+*.class
+
+# Package Files #
+
+*.war
+
+*.ear
+
+*.springBeans
+
+*.project
+
+jalo/
+gensrc/
+bin/
+**/gensrc/*
+**/classes/*
+**/items.xsd
+**/beans.xsd
+**/extensioninfo.xsd
+**/platformhome.properties
+**/*-testclasses.xml
+**/*-webtestclasses.xml
+**/build.xml
+**/web/addonsrc/*
+**/web/commonwebsrc/*
+**/web/webroot/**/addons/*
+**/web/testclasses/*
+
+/custom/demogroup3/demogroup3storefront/resources/wro_addons.xml
+/custom/demogroup3/demogroup3storefront/web/webroot/_ui/responsive/theme-demogroup3/node_modules
+/custom/demogroup3/demogroup3storefront/web/webroot/_ui/responsive/theme-demogroup3/.sass-cache
+/custom/.metadata
+*backoffice_bof.jar
