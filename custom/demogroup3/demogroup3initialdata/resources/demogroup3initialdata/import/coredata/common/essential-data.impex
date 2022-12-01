@@ -23,6 +23,7 @@ INSERT_UPDATE Language;isocode[unique=true];fallbackLanguages(isocode);active[de
 ;de;en;;
 ;ja;en;;
 ;zh;en;;
+;id;en;;
 
 # Currencies
 INSERT_UPDATE Currency;isocode[unique=true];conversion;digits;symbol
@@ -30,6 +31,7 @@ INSERT_UPDATE Currency;isocode[unique=true];conversion;digits;symbol
 ;EUR;1;2;€
 ;USD;1,4;2;$
 ;JPY;120;0;¥
+;IDR;1;0;Rp.
 
 # SiteMap Language Currencies
 INSERT_UPDATE SiteMapLanguageCurrency;&siteMapLanguageCurrency;language(isoCode)[unique=true];currency(isocode)[unique=true];
@@ -49,6 +51,7 @@ INSERT_UPDATE SiteMapLanguageCurrency;&siteMapLanguageCurrency;language(isoCode)
 ;zhJpy;zh;JPY
 ;zhGbp;zh;GBP
 ;zhEur;zh;EUR
+;idIdr;id;IDR
 
 # Vendor
 INSERT_UPDATE Vendor;code[unique=true];name
