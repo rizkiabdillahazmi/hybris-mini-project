@@ -1,0 +1,12 @@
+$contentCatalog=demoGroup3ContentCatalog
+$productCatalog=demoGroup3ProductCatalog
+
+$sourceContentCV=sourceVersion(catalog(id[default=$contentCatalog]),version[default='Staged'])[unique=true,default='$contentCatalog:Staged']
+$targetContentCV=targetVersion(catalog(id[default=$contentCatalog]),version[default='Online'])[unique=true,default='$contentCatalog:Online']
+$sourceProductCV=sourceVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default='$productCatalog:Staged']
+$targetProductCV=targetVersion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default='$productCatalog:Online']
+
+INSERT_UPDATE CatalogVersionSyncJob;code[unique=true];$sourceProductCV;$targetProductCV;
+;sync productCatalog:Staged->Online;;;;
+INSERT_UPDATE CatalogVersionSyncJob;code[unique=true];$sourceContentCV;$targetContentCV;
+;sync contentCatalog:Staged->Online;;;;
