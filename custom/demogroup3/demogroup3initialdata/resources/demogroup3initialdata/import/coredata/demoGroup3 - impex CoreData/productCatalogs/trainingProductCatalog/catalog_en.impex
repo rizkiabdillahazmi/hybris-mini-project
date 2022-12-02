@@ -1,0 +1,16 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import the Product Catalog and Classification Catalog
+#
+
+# Language
+$lang=en
+
+# Create Catalog
+UPDATE Catalog;id[unique=true];name[lang=$lang]
+;demoGroup3ProductCatalog;"Demo Group 3 Product Catalog"
+
+UPDATE ClassificationSystem;id[unique=true];name[lang=$lang]
+;demoGroup3ClassificationCatalog;"Demo Group 3 Classification Catalog"

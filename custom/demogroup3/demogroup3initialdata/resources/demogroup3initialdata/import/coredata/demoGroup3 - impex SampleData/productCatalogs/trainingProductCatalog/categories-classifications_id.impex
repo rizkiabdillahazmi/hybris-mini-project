@@ -1,0 +1,29 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Category Classifications
+
+# Macros / Replacement Parameter definitions
+$productCatalog = trainingProductCatalog
+$productCatalogName = Training Product Catalog
+$classificationCatalog = trainingClassificationCatalog
+
+$classCatalogVersion = catalogversion(catalog(id[default='$classificationCatalog']), version[default='1.0'])[unique=true, default='$classificationCatalog:1.0']
+$classSystemVersion = systemVersion(catalog(id[default='$classificationCatalog']), version[default='1.0'])[unique=true]
+
+# Language
+$lang = id
+
+# Insert Classifications
+UPDATE ClassificationClass; $classCatalogVersion; code[unique = true]; name[lang = $lang]
+                          ;                     ; sizeshirt          ; Ukuran Baju
+                          ;                     ; sizetrouser        ; Ukuran Celana
+                          ;                     ; color              ; Warna
+
+# Insert Classification Attributes
+UPDATE ClassificationAttribute; $classSystemVersion; code[unique = true]; name[lang = $lang]
+                              ;                    ; dada               ; Dada
+                              ;                    ; pinggang           ; Pinggang
+                              ;                    ; panggul            ; Panggul
+                              ;                    ; panjang            ; Panjang
+                              ;                    ; warna              ; Warna
