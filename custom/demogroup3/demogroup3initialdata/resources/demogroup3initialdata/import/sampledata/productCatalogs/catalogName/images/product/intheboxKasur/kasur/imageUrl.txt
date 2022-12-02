@@ -1,0 +1,7 @@
+inthebox-kasur-90x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20GRACE-01.jpg
+inthebox-kasur-100x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20GRACE-02.jpg
+inthebox-kasur-120x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20GRACE-03.jpg
+inthebox-kasur-140x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20GRACE-04.jpg
+inthebox-kasur-160x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20GRACE-05.jpg
+inthebox-kasur-180x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20GRACE-06.jpg
+inthebox-kasur-200x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20GRACE-07.jpg
