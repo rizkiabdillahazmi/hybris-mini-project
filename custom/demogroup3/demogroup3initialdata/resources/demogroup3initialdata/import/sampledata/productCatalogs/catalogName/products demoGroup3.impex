@@ -1,0 +1,19 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Products
+# Macros / Replacement Parameter definitions
+$productCatalog = demoGroup3ProductCatalog
+$productCatalogName = Demo Group 3 Product Catalog
+$catalogVersion = catalogversion(catalog(id[default=$productCatalog]), version[default='Staged'])[unique=true, default=$productCatalog:Staged]
+$supercategories = supercategories(code, $catalogVersion)
+$baseProduct = baseProduct(code, $catalogVersion)
+$approved = approvalstatus(code)[default='approved']
+# Insert Products
+
+INSERT_UPDATE KasurDemoVariantProduct; code[unique = true]     ;name                         ;ukuran         ; unit(code)[default = pieces]; $approved; $catalogVersion; $supercategories; description                 
+                                     ; INTHEBOX_Flip_Z_90x200  ;INTHEBOX Flip Z 90 X 200     ;90 x 200 x 12  ;                             ;          ;                ; "Kasur"         ; INTHEBOX FLIP Z 90 X 200    
+                                     ; Lipat_Travel_Mattress   ;Kasur Lipat Travel Mattress  ;80 x 200 x 12  ;                             ;          ;                ; "Kasur_Lipat"   ; Kasur Lipat Travel Mattrees 
+
+INSERT_UPDATE ShofaDemoVariantProduct; code[unique = true]     ;name[lang = en]              ; warna        ; unit(code)[default = pieces]; $approved; $catalogVersion; $supercategories; description
+                                     ; Sheate3White     ;Shofa 3 Sheate White ;putih         ;        ;          ;                ; "Shofa"         ; Shofa Sheater 3 Putih;Sheater3
