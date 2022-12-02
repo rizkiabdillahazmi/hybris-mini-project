@@ -32,5 +32,15 @@ bin/
 /custom/demogroup3/demogroup3storefront/resources/wro_addons.xml
 /custom/demogroup3/demogroup3storefront/web/webroot/_ui/responsive/theme-demogroup3/node_modules
 /custom/demogroup3/demogroup3storefront/web/webroot/_ui/responsive/theme-demogroup3/.sass-cache
+
+# *.jpg
+# *.png
+# *.gif
+# *.svg
+# *.jpeg
+
+# /custom/demogroup3/demogroup3initialdata/import/coredata/**.jpg
+# /custom/demogroup3/demogroup3initialdata/import/coredata/**.png
+
 /custom/.metadata
 *backoffice_bof.jar
