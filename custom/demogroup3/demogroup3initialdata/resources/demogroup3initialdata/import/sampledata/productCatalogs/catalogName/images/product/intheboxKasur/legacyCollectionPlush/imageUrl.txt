@@ -1,0 +1,7 @@
+inthebox-legacyCollectionPlush-90x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Product%20-%20ITB%20WB-03.jpg
+inthebox-legacyCollectionPlush-100x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Product%20-%20ITB%20WB%20100-03.jpg
+inthebox-legacyCollectionPlush-120x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Product%20-%20ITB%20WB120-03.jpg
+inthebox-legacyCollectionPlush-140x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Product%20-%20ITB%20WB%20140-03.jpg
+inthebox-legacyCollectionPlush-160x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Product%20-%20ITB%20WB%20160-03.jpg
+inthebox-legacyCollectionPlush-180x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Product%20-%20ITB%20WB%20180-03.jpg
+inthebox-legacyCollectionPlush-200x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Product%20-%20ITB%20WB%20200-03.jpg

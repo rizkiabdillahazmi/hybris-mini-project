@@ -1,0 +1,7 @@
+inthebox-hybrid-90x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20HYBRID-90.jpg
+inthebox-hybrid-100x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20HYBRID-100.jpg
+inthebox-hybrid-120x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20HYBRID-120.jpg
+inthebox-hybrid-140x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20HYBRID-140.jpg
+inthebox-hybrid-160x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20HYBRID-160.jpg
+inthebox-hybrid-180x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20HYBRID-180.jpg
+inthebox-hybrid-200x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20HYBRID-200.jpg
