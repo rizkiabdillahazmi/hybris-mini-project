@@ -104,5 +104,59 @@
             </itemtype>
         </typegroup>
 
+        <typegroup name="Inthebox">
+            <itemtype code="DemoProduct" extends="Product"
+                      autocreate="true" generate="true"
+                      jaloclass="com.hybris.demogroup3.core.jalo.DemoProduct">
+                <description>Base Demo product extension that contains additional attributes.</description>
+                <attributes>
+
+                    <attribute qualifier="deskripsi" type="java.lang.String">
+                        <description>deskripsi product</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+            <itemtype code="KasurVariantProduct" extends="VariantProduct"
+                      autocreate="true" generate="true"
+                      jaloclass="com.hybris.demogroup3.core.jalo.KasurVariantProduct">
+                <description>Inthebox variant kasur.
+                </description>
+                <attributes>
+                    <attribute qualifier="merk" type="java.lang.String">
+                        <description>Merk Product</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="ukuran" type="java.lang.String">
+                        <description>Ukuran Kasur.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+            <itemtype code="ShofaVariantProduct" extends="VariantProduct"
+                      autocreate="true" generate="true"
+                      jaloclass="com.hybris.demogroup3.core.jalo.ShofaVariantProduct">
+                <description>Apparel size variant type that contains additional attribute describing variant size.
+                </description>
+                <attributes>
+                    <attribute qualifier="merk" type="java.lang.String">
+                        <description>Merk Product</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="warna" type="java.lang.String">
+                        <description>Warna Product.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
+
     </itemtypes>
 </items>
