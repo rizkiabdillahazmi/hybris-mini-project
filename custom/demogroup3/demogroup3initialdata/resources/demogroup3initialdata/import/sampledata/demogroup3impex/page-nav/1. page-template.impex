@@ -1,0 +1,50 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import the CMS content for the site
+#
+$contentCatalog = demoGroup3ContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+# Import config properties into impex macros
+UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
+$jarResourceCms = $config-jarResourceCmsValue
+
+##demoGroup3-fe-1
+INSERT_UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true] 	     ; name   		     ; frontendTemplateName   ; restrictedPageTypes(code); active[default = true]
+                          ;                          ; StorefrontGroup3PageTempalate ; Group 3 Page Template ; layout/storefrontGroup3 ; ContentPage
+
+##demoGroup3-fe-2
+UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true] 	     ; velocityTemplate[translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+                   ;                          ; StorefrontGroup3PageTempalate ; ; $jarResourceCms/structure-view/structure_StorefrontGroup3PageTempalate.vm
+
+##demoGroup3-fe-3
+INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'StorefrontGroup3PageTempalate']   ; validComponentTypes(code)       ; compTypeGroup(code)
+                             ; SiteLogo               ;                                                                                      ;                                 ; logo
+                             ; HeaderLinks            ;                                                                                      ;                                 ; headerlinks
+                             ; SearchBox              ;                                                                                      ;                                 ; searchbox
+                             ; MiniCart               ;                                                                                      ;                                 ; minicart
+                             ; NavigationBar          ;                                                                                      ;                                 ; navigation
+			     
+			     ; Section1-JspInclude    ;                                                                                      ; JspIncludeComponent             ; wide
+			     ; Section2-Paragraph     ;                                                                                      ; CMSParagraphComponent           ; wide
+
+                             
+			     ; Footer                 ;                                                                                      ;                                 ; footer
+                             ; TopHeaderSlot          ;                                                                                      ;                                 ; wide
+                             ; BottomHeaderSlot       ;                                                                                      ;                                 ; wide
+                             ; PlaceholderContentSlot ;                                                                                      ;                                 ; wide
+
+
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                                     ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'StorefrontGroup3PageTempalate']  ; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-StorefrontGroup3PageTempalate               	; SiteLogo               ;                                                                                          ; SiteLogoSlot                               ; true
+                                    ;                          ; Footer-StorefrontGroup3PageTempalate                 	; Footer                 ;                                                                                          ; FooterSlot                                 ; true
+                                    ;                          ; NavigationBar-StorefrontGroup3PageTempalate          	; NavigationBar          ;                                                                                          ; NavigationBarSlot                          ; true
+                                    ;                          ; MiniCart-StorefrontGroup3PageTempalate              	; MiniCart               ;                                                                                          ; MiniCartSlot                               ; true
+                                    ;                          ; HeaderLinks-StorefrontGroup3PageTempalate            	; HeaderLinks            ;                                                                                          ; HeaderLinksSlot                            ; true
+                                    ;                          ; SearchBox-StorefrontGroup3PageTempalate              	; SearchBox              ;                                                                                          ; SearchBoxSlot                              ; true
+                                    ;                          ; TopHeaderSlot-StorefrontGroup3PageTempalate          	; TopHeaderSlot          ;                                                                                          ; TopHeaderSlot                              ; true
+                                    ;                          ; BottomHeaderSlot-StorefrontGroup3PageTempalate       	; BottomHeaderSlot       ;                                                                                          ; BottomHeaderSlot                           ; true
+                                    ;                          ; PlaceholderContentSlot-StorefrontGroup3PageTempalate 	; PlaceholderContentSlot ;                                                                                          ; PlaceholderContentSlot                     ; true                         
+                         
