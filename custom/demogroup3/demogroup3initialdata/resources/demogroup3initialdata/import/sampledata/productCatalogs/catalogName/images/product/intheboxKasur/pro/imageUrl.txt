@@ -1,0 +1,7 @@
+inthebox-pro-90x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20Pro%2090-02.jpg
+inthebox-pro-100x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20Pro%20100-02.jpg
+inthebox-pro-120x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20Pro%20120-02.jpg
+inthebox-pro-140x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20Pro%20140-02.jpg
+inthebox-pro-160x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20Pro%20160-02.jpg
+inthebox-pro-180x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20Pro%20180-02.jpg
+inthebox-pro-200x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20Pro%20200-02.jpg
