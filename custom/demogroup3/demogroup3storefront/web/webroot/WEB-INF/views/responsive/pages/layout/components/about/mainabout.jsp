@@ -37,7 +37,7 @@
                                     Kasur INTHEBOX adalah spring bed yang dikemas dalam box dan akan langsung mengembang sempurna ketika dibuka. Kini sudah ada banyak pilihan produk dengan harga yang terjangkau. Ketahui lebih lanjut agar kamu bisa memiliki tidur yang berkualitas.
                                 </div>
                                 <div class="read-more">
-                                    <a href="/trainingstorefront/training/en/apa-itu-kasur-inthebox" class="btn">Selengkapnya</a>
+                                    <a href="/demogroup3storefront/demoGroup3/en/apa-itu-kasur-inthebox" class="btn">Selengkapnya</a>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                     Ada banyak kelebihan kasur INTHEBOX, khususnya bisa meningkatkan kualitas tidur dan istirahat kamu. Semua produk INTHEBOX dibuat dengan material premium, teknologi modern, dan desain yang elegan. Bisa dapat bantal gratis, free ongkir, dan garansi 10 tahun.
                                 </div>
                                 <div class="read-more">
-                                    <a href="/trainingstorefront/training/alasan-pilih-kasur-inthebox" class="btn">Selengkapnya</a>
+                                    <a href="/demogroup3storefront/demoGroup3/en/alasan-pilih-kasur-inthebox" class="btn">Selengkapnya</a>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                                     Bisa dibeli melalui website dengan cara cek daftar produk, masukkan ke keranjang, dan lakukan pembayaran. Mau lebih praktis? Segera WhatsApp ke 0819234659. Bisa juga dibeli online di marketplace kesayangan kamu atau langsung ke supermarket besar di kotamu.
                                 </div>
                                 <div class="read-more">
-                                    <a href="/trainingstorefront/training/en/cara-beli-inthebox" class="btn">Selengkapnya</a>
+                                    <a href="/demogroup3storefront/demoGroup3/en/cara-beli-inthebox" class="btn">Selengkapnya</a>
                                 </div>
                             </div>
                         </div>

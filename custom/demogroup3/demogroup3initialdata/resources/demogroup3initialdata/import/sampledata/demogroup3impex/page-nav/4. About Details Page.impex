@@ -1,0 +1,94 @@
+######################
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing CMS Content
+# Macros / Replacement Parameter definitions
+$contentCatalog = demoGroup3ContentCatalog
+$contentCatalogName = Demo Group 3 Content Catalog
+$productCatalog = demoGroup3ProductCatalog
+$productCatalogName = Demo Group 3 Product Catalog
+
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCV = catalogVersion(catalog(id[default=$productCatalog]), version[default='Staged'])[unique=true, default=$productCatalog:Staged]
+
+$medias = medias(code, $contentCV);
+$mediaContainer = media(qualifier, $contentCV);
+$contentPage = contentPage(uid, $contentCV);
+$product = product(code, $productCV)
+$category = category(code, $productCV)
+$siteResource = jar:org.demoGroup3.initialdata.setup.InitialDataSystemSetup&/demoGroup3initialdata/import/sampledata/contentCatalogs/$contentCatalog
+$productResource = jar:org.demoGroup3.initialdata.setup.InitialDataSystemSetup&/demoGroup3initialdata/import/sampledata/productCatalogs/$productCatalog
+$jarResourceCms = jar:org.demoGroup3.initialdata.setup.InitialDataSystemSetup&/demoGroup3initialdata/import/sampledata/cockpits/cmscockpit
+$lang = en
+
+INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]           ; name                              ; title                   ; masterTemplate(uid, $contentCV); label                        ; defaultPage[default = 'true']; approvalStatus(code)[default = 'approved']; homepage[default = 'false']
+                         ;                          ; storefrontGroup3AboutWhatPage; Storefront Group 3 About What Page; "Apa Itu Kasur Inthebox"; StorefrontGroup3PageTempalate  ; storefrontGroup3AboutWhatPage
+
+#######################################################################################
+INSERT_UPDATE SearchBoxComponent; $contentCV[unique = true]; uid[unique = true]; name; &componentRef
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(&componentRef)
+
+INSERT_UPDATE FooterComponent; $contentCV[unique = true]; uid[unique = true]; wrapAfter; showLanguageCurrency
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true]; uid[unique=true]	                 ; name                    ; page                          ;actions(uid,$contentCV); &componentRef
+                                 ;			             ; storefrontGroup3AboutWhatComponent; "Apa Itu Kasur Inthebox"; components/about/aboutwhat.jsp;	                   ; storefrontGroup3AboutWhatComponent
+
+# Create ContentSlots
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]                        ; name                        	            ; cmsComponents(&componentRef)      ; active[default = true]
+                         ;                          ; Section1-storefrontGroup3AboutWhatPageSlot; Section1-storefrontGroup3AboutWhatPageSlot; storefrontGroup3AboutWhatComponent; true
+
+INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]     ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'storefrontGroup3AboutWhatPage']; contentSlot(uid, $contentCV)[unique = true]; ; ;
+                                ;                          ; Section1-JspDetailsWhat; Section1               ;                                                                                ; Section1-storefrontGroup3AboutWhatPageSlot ; ; ;
+
+
+#====================================================================================#
+
+
+INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]       ; name                                ; title                        ; masterTemplate(uid, $contentCV); label                       ; defaultPage[default = 'true']; approvalStatus(code)[default = 'approved']; homepage[default = 'false']
+                         ;                          ; storefrontGroup3AboutWhyPage; Storefront Group 3 About Why Page; "Alasan Pilih Kasur Inthebox"; StorefrontGroup3PageTempalate  ; storefrontGroup3AboutWhyPage
+
+#######################################################################################
+INSERT_UPDATE SearchBoxComponent; $contentCV[unique = true]; uid[unique = true]; name; &componentRef
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(&componentRef)
+
+INSERT_UPDATE FooterComponent; $contentCV[unique = true]; uid[unique = true]; wrapAfter; showLanguageCurrency
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true]; uid[unique=true]	            ; name                         ; page                         ;actions(uid,$contentCV); &componentRef
+                                 ;                       ; storefrontGroup3AboutWhyComponent; "Alasan Pilih Kasur Inthebox"; components/about/aboutwhy.jsp;	                  ; storefrontGroup3AboutWhyComponent
+
+# Create ContentSlots
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]                	; name                        	        ; cmsComponents(&componentRef)  ; active[default = true]
+                         ;                          ; Section1-storefrontGroup3AboutWhyPageSlot; Section1-storefrontGroup3AboutWhyPageSlot; storefrontGroup3AboutWhyComponent; true
+
+INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]    ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'storefrontGroup3AboutWhyPage']; contentSlot(uid, $contentCV)[unique = true]; ; ;
+                                ;                          ; Section1-JspDetailsWhy; Section1               ;                                                                               ; Section1-storefrontGroup3AboutWhyPageSlot  ; ; ;
+
+
+#====================================================================================#
+
+
+INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]          ; name                             ; title		   ; masterTemplate(uid, $contentCV); label                       ; defaultPage[default = 'true']; approvalStatus(code)[default = 'approved']; homepage[default = 'false']
+                         ;                          ; storefrontGroup3AboutHowPage; Storefront Group 3 About How Page; "Cara Beli Inthebox"; StorefrontGroup3PageTempalate  ; storefrontGroup3AboutHowPage
+
+#######################################################################################
+INSERT_UPDATE SearchBoxComponent; $contentCV[unique = true]; uid[unique = true]; name; &componentRef
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(&componentRef)
+
+INSERT_UPDATE FooterComponent; $contentCV[unique = true]; uid[unique = true]; wrapAfter; showLanguageCurrency
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true]; uid[unique=true]	            ; name                ; page                         ;actions(uid,$contentCV); &componentRef
+                                 ;                       ; storefrontGroup3AboutHowComponent; "Cara Beli Inthebox"; components/about/abouthow.jsp;	                   ; storefrontGroup3AboutHowComponent
+
+# Create ContentSlots
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]                       ; name                                     ; cmsComponents(&componentRef)     ; active[default = true]
+                         ;                          ; Section1-storefrontGroup3AboutHowPageSlot; Section1-storefrontGroup3AboutHowPageSlot; storefrontGroup3AboutHowComponent; true
+
+INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]    ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'storefrontGroup3AboutHowPage']; contentSlot(uid, $contentCV)[unique = true]; ; ;
+                                ;                          ; Section1-JspDetailsHow; Section1               ;                                                                               ; Section1-storefrontGroup3AboutHowPageSlot  ; ; ;
+
+
+############################################################################################
