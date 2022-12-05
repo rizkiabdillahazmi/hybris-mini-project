@@ -22,8 +22,8 @@ $productResource = jar:org.demoGroup3.initialdata.setup.InitialDataSystemSetup&/
 $jarResourceCms = jar:org.demoGroup3.initialdata.setup.InitialDataSystemSetup&/demoGroup3initialdata/import/sampledata/cockpits/cmscockpit
 $lang = en
 
-INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]     	; name                     		;title			; masterTemplate(uid, $contentCV) ; label; defaultPage[default = 'true']; approvalStatus(code)[default = 'approved']; homepage[default = 'false']
-                         ;                          ; storefrontGroup3AboutPage  ; Storefront Group 3 About Page 	;"Tentang Kami"		; StorefrontGroup3PageTempalate    ; storefrontGroup3AboutPage
+INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]       ; name                         ; title		  ; masterTemplate(uid, $contentCV); label                    ; defaultPage[default = 'true']; approvalStatus(code)[default = 'approved']; homepage[default = 'false']
+                         ;                          ; storefrontGroup3AboutPage; Storefront Group 3 About Page; "Tentang Kami"; StorefrontGroup3PageTempalate  ; storefrontGroup3AboutPage
 
 #######################################################################################
 INSERT_UPDATE SearchBoxComponent; $contentCV[unique = true]; uid[unique = true]; name; &componentRef
@@ -32,22 +32,14 @@ INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsCom
 
 INSERT_UPDATE FooterComponent; $contentCV[unique = true]; uid[unique = true]; wrapAfter; showLanguageCurrency
 
-
-## demoGroup3
-INSERT_UPDATE CMSParagraphComponent; $contentCV[unique = true]; uid[unique = true]      ; name                 	; &componentRef		;content[lang = $lang]
-                                   ;                          ; ParagraphComponent 	; Paragraph Component 	; ParagraphComponent	;"Ini Paragraph dari CMSParagraphComponent Pertama"
-
-INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true]		;name			;page		      				       ;actions(uid,$contentCV);&componentRef
-                                 ;			 ;JspIncludeComponent	;JSP Include Component  ;/WEB-INF/views/responsive/pages/layout/components/tableComponent.jsp ;		       ;JspIncludeComponent
-
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true]; uid[unique=true]	             ; name   ; page                          ;actions(uid,$contentCV); &componentRef
+                                 ;			             ; storefrontGroup3AboutComponent; "About"; components/about/mainabout.jsp;	                   ; storefrontGroup3AboutComponent
 
 # Create ContentSlots
-INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]                	; name                        	; cmsComponents(&componentRef)		; active[default = true]
-                         ;                          ; Section1-StorefrontGroup3PageSlot 	; Section1-StorefrontGroup3Page ; JspIncludeComponent		  	; true
-                         ;                          ; Section2-StorefrontGroup3PageSlot 	; Section2-StorefrontGroup3Page ; ParagraphComponent		  	; true
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]                	; name                        	        ; cmsComponents(&componentRef)  ; active[default = true]
+                         ;                          ; Section1-storefrontGroup3AboutPageSlot; Section1-storefrontGroup3AboutPageSlot; storefrontGroup3AboutComponent; true
 
-INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]		; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'storefrontGroup3AboutPage']; contentSlot(uid, $contentCV)[unique = true]; ; ;
-                                ;                          ; Section1-jsp	   	; Section1               ;                                                                         ; Section1-StorefrontGroup3PageSlot        ; ; ;
-                                ;                          ; Section2-paragraph   	; Section2               ;                                                                         ; Section2-StorefrontGroup3PageSlot        ; ; ;
+INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true] ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'storefrontGroup3AboutPage']; contentSlot(uid, $contentCV)[unique = true]; ; ;
+                                ;                          ; Section1-JspInclude; Section1               ;                                                                            ; Section1-storefrontGroup3AboutPageSlot     ; ; ;
 
 

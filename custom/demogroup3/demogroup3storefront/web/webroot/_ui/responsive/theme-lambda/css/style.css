@@ -18860,6 +18860,147 @@ a {
     padding-left: 4rem;
   }
 }
+@font-face {
+  font-family: 'futura_md_btmedium';
+  font-display: swap;
+  src: url('../fonts/futura_md_btmedium.ttf');
+  src: url('../fonts/futura_md_btmedium.ttf') format("truetype"), url('../fonts/futura_md_btmedium.ttf') format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'BW Gradual';
+  font-display: swap;
+  src: url('../fonts/BwGradual-Bold.otf');
+  src: url('../fonts/BwGradual-Bold.otf') format("truetype"), url('../fonts/BwGradual-Bold.otf') format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Brown';
+  font-display: swap;
+  src: url('../fonts/BrownLight-Regular.ttf');
+  src: url('../fonts/BrownLight-Regular.ttf') format("truetype"), url('../fonts/BrownLight-Regular.ttf') format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+.navbar {
+  margin-bottom: 0px;
+}
+.about-page h1 {
+  font-size: inherit;
+  line-height: inherit;
+}
+.about-page h2 {
+  font-size: inherit;
+  line-height: inherit;
+}
+.about-page .header {
+  background-color: #6086C2;
+  color: #FFF;
+  font-size: 1.4rem;
+  padding-bottom: 50px;
+  padding-top: 40px;
+  text-align: center;
+}
+.about-page .image-header img {
+  width: 100vw;
+}
+.about-page .section-header {
+  font-family: 'BW Gradual';
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.about-page .section-description {
+  font-family: 'Brown';
+  font-weight: 900;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.about-page .items {
+  background-color: #7FC5F9;
+  font-family: 'futura_md_btmedium';
+}
+.about-page .item {
+  display: flex;
+  align-items: center;
+  margin: 40px 0px;
+  gap: 30px;
+}
+.about-page .item img {
+  width: 100%;
+  max-width: 100%;
+}
+.about-page .item-reverse {
+  flex-direction: row-reverse;
+}
+.about-page .item .title {
+  color: black;
+  font-family: 'BW Gradual';
+  font-size: 40px;
+  padding-right: 28px;
+  margin-bottom: 20px;
+}
+.about-page .description {
+  font-family: 'Brown';
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.about-page .read-more {
+  margin-top: 40px;
+}
+.about-page .read-more .btn {
+  font-family: 'Brown';
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: capitalize;
+  background-color: #6086C2;
+  color: #FFF;
+  border-radius: 20px !important;
+  padding: 10px 40px;
+}
+.about-page .read-more .btn:hover {
+  color: #6086C2;
+  background-color: #FFF;
+}
+.about-page .faq {
+  text-align: center;
+  margin: 50px 0px;
+}
+.about-page .faq .content {
+  font-family: 'Brown';
+  font-size: 22px;
+}
+.about-page .faq .content-row {
+  margin: 30px 0px;
+}
+.about-page .faq .question {
+  background: none;
+  border: none;
+  font-weight: 900;
+  display: inline;
+  color: #000000;
+}
+.about-page .faq .question h2 {
+  display: inline;
+}
+.about-page .faq .answer {
+  margin-top: 30px;
+}
+@media only screen and (max-width: 1024px) {
+  .about-page .item,
+  .about-page .item-reverse {
+    flex-direction: column;
+    text-align: center;
+    margin: 10px 0px 0px 0px;
+  }
+  .about-page .item .title {
+    padding-right: 0px;
+  }
+  .about-page .container {
+    padding: 0px 40px;
+  }
+}
 .skip,
 .skiptocontent,
 .skiptonavigation {
