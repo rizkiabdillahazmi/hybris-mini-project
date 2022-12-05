@@ -21,18 +21,18 @@ $siteResource = jar:com.hybris.demogroup3.initialdata.setup.InitialDataSystemSet
 
 # Create Media
 INSERT_UPDATE Media; mediaFormat(qualifier); code[unique = true]         ; $media                                     ; mime[default = 'image/jpeg']; $catalogVersion; folder(qualifier)
-                   ; 1200Wx1200H           ; media-flipz-picture         ; $siteResource/images/product/flipz.jpg  ;                             ;                ; images
-                   ; 515Wx515H             ; media-flipz-thumbnail       ; $siteResource/images/product/flipz.jpg  ;                             ;                ; images ;
-                   ; 300Wx300H             ; media-flipz-detail          ; $siteResource/images/product/flipz.jpg  ;                             ;                ; images ;
-                   ; 96Wx96H               ; media-flipz-other           ; $siteResource/images/product/flipz.jpg  ;                             ;                ; images ;
-                   ; 65Wx65H               ; media-flipz-normal          ; $siteResource/images/product/flipz.jpg  ;                             ;                ; images ;
-                   ; 30Wx30H               ; media-flipz-thumbnails      ; $siteResource/images/product/flipz.jpg  ;                             ;                ; images ;
-                   ; 1200Wx1200H           ; media-shofa-picture         ; $siteResource/images/product/shofa.jpg ;                             ;                ; images
-                   ; 515Wx515H             ; media-shofa-thumbnail       ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
-                   ; 300Wx300H             ; media-shofa-detail          ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
-                   ; 96Wx96H               ; media-shofa-other           ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
-                   ; 65Wx65H               ; media-shofa-normal          ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
-                   ; 30Wx30H               ; media-shofa-thumbnails      ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
+                   ; 1200Wx1200H           ; media-shofaBlack-picture         ; $siteResource/images/product/Shofa_Hitam.jpg ;                             ;                ; images
+                   ; 515Wx515H             ; media-shofaBlack-thumbnail       ; $siteResource/images/product/Shofa_Hitam.jpg ;                             ;                ; images ;
+                   ; 300Wx300H             ; media-shofaBlack-detail          ; $siteResource/images/product/Shofa_Hitam.jpg ;                             ;                ; images ;
+                   ; 96Wx96H               ; media-shofaBlack-other           ; $siteResource/images/product/Shofa_Hitam.jpg ;                             ;                ; images ;
+                   ; 65Wx65H               ; media-shofaBlack-normal          ; $siteResource/images/product/Shofa_Hitam.jpg ;                             ;                ; images ;
+                   ; 30Wx30H               ; media-shofaBlack-thumbnails      ; $siteResource/images/product/Shofa_Hitam.jpg ;                             ;                ; images ;
+                   ; 1200Wx1200H           ; media-shofaWhite-picture         ; $siteResource/images/product/shofa.jpg ;                             ;                ; images
+                   ; 515Wx515H             ; media-shofaWhite-thumbnail       ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
+                   ; 300Wx300H             ; media-shofaWhite-detail          ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
+                   ; 96Wx96H               ; media-shofaWhite-other           ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
+                   ; 65Wx65H               ; media-shofaWhite-normal          ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
+                   ; 30Wx30H               ; media-shofaWhite-thumbnails      ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
                    ; 1200Wx1200H           ; media-kasur_lipat-picture   ; $siteResource/images/product/kasur_lipat.jpg    ;                             ;                ; images
                    ; 515Wx515H             ; media-kasur_lipat-thumbnail ; $siteResource/images/product/kasur_lipat.jpg    ;                             ;                ; images ;
                    ; 300Wx300H             ; media-kasur_lipat-detail    ; $siteResource/images/product/kasur_lipat.jpg    ;                             ;                ; images ;
@@ -42,13 +42,13 @@ INSERT_UPDATE Media; mediaFormat(qualifier); code[unique = true]         ; $medi
 
 # Create Media Containers
 INSERT_UPDATE MediaContainer; qualifier[unique = true]; $medias                                                                                                                                                                  ; $catalogVersion
-                            ; flipz-medias         ; media-flipz-picture,media-flipz-picture,media-flipz-thumbnail,media-flipz-detail,media-flipz-other,media-flipz-normal,media-flipz-thumbnails        ; ;
-                            ; shofa-medias        ; media-shofa-picture,media-shofa-picture,media-shofa-thumbnail,media-shofa-detail,media-shofa-other,media-shofa-normal,media-shofa-thumbnails ; ;
+                            ; shofaBlack-medias         ; media-shofaBlack-picture,media-shofaBlack-picture,media-shofaBlack-thumbnail,media-shofaBlack-detail,media-shofaBlack-other,media-shofaBlack-normal,media-shofaBlack-thumbnails ; ;
+                            ; shofaWhite-medias        ; media-shofaWhite-picture,media-shofaWhite-picture,media-shofaWhite-thumbnail,media-shofaWhite-detail,media-shofaWhite-other,media-shofaWhite-normal,media-shofaWhite-thumbnails ; ;
                             ; kasur_lipat-medias           ; media-kasur_lipat-picture,media-kasur_lipat-picture,media-kasur_lipat-thumbnail,media-kasur_lipat-detail,media-kasur_lipat-other,media-kasur_lipat-normal,media-kasur_lipat-thumbnails                      ; ;
  
 
 # Update Products with Media and Media Containers
 UPDATE Product; code[unique = true]                  ; $picture                 ; $thumbnail                 ; $detail                 ; $others                ; $normal                 ; $thumbnails                 ; $galleryImages    ; $catalogVersion
-              ; INTHEBOX_Flip_Z_90x200               ; media-flipz-picture   ; media-flipz-thumbnail   ; media-flipz-detail   ; media-flipz-other   ; media-flipz-normal   ; media-flipz-thumbnails   ; flipz-medias   ;
-              ; Sheate3White                         ; media-shofa-picture  ; media-shofa-thumbnail  ; media-shofa-detail  ; media-shofa-other  ; media-shofa-normal  ; media-shofa-thumbnails  ; shofa-medias  ;
+              ; Sheate3Black               ; media-shofaBlack-picture   ; media-shofaBlack-thumbnail   ; media-shofaBlack-detail   ; media-shofaBlack-other   ; media-shofaBlack-normal   ; media-shofaBlack-thumbnails   ; shofaBlack-medias   ;
+              ; Sheate3White                         ; media-shofa-picture  ; media-shofaWhite-thumbnail  ; media-shofaWhite-detail  ; media-shofaWhite-other  ; media-shofaWhite-normal  ; media-shofaWhite-thumbnails  ; shofaWhite-medias  ;
               ; Lipat_Travel_Mattress                ; media-kasur_lipat-picture     ; media-kasur_lipat-thumbnail     ; media-kasur_lipat-detail     ; media-kasur_lipat-other     ; media-kasur_lipat-normal     ; media-kasur_lipat-thumbnails     ; kasur_lipat-medias     ;

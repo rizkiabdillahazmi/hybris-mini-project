@@ -1,0 +1,75 @@
+$contentCatalog=demoGroup3ContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+# Import modulegen config properties into impex macros
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+$jarResourceCms=$config-jarResourceCmsValue
+
+
+
+
+
+
+
+INSERT_UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];name;frontendTemplateName;restrictedPageTypes(code);active[default=true]
+                          ;;ProductListPageTemplateDemoGroup3;Product List Page Template;category/productListPage;CategoryPage
+
+UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];velocityTemplate[translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+                   ;;ProductListPageTemplateDemoGroup3   ;$jarResourceCms/structure-view/structure_productListPageTemplate.vm
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='ProductListPageTemplateDemoGroup3'];validComponentTypes(code);compTypeGroup(code)
+                             ;SiteLogo;;;logo
+                             ;HeaderLinks;;;headerlinks
+                             ;SearchBox;;;searchbox
+                             ;MiniCart;;;minicart
+                             ;NavigationBar;;;navigation
+                             ;Section1;;;wide
+                             ;ProductLeftRefinements;;;narrow
+                             ;ProductListSlot;;;wide
+                             ;Footer;;;footer
+                             ;TopHeaderSlot;;;wide
+                             ;BottomHeaderSlot;;;wide
+                             ;PlaceholderContentSlot;;;
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='ProductListPageTemplateDemoGroup3'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;SiteLogo-ProductListPageDemoGroup3;SiteLogo;ProductListPageTemplateDemoGroup3;SiteLogoSlot;true
+                                    ;;HomepageLink-ProductListPageDemoGroup3;HomepageNavLink;ProductListPageTemplateDemoGroup3;HomepageNavLinkSlot;true
+                                    ;;MiniCart-ProductListPageDemoGroup3;MiniCart;ProductListPageTemplateDemoGroup3;MiniCartSlot;true
+                                    ;;NavigationBar-ProductListPageDemoGroup3;NavigationBar;ProductListPageTemplateDemoGroup3;NavigationBarSlot;true
+                                    ;;Footer-ProductListPageDemoGroup3;Footer;ProductListPageTemplateDemoGroup3;FooterSlot;true
+                                    ;;HeaderLinks-ProductListPageDemoGroup3;HeaderLinks;;HeaderLinksSlot;true
+                                    ;;SearchBox-ProductListPageDemoGroup3;SearchBox;;SearchBoxSlot;true
+                                    ;;TopHeaderSlot-ProductListPageDemoGroup3;TopHeaderSlot;;TopHeaderSlot;true
+                                    ;;BottomHeaderSlot-ProductListPageDemoGroup3;BottomHeaderSlot;;BottomHeaderSlot;true
+                                    ;;ProductLeftRefinemnts-ProductListPageDemoGroup3;ProductLeftRefinements;;ProductLeftRefinements;true
+                                    ;;ProductListSlot-ProductListPageDemoGroup3;ProductListSlot;;ProductListSlot;true
+                                    ;;PlaceholderContentSlot-ProductListPageDemoGroup3;PlaceholderContentSlot;;PlaceholderContentSlot;true
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false']
+                         ;;productlistdemoGroup3-page;Product List DemoGroup3 Page;ProductListPageTemplateDemoGroup3;productlistdemoGroup3-page
+
+
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV);&componentRef
+                                 ;;JSPTaskComponent;JSP Task Component;/WEB-INF/views/responsive/cms/cmsproductlistcomponent.jsp;;JSPTaskComponent
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]                  ; name                            ; cmsComponents(&componentRef); active[default = true]
+                         ;                          ; ProductListSlot-ProductListPageDemoGroup3 ; ProductListSlot-ProductListPageDemoGroup3 ;JSPTaskComponent                           ; true
+INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'productlistdemoGroup3-page']; contentSlot(uid, $contentCV)[unique = true]; ; ;
+                                ;                          ; ProductListSlot      ; ProductListSlot              ;                                                                         ; ProductListSlot-ProductListPageDemoGroup3 ; ; ;
+
+
+INSERT_UPDATE CMSProductListComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef
+                                     ;;ProductListComponent;Product List Component;ListPickUpInStoreAction,ListAddToCartAction;ProductListComponent
+
+UPDATE CMSProductListComponent;$contentCV[unique=true];uid[unique=true];actions(&actionRef)[mode=append]
+                              ;;ProductListComponent;ListOrderFormAction
+
+
+INSERT_UPDATE CMSProductListComponent; $contentCV[unique = true]; uid[unique = true]                ; children
+                                     ;                          ; StorefrontParagraphTitleComponentTask ; cmsproductlistcomponent
+
+#### ProductListPage
+
+#### ProductListPage
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+                         ;;ProductListSlot-ProductListPageDemoGroup3;Product List Slot for Product List;true;ProductListComponent;;;

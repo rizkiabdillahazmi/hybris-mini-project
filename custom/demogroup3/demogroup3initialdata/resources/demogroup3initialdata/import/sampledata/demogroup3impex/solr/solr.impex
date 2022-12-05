@@ -92,13 +92,13 @@ INSERT_UPDATE SolrIndexerQuery; solrIndexedType(identifier)[unique = true]; iden
                               ; $solrIndexedType                          ; $searchIndexNamePrefix-fullQuery   ; full      ;                                  ;                                  ; false                              ; "SELECT DISTINCT tbl.pk, tbl.code FROM (
 	{{
 		SELECT DISTINCT{p:PK} AS pk, {p:code} AS code
-		FROM {KasurVariantProduct! AS p left outer join catalogversion as catalog on {p.catalogversion}={catalog.pk} join ArticleApprovalStatus as aas on {p.approvalStatus} = {aas.pk}}
+		FROM {KasurVariantProductDemo! AS p left outer join catalogversion as catalog on {p.catalogversion}={catalog.pk} join ArticleApprovalStatus as aas on {p.approvalStatus} = {aas.pk}}
 		WHERE {catalog.version}='Online' AND {aas.code}='approved'
 	}}
 	UNION
 	{{
 		SELECT DISTINCT{p:PK} AS pk, {p:code} AS code
-		FROM {ShofaVariantProduct! AS p left outer join catalogversion as catalog on {p.catalogversion}={catalog.pk} join ArticleApprovalStatus as aas on {p.approvalStatus} = {aas.pk}}
+		FROM {ShofaVariantProductDemo! AS p left outer join catalogversion as catalog on {p.catalogversion}={catalog.pk} join ArticleApprovalStatus as aas on {p.approvalStatus} = {aas.pk}}
 		WHERE {catalog.version}='Online' AND {aas.code}='approved'
 	}}
 ) tbl ORDER BY tbl.code" ; anonymous
@@ -107,13 +107,13 @@ INSERT_UPDATE SolrIndexerQuery; solrIndexedType(identifier)[unique = true]; iden
 SELECT DISTINCT tbl.pk, tbl.code FROM (
 	{{
 		SELECT DISTINCT{p:PK} AS pk, {p:code} AS code
-		FROM {KasurVariantProduct! AS p left outer join catalogversion as catalog on {p.catalogversion}={catalog.pk} join ArticleApprovalStatus as aas on {p.approvalStatus} = {aas.pk}}
+		FROM {KasurVariantProductDemo! AS p left outer join catalogversion as catalog on {p.catalogversion}={catalog.pk} join ArticleApprovalStatus as aas on {p.approvalStatus} = {aas.pk}}
 		WHERE {p:modifiedtime} >= ?lastIndexTime AND{catalog.version}='Online' AND {aas.code}='approved'
 	}}
 	UNION
 	{{
 		SELECT DISTINCT{p:PK} AS pk, {p:code} AS code
-		FROM {ShofaVariantProduct! AS p left outer join catalogversion as catalog on {p.catalogversion}={catalog.pk} join ArticleApprovalStatus as aas on {p.approvalStatus} = {aas.pk}}
+		FROM {ShofaVariantProductDemo! AS p left outer join catalogversion as catalog on {p.catalogversion}={catalog.pk} join ArticleApprovalStatus as aas on {p.approvalStatus} = {aas.pk}}
 		WHERE {p:modifiedtime} >= ?lastIndexTime AND{catalog.version}='Online' AND {aas.code}='approved'
 	}}
 ) tbl ORDER BY tbl.code" ; anonymous

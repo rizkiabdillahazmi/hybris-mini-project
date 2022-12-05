@@ -3,14 +3,14 @@
  Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-		
-	<context:annotation-config/> 
+
+	<context:annotation-config/>
 
 	<alias alias="simpleSuggestionFacade" name="defaultSimpleSuggestionFacade"/>
 	<bean id="defaultSimpleSuggestionFacade" class="com.hybris.demogroup3.facades.suggestion.impl.DefaultSimpleSuggestionFacade" >
@@ -21,7 +21,7 @@
 		<property name="productConverter" ref="carouselProductConverter"/>
 		<property name="cartService" ref="cartService"/>
 	</bean>
-	
+
 	<bean id="carouselProductConverter" parent="defaultProductConverter">
 		<property name="populators">
 			<list merge="true">
@@ -30,7 +30,7 @@
 		</property>
 	</bean>
 
-	<alias name="acceleratorVariantOptionDataConverter" alias="variantOptionDataConverter"/> 
+	<alias name="acceleratorVariantOptionDataConverter" alias="variantOptionDataConverter"/>
 	<bean id="acceleratorVariantOptionDataConverter" parent="abstractPopulatingConverter">
 		<lookup-method name="createTarget" bean="variantOptionData"/>
 		<property name="populators">
@@ -42,7 +42,7 @@
 
 	<alias name="defaultAcceleratorVariantOptionDataPopulator" alias="acceleratorVariantOptionDataPopulator"/>
 	<bean id="defaultAcceleratorVariantOptionDataPopulator"  class="com.hybris.demogroup3.facades.populators.AcceleratorVariantOptionDataPopulator"
-	      parent="variantOptionDataPopulator" >
+		  parent="variantOptionDataPopulator" >
 		<property name="mediaService" ref="mediaService"/>
 		<property name="mediaContainerService" ref="mediaContainerService"/>
 		<property name="typeService" ref="typeService"/>
@@ -55,14 +55,14 @@
 	</bean>
 
 
-	<alias name="acceleratorGenderConverter" alias="genderConverter"/> 
+	<alias name="acceleratorGenderConverter" alias="genderConverter"/>
 	<bean id="acceleratorGenderConverter" parent="abstractPopulatingConverter">
 		<property name="targetClass" value="com.hybris.demogroup3.facades.product.data.GenderData"/>
-			<property name="populators">
-				<list>
-					<ref bean="genderDataPopulator"/>
-				</list>
-			</property>
+		<property name="populators">
+			<list>
+				<ref bean="genderDataPopulator"/>
+			</list>
+		</property>
 	</bean>
 
 	<alias name="defaultGenderDataPopulator" alias="genderDataPopulator"/>
@@ -136,33 +136,33 @@
 		<property name="quoteService" ref="quoteService"/>
 		<property name="quoteConverter" ref="quoteConverter"/>
 	</bean>
-	
+
 	<bean id="deliverySentEmailContext" class="com.hybris.demogroup3.facades.process.email.context.DeliverySentEmailContext" parent="abstractEmailContext" scope="prototype" >
 		<property name="consignmentConverter" ref="consignmentConverter"/>
 	</bean>
-	
+
 	<bean id="readyForPickupEmailContext" class="com.hybris.demogroup3.facades.process.email.context.ReadyForPickupEmailContext" parent="abstractEmailContext" scope="prototype" >
 		<property name="consignmentConverter" ref="consignmentConverter"/>
 	</bean>
-	
+
 	<bean id="orderCancelledEmailContext" class="com.hybris.demogroup3.facades.process.email.context.OrderCancelledEmailContext" parent="abstractEmailContext" scope="prototype" >
 		<property name="orderConverter" ref="orderConverter"/>
 	</bean>
-	
+
 	<bean id="orderRefundEmailContext" class="com.hybris.demogroup3.facades.process.email.context.OrderRefundEmailContext" parent="abstractEmailContext" scope="prototype" >
 		<property name="orderConverter" ref="orderConverter"/>
 	</bean>
 	<bean id="consignmentCollectionReminderEmailContext" class="com.hybris.demogroup3.facades.process.email.context.ConsignmentCollectionReminderEmailContext" parent="abstractEmailContext" scope="prototype">
-        <property name="consignmentConverter" ref="consignmentConverter"/>
-        <property name="formatFactory" ref="formatFactory"/>
-        <property name="customerServiceUncollectedConsignmentStrategy" ref="customerServiceUncollectedConsignmentStrategy" />
-        <property name="orderConverter" ref="orderConverter"/>
-    </bean>
+		<property name="consignmentConverter" ref="consignmentConverter"/>
+		<property name="formatFactory" ref="formatFactory"/>
+		<property name="customerServiceUncollectedConsignmentStrategy" ref="customerServiceUncollectedConsignmentStrategy" />
+		<property name="orderConverter" ref="orderConverter"/>
+	</bean>
 
 	<bean id="orderPartiallyModifiedEmailContext" class="com.hybris.demogroup3.facades.process.email.context.OrderPartiallyModifiedEmailContext" parent="abstractEmailContext" scope="prototype" >
 		<property name="orderConverter" ref="orderConverter"/>
 		<property name="orderEntryConverter" ref="orderEntryConverter"/>
-		<property name="priceDataFactory" ref="priceDataFactory"/>		
+		<property name="priceDataFactory" ref="priceDataFactory"/>
 	</bean>
 
 	<bean id="orderPartiallyCanceledEmailContext" class="com.hybris.demogroup3.facades.process.email.context.OrderPartiallyCanceledEmailContext" parent="orderPartiallyModifiedEmailContext" scope="prototype" >
@@ -182,4 +182,18 @@
 	</bean>
 
 	<bean id="genderData" class="com.hybris.demogroup3.facades.product.data.GenderData" scope="prototype"/>
+
+	<!--	Populator-->
+	<alias name="solrResultBasicPopulator" alias="solrResultBasicPopulator"/>
+	<bean id="solrResultBasicPopulator" class="com.hybris.demogroup3.facades.populators.SolrResultBasicPopulator"/>
+
+<!--	&lt;!&ndash;converter&ndash;&gt;-->
+<!--	<bean id="solrResultBasicConverter" parent="abstractPopulatingConverter">-->
+<!--		<property name="targetClass" value="com.hybris.demogroup3.facades.product.data"/>-->
+<!--		<property name="populators">-->
+<!--			<list merge="true">-->
+<!--				<ref bean="solrResultBasicConverter"/>-->
+<!--			</list>-->
+<!--		</property>-->
+<!--	</bean>-->
 </beans>
