@@ -6,17 +6,16 @@
 <template:page pageTitle="${pageTitle}">
 
 <div class="price_engine_page">
-   <div class="container">
-
-       <div class="main-section col-lg-12">
-               <cms:pageSlot position="Section1" var="feature">
-                   <cms:component component="${feature}" element="div" class="side-form"/>
-               </cms:pageSlot>
+   <div>
+       <div class="main-section">
+           <cms:pageSlot position="Section1" var="feature">
+               <cms:component component="${feature}" element="div" class="main-content"/>
+           </cms:pageSlot>
        </div>
-       <div class="main-section col-lg-12" style="text-align:center; font-weight:600">
-               <cms:pageSlot position="Section2" var="feature">
-                   <cms:component component="${feature}" element="div" class="side-form"/>
-               </cms:pageSlot>
+       <div class="main-section">
+           <cms:pageSlot position="Section2" var="feature">
+               <cms:component component="${feature}" element="div" class="main-content"/>
+           </cms:pageSlot>
        </div>
 
    </div>
