@@ -20,14 +20,22 @@
 <div class="addtocart-component">
 		<c:if test="${empty showAddToCart ? true : showAddToCart}">
 		<div class="qty-selector input-group js-qty-selector">
-			<span class="input-group-btn">
-				<button class="btn btn-default js-qty-selector-minus" type="button" <c:if test="${qtyMinus <= 1}"><c:out value="disabled='disabled'"/></c:if> ><span class="glyphicon glyphicon-minus" aria-hidden="true" ></span></button>
-			</span>
-				<input type="text" maxlength="3" class="form-control js-qty-selector-input" size="1" value="${fn:escapeXml(qtyMinus)}"
-					   data-max="${fn:escapeXml(maxQty)}" data-min="1" name="pdpAddtoCartInput"  id="pdpAddtoCartInput" />
-			<span class="input-group-btn">
-				<button class="btn btn-default js-qty-selector-plus" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-			</span>
+		    <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
+              <span class="input-group-btn input-group-prepend">
+                <button class="btn btn-block spinner-button down bootstrap-touchspin-down js-qty-selector-minus button-quantity-product" type="button" <c:if test="${qtyMinus <= 1}"><c:out value="disabled='disabled'"/></c:if> ><span class="palmer-lake-icon palmer-lake-minus" aria-hidden="true" ></span></button>
+              </span>
+
+              <!-- <input type="text" id="quantity" class="form-control func_touchspin" style="text-align: center" value="1" name="quantity" placeholder="" data-min="1" data-max="100" data-stepinterval="1" data-prefix="" data-postfix="" > -->
+              <input type="text" maxlength="3" class="form-control func_touchspin js-qty-selector-input quantity-product-form-control" size="1" value="${fn:escapeXml(qtyMinus)}"
+               					   data-max="${fn:escapeXml(maxQty)}" data-min="1" name="pdpAddtoCartInput"  id="pdpAddtoCartInput"
+               					   data-buttondown_class="btn btn-block spinner-button down" data-buttonup_class="btn btn-block spinner-button up" />
+
+              <span class="input-group-btn input-group-append">
+                <button class="btn btn-block spinner-button up bootstrap-touchspin-up js-qty-selector-plus button-quantity-product" type="button"><span class="palmer-lake-icon palmer-lake-plus" aria-hidden="true"></span></button>
+              </span>
+            </div>
+
+
 		</div>
 		</c:if>
 		<c:if test="${product.stock.stockLevel gt 0}">
@@ -46,7 +54,7 @@
 			</c:set>
 		</c:if>
 		<div class="stock-wrapper clearfix">
-			${productStockLevelHtml}
+		    <div>${productStockLevelHtml}</div>
 		</div>
 		 <div class="actions">
         <c:if test="${multiDimensionalProduct}" >

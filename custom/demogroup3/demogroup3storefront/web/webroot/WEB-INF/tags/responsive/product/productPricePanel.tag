@@ -23,7 +23,7 @@
 				</span>
 			</c:when>
 			<c:otherwise>
-				<p class="price">
+				<p class="price palmer-lake">
 					<format:fromPrice priceData="${product.price}"/>
 				</p>
 			</c:otherwise>
