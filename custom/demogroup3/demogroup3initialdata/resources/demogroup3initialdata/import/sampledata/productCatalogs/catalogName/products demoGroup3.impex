@@ -22,3 +22,24 @@ INSERT_UPDATE KasurVariantProduct; $baseProduct   ;code[unique = true]      ;nam
 
 INSERT_UPDATE ShofaVariantProduct; $baseProduct;code[unique = true]     ;name                 ;name[lang=en] ;warna        ; unit(code)[default = pieces]; $approved; $catalogVersion; $supercategories; description;merk
                                  ; Shofa       ; Sheate3White           ;Shofa 3 Sheate White ;Shofa 3 Sheate White;putih         ;                             ;          ;                ; "Shofa"         ; Shofa Sheater 3 Putih;sheate3
+
+INSERT_UPDATE KasurPorduct ; code[unique=true]; name; supercategories; variantype; material; merk
+                             Kasur_flipZ      ; Kasur FlipZ ; Kasur ; KasurVariantProduct ; Kapuk; FlipZ
+                             Kasur_Alpha      ; Kasur Alpha ; kasur ; KasurVariantProducr ; Busa ; Alpha
+
+INSERT_UPDATE KasurVariantProduct; baseProduct; code ; name; ukuran; supercategories
+                                 ;Kasur_flipZ ; Kasur_FlipZ_90x200 ; Kasur flip Z 90x200; 90x200x12;Kasur
+                                 ;Kasur_flipZ ; Kasur_FlipZ_100x200 ; Kasur flip Z 100x200; 100x200x12;Kasur
+                                 ;Kasur_flipZ ; Kasur_FlipZ_120x200 ; Kasur flip Z 120x200; 120x200x12;Kasur
+                                 ;Kasur_flipZ ; Kasur_FlipZ_140x200 ; Kasur flip Z 140x200; 140x200x12;Kasur
+                                 ;Kasur_Alpha ; Kasur_Alpha_90x200 ; Kasur Alpha 90x200; 90x200x20;Kasur
+                                 ;Kasur_Alpha ; Kasur_Alpha_100x200 ; Kasur Alpha 100x200; 100x200x20;Kasur
+                                 ;Kasur_Alpha ; Kasur_Alpha_120x200 ; Kasur Alpha 120x200; 120x200x20;Kasur
+                                 ;Kasur_Alpha ; Kasur_Alpha_140x200 ; Kasur Alpha 140x200; 140x200x20;Kasur
+
+INSERT_UPDATE ShofaPorduct ; code[unique=true]; name; supercategories; variantype; kerangka; merk ;
+                           ShofaSheater3      ; Shofa sheater 3 ; Shofa ; ShofaVariantProduct ; Besi; ShofaSheater3;
+
+INSERT_UPDATE ShofaVariantProduct; baseProduct; code ; name; warna;supercategory
+                                 ;ShofaSheater3 ; ShofaSheater3white ; Shofa Sheater 3 white; putih; Shofa
+                                 ;ShofaSheater3 ; ShofaSheater3Black ; Shofa Sheater 3 black; hitam; Shofa
