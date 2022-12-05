@@ -1,7 +1,0 @@
-inthebox-dash-90x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20101%2090-02.jpg
-inthebox-dash-100x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20101%20100-02.jpg
-inthebox-dash-120x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20101%20120-02.jpg
-inthebox-dash-140x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/101-01.jpg
-inthebox-dash-160x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20101%20160-02.jpg
-inthebox-dash-180x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20101%20180-02.jpg
-inthebox-dash-200x200 ----> https://inthebox.sgp1.cdn.digitaloceanspaces.com/public/products/Foto%20Produk%20INTHEBOX%20101%20200-02.jpg
