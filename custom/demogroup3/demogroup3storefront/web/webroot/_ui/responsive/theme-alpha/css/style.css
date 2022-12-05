@@ -19018,6 +19018,9 @@ a {
   font-weight: 400;
   font-style: normal;
 }
+.navbar {
+  margin-bottom: 0px;
+}
 .about-page h1 {
   font-size: inherit;
   line-height: inherit;
