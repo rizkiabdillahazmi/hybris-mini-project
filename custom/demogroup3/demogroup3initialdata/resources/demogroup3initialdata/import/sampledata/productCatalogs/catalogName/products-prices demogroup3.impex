@@ -12,7 +12,7 @@ $catalogVersion = catalogversion(catalog(id[default=$productCatalog]), version[d
 $approved = approvalstatus(code)[default='approved']
 
 INSERT_UPDATE PriceRow; product(code, $catalogVersion)[unique = true]; price[translator = de.hybris.platform.acceleratorservices.dataimport.batch.converter.PriceTranslator]; currency(isocode)[unique = true][default = IDR]; $catalogVersion; unit(code[unique = true, default = pieces])
-                      ; INTHEBOX_Flip_Z_90x200                         ; 799000                                                                                               ;                                                ;                ;
+                      ; Sheate3Black                                   ; 3299000                                                                                               ;                                                ;                ;
                       ; Sheate3White                                   ; 3299000                                                                                               ;                                                ;                ;
                       ; Lipat_Travel_Mattress                          ; 999000                                                                                              ;                                                ;                ;
 
