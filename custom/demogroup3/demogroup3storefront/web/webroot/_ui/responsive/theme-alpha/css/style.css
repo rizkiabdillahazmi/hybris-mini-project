@@ -19021,11 +19021,18 @@ a {
 .navbar {
   margin-bottom: 0px;
 }
-.about-page h1 {
+.about-page h1,
+.about-detail-page h1 {
   font-size: inherit;
   line-height: inherit;
 }
-.about-page h2 {
+.about-page h2,
+.about-detail-page h2 {
+  font-size: inherit;
+  line-height: inherit;
+}
+.about-page h2,
+.about-detail-page h3 {
   font-size: inherit;
   line-height: inherit;
 }
@@ -19083,7 +19090,8 @@ a {
 .about-page .read-more {
   margin-top: 40px;
 }
-.about-page .read-more .btn {
+.about-page .read-more .btn,
+.about-detail-page .read-more .btn {
   font-family: 'Brown';
   font-size: 22px;
   font-weight: 900;
@@ -19120,6 +19128,65 @@ a {
 }
 .about-page .faq .answer {
   margin-top: 30px;
+}
+.about-detail-page section {
+  margin: 50px 0px;
+}
+.about-detail-page .section-header {
+  color: black;
+  font-family: 'BW Gradual';
+  font-size: 40px;
+}
+.about-detail-page .container {
+  padding: 0px 80px;
+}
+.about-detail-page .image img {
+  width: 100%;
+}
+.about-detail-page .section-header,
+.about-detail-page .image {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.about-detail-page .content h2 {
+  font-family: 'Brown';
+  font-weight: 900;
+  font-size: 30px;
+}
+.about-detail-page p,
+.about-detail-page li {
+  font-family: 'Brown';
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+.about-detail-page ul {
+  margin-left: 20px;
+}
+.about-detail-page strong {
+  font-weight: 900;
+}
+.about-detail-page .related {
+  margin-top: 40px;
+  text-align: center;
+}
+.about-detail-page .related .item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.about-detail-page .related .image {
+  margin-bottom: 20px;
+}
+.about-detail-page .related .title {
+  color: black;
+  font-family: 'BW Gradual';
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.about-detail-page .read-more .btn:hover {
+  color: #000000;
+  background-color: #00ABFB;
 }
 @media only screen and (max-width: 1024px) {
   .about-page .item,
