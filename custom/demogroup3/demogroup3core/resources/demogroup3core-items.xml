@@ -156,6 +156,29 @@
                     </attribute>
                 </attributes>
             </itemtype>
+            <itemtype code="VariantDemoProduct" extends="VariantProduct"
+                      autocreate="true" generate="true"
+                      jaloclass="com.hybris.demogroup3.core.jalo.VariantDemoProduct">
+                <description>Apparel size variant type that contains additional attribute describing variant size.
+                </description>
+                <attributes>
+                    <attribute qualifier="merk" type="java.lang.String">
+                        <description>Merk Product</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="warna" type="java.lang.String">
+                        <description>Warna Product.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="ukuran" type="java.lang.String">
+                        <description>ukuran Product.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
         </typegroup>
 
     </itemtypes>
