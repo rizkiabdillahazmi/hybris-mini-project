@@ -9,6 +9,8 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="nav" tagdir="/WEB-INF/tags/responsive/nav"%>
 
+<c:url value="/cart" var="cartUrl"/>
+
 <spring:htmlEscape defaultHtmlEscape="true" />
 
 
