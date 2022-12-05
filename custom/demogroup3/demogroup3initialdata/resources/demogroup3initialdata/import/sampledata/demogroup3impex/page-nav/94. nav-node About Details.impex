@@ -1,0 +1,61 @@
+# Macros / Replacement Parameter definitions
+$contentCatalog=demoGroup3ContentCatalog
+$contentCatalogName=Demo Group 3 Content Catalog
+$productCatalog=demoGroup3ProductCatalog
+$productCatalogName=Demo Group 3 Product Catalog
+
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+$medias=medias(code, $contentCV);
+$mediaContainer=media(qualifier, $contentCV);
+$contentPage=contentPage(uid, $contentCV);
+$product=product(code, $productCV)
+$category=category(code, $productCV)
+$siteResource=jar:org.demogroup3.initialdata.setup.InitialDataSystemSetup&/demogroup3initialdata/import/sampledata/contentCatalogs/$contentCatalog
+$productResource=jar:org.demogroup3.initialdata.setup.InitialDataSystemSetup&/demogroup3initialdata/import/sampledata/productCatalogs/$productCatalog
+$jarResourceCms=jar:org.demogroup3.initialdata.setup.InitialDataSystemSetup&/demogroup3initialdata/import/sampledata/cockpits/cmscockpit
+$lang = en
+
+
+# CMS Link Components
+INSERT_UPDATE CMSLinkComponent; $contentCV[unique=true]; uid[unique=true] ; name                ; url                    ; &linkRef         ; &componentRef    ; target(code)[default='sameWindow']; $category; $product;
+                              ;                        ; AboutWhatPageLink; About What Page Link; /apa-itu-kasur-inthebox; AboutWhatPageLink; AboutWhatPageLink;                                   ;          ;         ;
+
+## entries of the above navigation nodes ##
+INSERT_UPDATE CMSNavigationEntry; uid[unique=true]     ; $contentCV[unique=true]; name                 ; navigationNode(&nodeRef); item(CMSLinkComponent.uid,CMSLinkComponent.$contentCV);
+                                ; AboutWhatNavNodeEntry;                        ; About What Node Entry; AboutWhatNavNode        ; AboutWhatPageLink;
+
+## level 3. children of Category Nav ##
+INSERT_UPDATE CMSNavigationNode; uid[unique=true]; $contentCV[unique=true]; name               ; &nodeRef        ; parent(uid,$contentCV);children(uid,$contentCV);links(&linkRef);
+                               ; AboutWhatNavNode;                        ; About What Nav Node; AboutWhatNavNode; DemoNavNode;
+
+
+#===========================================================#
+
+# CMS Link Components
+INSERT_UPDATE CMSLinkComponent; $contentCV[unique=true]; uid[unique=true]; name               ;url                          ; &linkRef        ; &componentRef   ; target(code)[default='sameWindow']; $category; $product;
+                              ;                        ; AboutWhyPageLink; About Why Page Link; /alasan-pilih-kasur-inthebox; AboutWhyPageLink; AboutWhyPageLink;                                   ;          ;         ;
+
+## entries of the above navigation nodes ##
+INSERT_UPDATE CMSNavigationEntry; uid[unique=true]    ; $contentCV[unique=true]; name                ; navigationNode(&nodeRef); item(CMSLinkComponent.uid,CMSLinkComponent.$contentCV);
+                                ; AboutWhyNavNodeEntry;                        ; About Why Node Entry; AboutWhyNavNode         ; AboutWhyPageLink;
+
+## level 3. children of Category Nav ##
+INSERT_UPDATE CMSNavigationNode; uid[unique=true]; $contentCV[unique=true]; name              ; &nodeRef       ; parent(uid,$contentCV);children(uid,$contentCV);links(&linkRef);
+                               ; AboutWhyNavNode ;                        ; About Why Nav Node; AboutWhyNavNode; DemoNavNode;
+
+
+#===========================================================#
+
+# CMS Link Components
+INSERT_UPDATE CMSLinkComponent; $contentCV[unique=true]; uid[unique=true]; name               ; url                ; &linkRef        ; &componentRef   ; target(code)[default='sameWindow']; $category; $product;
+                              ;                        ; AboutHowPageLink; About How Page Link; /cara-beli-inthebox; AboutHowPageLink; AboutHowPageLink;                                   ;          ;         ;
+
+## entries of the above navigation nodes ##
+INSERT_UPDATE CMSNavigationEntry; uid[unique=true]    ; $contentCV[unique=true]; name                ; navigationNode(&nodeRef); item(CMSLinkComponent.uid,CMSLinkComponent.$contentCV);
+                                ; AboutHowNavNodeEntry;                        ; About How Node Entry; AboutHowNavNode         ; AboutHowPageLink;
+
+## level 3. children of Category Nav ##
+INSERT_UPDATE CMSNavigationNode; uid[unique=true]; $contentCV[unique=true]; name              ; &nodeRef       ; parent(uid,$contentCV);children(uid,$contentCV);links(&linkRef);
+                               ; AboutHowNavNode ;                        ; About How Nav Node; AboutHowNavNode; DemoNavNode;
