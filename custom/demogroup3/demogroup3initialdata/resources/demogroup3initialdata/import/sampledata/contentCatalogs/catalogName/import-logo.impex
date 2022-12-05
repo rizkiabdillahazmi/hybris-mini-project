@@ -1,0 +1,59 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing CMS Content
+
+# Macros / Replacement Parameter definitions
+$contentCatalog=demoGroup3ContentCatalog
+$contentCatalogName=Demo Group 3 Content Catalog
+$productCatalog=demoGroup3ProductCatalog
+$productCatalogName=Demo Group 3 Product Catalog
+
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+$medias=medias(code, $contentCV);
+$mediaContainer=media(qualifier, $contentCV);
+$contentPage=contentPage(uid, $contentCV);
+$product=product(code, $productCV)
+$category=category(code, $productCV)
+$siteResource = jar:com.hybris.demogroup3.initialdata.setup.InitialDataSystemSetup&/demogroup3initialdata/import/sampledata/contentCatalogs/catalogName
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;folder(qualifier)[default='images']
+                   ;;/images/theme/logo-inthebox.png;logointhebox.png;$siteResource/images/theme/logo-inthebox.png;image/png;in the box;
+
+
+
+----------------------------------------
+
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing CMS Content
+# English Localisation
+
+# Macros / Replacement Parameter definitions
+$contentCatalog=demoGroup3ContentCatalog
+$contentCatalogName=Demo Group 3 Content Catalog
+$productCatalog=demoGroup3ProductCatalog
+$productCatalogName=Demo Group 3 Product Catalog
+
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+$picture=media(code, $contentCV);
+$medias=medias(code, $contentCV);
+$mediaContainer=media(qualifier, $contentCV)[lang=$lang];
+$siteResource=jar:com.hybris.demogroup3.initialdata.setup.InitialDataSystemSetup&/demogroup3initialdata/import/sampledata/contentCatalogs/$contentCatalog
+
+# Language
+$lang=en
+
+$backGroundImage=backGroundImage(code, $contentCV)
+$hoverOverImage=hoverOverImage(code, $contentCV)
+$Image=image(code, $contentCV)
+
+
+# Site Logo Component
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+                            ;;SiteLogoComponent;/images/theme/logo-inthebox.png;

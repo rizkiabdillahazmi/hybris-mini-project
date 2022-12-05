@@ -1,0 +1,186 @@
+:root {
+  --main-color: #7fc5f9;
+  --second-color: #6086c2;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito";
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.upper {
+  background-color: #f8f9fa;
+  height: 5.3rem;
+}
+.upper-text {
+  display: inline;
+  color: var(--second-color);
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+.upper-link {
+  list-style: none;
+  margin-top: 1.8rem;
+  text-align: right;
+}
+.upper-link li {
+  display: inline;
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-left: 1.5rem;
+}
+.upper-link li a {
+  text-decoration: none;
+  color: var(--second-color);
+}
+.upper-img {
+  margin-top: 1.3rem;
+  margin-right: 3rem;
+}
+
+
+.logo {
+  width: 16.9rem;
+  height: 3rem;
+}
+.navbar-new {
+   background-color: #7fc5f9;
+   height: 9.8rem;
+}
+.nav-link-head{
+  list-style: none;
+  margin: auto;
+}
+.nav-link-list {
+  font-size: 1.7rem;
+  font-weight: bold;
+  padding-left: 2rem;
+  color: white;
+}
+
+.login {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffff;
+  margin-right: 3rem;
+  margin-top : 1rem;
+}
+.login-link{
+    list-style:none;
+    display: inline-block;
+}
+.login-link a{
+    color: white;
+}
+.login-link a:hover{
+    color: white;
+}
+.cart-hp {
+  display: none;
+}
+
+.navigation--bottom .nav__links--products li a {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.navigation--bottom{
+    background-color: var(--main-color);
+    border-bottom:var(--main-color);
+}
+.cart-1{
+    text-align:right;
+    display: inline-block
+}
+
+@media screen and (max-width: 960px) {
+  .upper {
+    background-color: #f8f9fa;
+    height: 3.3rem;
+  }
+  .upper-text {
+    display: inline;
+    color: var(--second-color);
+    font-size: 0.8rem;
+    font-weight: normal;
+  }
+  .upper-img {
+    margin-top: 0.7rem;
+    margin-right: 0.3rem;
+  }
+  .upper-icon-img {
+    width: 1.5rem;
+  }
+  .upper-link {
+    margin-top: 1rem;
+  }
+  .upper-link li {
+    display: inline;
+    font-size: 0.8rem;
+    font-weight: normal;
+    margin-left: 0.2rem;
+  }
+  .nav-link-head {
+    margin-top: 0.2rem;
+  }
+  .navbar-new {
+    background-color: #7fc5f9;
+    padding: 1rem 0rem 1rem;
+  }
+  .logo {
+    width: 10rem;
+    height: 2rem;
+  }
+  .nav-link-head{
+    display:none;
+  }
+  .nav-link-list {
+    font-size: 1.3rem;
+  }
+  .login {
+    font-size: 1.3rem;
+    text-transform: lowercase;
+    color: white;
+    display: block;
+  }
+  .navbar-right{
+    flex-direction: column;
+  }
+  .cart-img {
+    display: none;
+  }
+  .cart-hp {
+    display: inline-block;
+    font-size: 1.3rem;
+    padding-left: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffff;
+    margin-right: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+    .upper{
+        display: none;
+    }
+}
