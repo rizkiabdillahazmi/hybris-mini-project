@@ -15,10 +15,10 @@ $category=category(code, $productCV)
 $siteResource=jar:org.demogroup3.initialdata.setup.InitialDataSystemSetup&/demogroup3initialdata/import/sampledata/contentCatalogs/$contentCatalog
 $productResource=jar:org.demogroup3.initialdata.setup.InitialDataSystemSetup&/demogroup3initialdata/import/sampledata/productCatalogs/$productCatalog
 $jarResourceCms=jar:org.demogroup3.initialdata.setup.InitialDataSystemSetup&/demogroup3initialdata/import/sampledata/cockpits/cmscockpit
+$lang = en
 
-
-INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&linkRef;&componentRef;target(code)[default='sameWindow'];$category;$product;
-                              ;;AllBrandsCategoryLink;All Brands Category Link;/c/IntheBox;AllBrandsCategoryLink;AllBrandsCategoryLink;;IntheBox;;
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true]; uid[unique=true]     ; name                    ; url        ; &linkRef             ; &componentRef        ; target(code)[default='sameWindow']; $category;$product; linkName[lang=$lang]
+                              ;                       ; AllBrandsCategoryLink; All Brands Category Link; /c/IntheBox; AllBrandsCategoryLink; AllBrandsCategoryLink;                                   ; IntheBox ;        ; "Produk"
 
 
 ## entries of the above navigation nodes ##
