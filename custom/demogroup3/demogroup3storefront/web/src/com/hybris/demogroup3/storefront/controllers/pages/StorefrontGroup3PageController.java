@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class StorefrontGroup3PageController extends AbstractPageController {
 
     private static final String TEMPLATE_ABOUT_PAGE = "storefrontGroup3AboutPage";
 
-    @RequestMapping(value = "about", method = RequestMethod.GET)
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
     public String getAboutPage(final Model model) throws CMSItemNotFoundException{
         final ContentPageModel group3Data =getContentPageForLabelOrId(TEMPLATE_ABOUT_PAGE);
         storeCmsPageInModel(model, group3Data);
@@ -24,11 +24,42 @@ public class StorefrontGroup3PageController extends AbstractPageController {
 
     private static final String TEMPLATE_TESTIMONI_PAGE = "storefrontGroup3TestimoniPage";
 
-    @RequestMapping(value = "testimoni", method = RequestMethod.GET)
+    @RequestMapping(value = "/testimoni", method = RequestMethod.GET)
     public String getTestimoniPage(final Model model) throws CMSItemNotFoundException{
         final ContentPageModel group3Data =getContentPageForLabelOrId(TEMPLATE_TESTIMONI_PAGE);
         storeCmsPageInModel(model, group3Data);
         setUpMetaDataForContentPage(model, group3Data);
         return getViewForPage(model);
     }
+
+    private static final String TEMPLATE_ABOUT_WHAT_PAGE = "storefrontGroup3AboutWhatPage";
+
+    @RequestMapping(value = "/apa-itu-kasur-inthebox", method = RequestMethod.GET)
+    public String getAboutWhatPage(final Model model) throws CMSItemNotFoundException{
+        final ContentPageModel group3Data =getContentPageForLabelOrId(TEMPLATE_ABOUT_WHAT_PAGE);
+        storeCmsPageInModel(model, group3Data);
+        setUpMetaDataForContentPage(model, group3Data);
+        return getViewForPage(model);
+    }
+
+    private static final String TEMPLATE_ABOUT_WHY_PAGE = "storefrontGroup3AboutWhyPage";
+
+    @RequestMapping(value = "/alasan-pilih-kasur-inthebox", method = RequestMethod.GET)
+    public String getAboutWhyPage(final Model model) throws CMSItemNotFoundException{
+        final ContentPageModel group3Data =getContentPageForLabelOrId(TEMPLATE_ABOUT_WHY_PAGE);
+        storeCmsPageInModel(model, group3Data);
+        setUpMetaDataForContentPage(model, group3Data);
+        return getViewForPage(model);
+    }
+
+    private static final String TEMPLATE_ABOUT_HOW_PAGE = "storefrontGroup3AboutHowPage";
+
+    @RequestMapping(value = "/cara-beli-inthebox", method = RequestMethod.GET)
+    public String getAboutHowPage(final Model model) throws CMSItemNotFoundException{
+        final ContentPageModel group3Data =getContentPageForLabelOrId(TEMPLATE_ABOUT_HOW_PAGE);
+        storeCmsPageInModel(model, group3Data);
+        setUpMetaDataForContentPage(model, group3Data);
+        return getViewForPage(model);
+    }
+
 }
