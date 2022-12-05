@@ -4,17 +4,17 @@
 #
 # Import the Solr configuration for the store
 #
-$prefix = demoGroup3
+$prefix = demogroup3
 $productCatalog = demoGroup3ProductCatalog
 $catalogVersions = catalogVersions(catalog(id), version);
 $serverConfigName = $prefixSolrServerConfig
 $indexConfigName = $prefixSolrIndexConfig
 $searchConfigName = $prefixPageSize
 $facetSearchConfigName = $prefixIndex
-$facetSearchConfigDescription = Facet demoGroup3 Product Solr Index
+$facetSearchConfigDescription = Facet demogroup3 Product Solr Index
 $searchIndexNamePrefix = demogroup3
 $solrIndexedType = $prefixProductType
-$indexBaseSite = demoGroup3
+$indexBaseSite = demogroup3
 $indexLanguages = en, id
 $indexCurrencies = IDR
 
@@ -66,7 +66,7 @@ UPDATE BaseSite; uid[unique = true]; solrFacetSearchConfiguration(name)
                ; $indexBaseSite    ; $facetSearchConfigName
 
 
-# Create the queries that will be used to extract data for Solr
+ Create the queries that will be used to extract data for Solr
 INSERT_UPDATE SolrIndexerQuery; solrIndexedType(identifier)[unique = true]; identifier[unique = true]          ; type(code); injectCurrentDate[default = true]; injectCurrentTime[default = true]; injectLastIndexTime[default = true]; query                    ; user(uid)
                               ; $solrIndexedType                          ; $searchIndexNamePrefix-fullQuery   ; full      ;                                  ;                                  ; false                              ; "SELECT DISTINCT tbl.pk, tbl.code FROM (
 	{{
@@ -85,25 +85,25 @@ SELECT DISTINCT tbl.pk, tbl.code FROM (
 	}}
 ) tbl ORDER BY tbl.code" ; anonymous
 
-#
-#INSERT_UPDATE SolrIndexerQuery; solrIndexedType(identifier)[unique = true]; identifier[unique = true]          ; type(code); injectCurrentDate[default = true]; injectCurrentTime[default = true]; injectLastIndexTime[default = true]; query                    ; user(uid)
-#                              ; $solrIndexedType                          ; $searchIndexNamePrefix-fullQuery   ; full      ;                                  ;                                  ; false                              ; "SELECT DISTINCT tbl.pk, tbl.code FROM (
-#	{{
-#		SELECT DISTINCT{p:PK} AS pk, {p:code} AS code
-#		FROM {KasurVariantProduct! AS p left outer join catalogversion as catalog on {p.catalogversion}={catalog.pk} join ArticleApprovalStatus as aas on {p.approvalStatus} = {aas.pk}}
-#		WHERE {catalog.version}='Online' AND {aas.code}='approved'
-#	}}
-#) tbl ORDER BY tbl.code" ; anonymous
-#
-#                              ; $solrIndexedType                          ; $searchIndexNamePrefix-updateQuery ; update    ;                                  ;                                  ;                                    ; "
-#SELECT DISTINCT tbl.pk, tbl.code FROM (
-#	{{
-#		SELECT DISTINCT{p:PK} AS pk, {p:code} AS code
-#		FROM {KasurVariantProduct! AS p left outer join catalogversion as catalog on {p.catalogversion}={catalog.pk} join ArticleApprovalStatus as aas on {p.approvalStatus} = {aas.pk}}
-#		WHERE {p:modifiedtime} >= ?lastIndexTime AND{catalog.version}='Online' AND {aas.code}='approved'
-#	}}
-#) tbl ORDER BY tbl.code" ; anonymous
-#
+
+INSERT_UPDATE SolrIndexerQuery; solrIndexedType(identifier)[unique = true]; identifier[unique = true]          ; type(code); injectCurrentDate[default = true]; injectCurrentTime[default = true]; injectLastIndexTime[default = true]; query                    ; user(uid)
+                              ; $solrIndexedType                          ; $searchIndexNamePrefix-fullQuery   ; full      ;                                  ;                                  ; false                              ; "SELECT DISTINCT tbl.pk, tbl.code FROM (
+	{{
+		SELECT DISTINCT{p:PK} AS pk, {p:code} AS code
+		FROM {ShofaVariantProduct! AS p left outer join catalogversion as catalog on {p.catalogversion}={catalog.pk} join ArticleApprovalStatus as aas on {p.approvalStatus} = {aas.pk}}
+		WHERE {catalog.version}='Online' AND {aas.code}='approved'
+	}}
+) tbl ORDER BY tbl.code" ; anonymous
+
+                              ; $solrIndexedType                          ; $searchIndexNamePrefix-updateQuery ; update    ;                                  ;                                  ;                                    ; "
+SELECT DISTINCT tbl.pk, tbl.code FROM (
+	{{
+		SELECT DISTINCT{p:PK} AS pk, {p:code} AS code
+		FROM {ShofaVariantProduct! AS p left outer join catalogversion as catalog on {p.catalogversion}={catalog.pk} join ArticleApprovalStatus as aas on {p.approvalStatus} = {aas.pk}}
+		WHERE {p:modifiedtime} >= ?lastIndexTime AND{catalog.version}='Online' AND {aas.code}='approved'
+	}}
+) tbl ORDER BY tbl.code" ; anonymous
+
 
 # Define price range set
 INSERT_UPDATE SolrValueRangeSet; name[unique = true]   ; qualifier; type   ; solrValueRanges(&rangeValueRefID)
@@ -124,11 +124,7 @@ INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; n
                                  ; $solrIndexedType                          ; priceValue           ; double    ;                   ; true                     ;                           ;                            ;                               ;                                     ;                                    ; productPriceValueProvider               ;                                          ;                                ;                    ;                          ;              ;                               ;                   ;                                  ;                                              ;                      ;
                                  ; $solrIndexedType                          ; keywords             ; text      ;                   ;                          ; true                      ;                            ; true                          ; true                                ;                                    ; productKeywordsValueProvider            ;                                          ; true                           ; 40                 ; true                     ; 20           ; true                          ; 10                ;                                  ;                                              ;                      ;
                                  ; $solrIndexedType                          ; reviewAvgRating      ; double    ;                   ;                          ; true                      ;                            ;                               ;                                     ;                                    ; productReviewAverageRatingValueProvider ;                                          ;                                ;                    ;                          ;              ;                               ;                   ;                                  ;                                              ;                      ;
-                                 ; $solrIndexedType                          ; img-515Wx515H        ; string    ;                   ;                          ;                           ;                            ;                               ;                                     ;                                    ; image515ValueProvider                   ;                                          ;                                ;                    ;                          ;              ;                               ;                   ;                                  ;                                              ;                      ;
-                                 ; $solrIndexedType                          ; img-300Wx300H        ; string    ;                   ;                          ;                           ;                            ;                               ;                                     ;                                    ; image300ValueProvider                   ;                                          ;                                ;                    ;                          ;              ;                               ;                   ;                                  ;                                              ;                      ;
-                                 ; $solrIndexedType                          ; img-96Wx96H          ; string    ;                   ;                          ;                           ;                            ;                               ;                                     ;                                    ; image96ValueProvider                    ;                                          ;                                ;                    ;                          ;              ;                               ;                   ;                                  ;                                              ;                      ;
-                                 ; $solrIndexedType                          ; img-65Wx65H          ; string    ;                   ;                          ;                           ;                            ;                               ;                                     ;                                    ; image65ValueProvider                    ;                                          ;                                ;                    ;                          ;              ;                               ;                   ;                                  ;                                              ;                      ;
-                                 ; $solrIndexedType                          ; img-30Wx30H          ; string    ;                   ;                          ;                           ;                            ;                               ;                                     ;                                    ; image30ValueProvider                    ;                                          ;                                ;                    ;                          ;              ;                               ;                   ;                                  ;                                              ;                      ;
+                                 ; $solrIndexedType                          ; img-1200Wx1200H        ; string    ;                   ;                          ;                           ;                            ;                               ;                                     ;                                    ; image300ValueProvider                   ;                                          ;                                ;                    ;                          ;              ;                               ;                   ;                                  ;                                              ;                      ;
                                  ; $solrIndexedType                          ; url                  ; string    ;                   ;                          ; true                      ;                            ;                               ;                                     ;                                    ; productUrlValueProvider                 ;                                          ;                                ;                    ;                          ;              ;                               ;                   ;                                  ;                                              ;                      ;
                                  ; $solrIndexedType                          ; primaryPromotionCode ; string    ;                   ;                          ;                           ;                            ;                               ;                                     ;                                    ; promotionCodeValueProvider              ;                                          ;                                ;                    ;                          ;              ;                               ;                   ;                                  ;                                              ;                      ;
 

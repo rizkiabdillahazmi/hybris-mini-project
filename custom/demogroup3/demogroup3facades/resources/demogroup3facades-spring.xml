@@ -182,4 +182,18 @@
 	</bean>
 
 	<bean id="genderData" class="com.hybris.demogroup3.facades.product.data.GenderData" scope="prototype"/>
+
+	<!--	Book Populator-->
+	<alias name="solrResultBasicPopulator" alias="solrResultBasicPopulator"/>
+	<bean id="solrResultBasicPopulator" class="com.hybris.demogroup3.facades.populators.SolrResultBasicPopulator"/>
+
+	<!--converter Book-->
+	<bean id="solrResultBasicConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="com.hybris.demogroup3.facades.product.data"/>
+		<property name="populators">
+			<list merge="true">
+				<ref bean="solrResultBasicConverter"/>
+			</list>
+		</property>
+	</bean>
 </beans>
