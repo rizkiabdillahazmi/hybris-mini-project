@@ -10,12 +10,12 @@
 		</cms:pageSlot>		
 	</div>
 	<div class="row">
-		<div class="col-xs-3">
+		<div class="col-md-3">
 			<cms:pageSlot position="ProductLeftRefinements" var="feature" element="div" class="product-list-left-refinements-slot">
 				<cms:component component="${feature}" element="div" class="yComponentWrapper product-list-left-refinements-component"/>
 			</cms:pageSlot>
 		</div>
-		<div class="col-sm-12 col-md-9">
+		<div class="col-md-9">
 			<cms:pageSlot position="ProductListSlot" var="feature" element="div" class="product-list-right-slot">
 				<cms:component component="${feature}" element="div" class="product__list--wrapper yComponentWrapper product-list-right-component"/>
 			</cms:pageSlot>

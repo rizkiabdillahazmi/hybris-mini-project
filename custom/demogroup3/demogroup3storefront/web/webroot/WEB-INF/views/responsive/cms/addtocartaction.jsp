@@ -64,9 +64,18 @@
 		</c:when>
 		<c:otherwise>
 			<ycommerce:testId code="addToCartButton">
-				<button id="addToCartButton" type="${buttonType}" class="btn btn-primary btn-block js-add-to-cart js-enable-btn btn-icon glyphicon-shopping-cart" disabled="disabled">
-					<spring:theme code="basket.add.to.basket"/>
-				</button>
+			    <div class="row mb-3 action-buttons">
+                    <div class="col-md-6">
+                        <button id="addToCartButton" type="${buttonType}" class="button-6 js-add-to-cart js-enable-btn" disabled="disabled">
+                            <spring:theme code="basket.add.to.basket"/>
+                        </button>
+                    </div>
+                    <div class="col-md-6 mt-3 mt-md-0">
+                        <button id="addToCartButton" type="${buttonType}" class="button-5 js-add-to-cart js-enable-btn" disabled="disabled">
+                            <spring:theme code="basket.buy.to.basket"/>
+                        </button>
+                    </div>
+                </div>
 			</ycommerce:testId>
 		</c:otherwise>
 	</c:choose>
