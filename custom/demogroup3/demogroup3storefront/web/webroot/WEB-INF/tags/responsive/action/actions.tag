@@ -8,7 +8,7 @@
 <%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags" %>
 
 <c:forEach items="${actions}" var="action" varStatus="idx">
-	<c:if test="${action.visible && action.uid eq 'ListAddToCartAction'}">
+	<c:if test="${action.visible && (action.uid eq 'ListAddToCartAction' || action.uid eq 'AddToCartAction')}">
 		<${ycommerce:sanitizeHtmlTagName(element)} class="${fn:escapeXml(parentComponent.uid)}-${fn:escapeXml(action.uid)}" data-index="${idx.index + 1}" class="${styleClass}">
 			<cms:component component="${action}" parentComponent="${parentComponent}" evaluateRestriction="true"/>
 		</${ycommerce:sanitizeHtmlTagName(element)}>
