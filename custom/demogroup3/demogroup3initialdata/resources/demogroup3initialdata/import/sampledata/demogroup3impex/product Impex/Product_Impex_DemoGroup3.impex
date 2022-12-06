@@ -1,3 +1,6 @@
+UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
+
+
 # -----------------------------------------------------------------------
 # Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 # -----------------------------------------------------------------------
@@ -9,6 +12,7 @@ $catalogVersion = catalogversion(catalog(id[default=$productCatalog]), version[d
 $supercategories = supercategories(code, $catalogVersion)
 $baseProduct = baseProduct(code, $catalogVersion)
 $approved = approvalstatus(code)[default='approved']
+
 # Insert Products
 #INSERT_UPDATE DemoProduct; code[unique = true]; name        ; $supercategories; varianttype(code)[default = 'KasurVariantProduct']; $approved; unit(code)[default = pieces]; $catalogVersion
 #                         ; Kasur              ; Kasur       ; "Kasur"         ;                                                      ;          ;                             ;
@@ -27,7 +31,7 @@ INSERT_UPDATE KasurProductDemo; code[unique = true]; name [lang=en]; name [lang=
                               ; Kasur_Lipat        ; Kasur Lipat   ;Kasur Lipat       ; "Kasur_Lipat"   ;                                                      ;          ;                             ;                 ;Kasur_Lipat;Busa
 
 INSERT_UPDATE KasurVariantProductDemo; $baseProduct   ;code[unique = true]      ;name                         ;name[lang =en];ukuran         ; unit(code)[default = pieces]; $approved; $catalogVersion; $supercategories;merk
-                                 ;Kasur_Lipat ; Lipat_Travel_Mattress ;Kasur Lipat Travel Mattress  ;Kasur Lipat Travel Mattress;80 x 200 x 12  ;                          ;          ;                ;"Kasur_Lipat"    ;Kasur_Lipat
+                                     ;Kasur_Lipat ; Lipat_Travel_Mattress ;Kasur Lipat Travel Mattress  ;Kasur Lipat Travel Mattress;80 x 200 x 12  ;                          ;          ;                ;"Kasur_Lipat"    ;Kasur_Lipat
 
 INSERT_UPDATE ShofaProductDemo ;code[unique = true]; name   ;name[lang=en]     ; $supercategories; varianttype(code)[default = 'ShofaVariantProductDemo']; $approved; unit(code)[default = pieces]; $catalogVersion;merk    ;rangka
                                ; Shofa              ; Shofa ;Shofa             ; "Shofa"         ;                                                       ;          ;                             ;                ;Sheater3;besi
