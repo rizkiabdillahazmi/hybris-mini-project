@@ -4,7 +4,7 @@
 <%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<div class="container mt-5">
+<div class="container main-pdp">
     <div class="row">
         <div class="col-lg-6 image">
             <div>
@@ -26,7 +26,7 @@
                 <ycommerce:testId code="productDetails_productNamePrice_label_${product.code}">
                     <product:productPricePanel product="${product}" />
                 </ycommerce:testId>
-                <div class="description">${ycommerce:sanitizeHTML(product.summary)}</div>
+                <div class="description">${ycommerce:sanitizeHTML(product.description)}</div>
             </div>
 
             <div class="form">
