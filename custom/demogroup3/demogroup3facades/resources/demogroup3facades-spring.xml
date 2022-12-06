@@ -184,13 +184,14 @@
 	<bean id="genderData" class="com.hybris.demogroup3.facades.product.data.GenderData" scope="prototype"/>
 
 	<!--	Populator-->
-	<alias name="defaultSolrResultBasicPopulator" alias="defaultSolrResultBasicPopulator"/>
+	<alias name="defaultSolrResultBasicPopulator" alias="solrResultBasicPopulator"/>
 	<bean id="defaultSolrResultBasicPopulator" class="com.hybris.demogroup3.facades.populators.SolrResultBasicPopulator" parent="defaultCommerceSearchResultProductPopulator"/>
 
 	<bean parent="modifyPopulatorList">
 		<property name="list" ref="commerceSearchResultProductConverter"/>
 		<property name="add" ref="solrResultBasicPopulator"/>
 	</bean>
+
 <!--	&lt;!&ndash;converter&ndash;&gt;-->
 <!--	<bean id="solrResultBasicConverter" parent="abstractPopulatingConverter">-->
 <!--		<property name="targetClass" value="de.hybris.platform.commercefacades.product.data.ProductData"/>-->
