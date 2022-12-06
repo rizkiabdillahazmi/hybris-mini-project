@@ -19,7 +19,7 @@
                 <div class="section-header">
                     <h1>TESTIMONI PEMBELI INTHEBOX</h1>
                 </div>
-                <div style="position: relative; top: -20px; text-align: center;">
+                <div style="position: relative; top: -20px;">
                     Banyak pembeli yang merasa puas dengan kualitas kasur INTHEBOX
                 </div>
                 <div style="text-align: justify; margin-bottom: 25px;">
@@ -378,32 +378,32 @@
                                 <div class="stars d-inline-flex">
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                 </div>
@@ -434,26 +434,32 @@
                                 <div class="stars d-inline-flex">
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
+                                        </picture>
+                                    </div>
+                                    <div class="star">
+                                        <picture>
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                 </div>
@@ -484,32 +490,32 @@
                                 <div class="stars d-inline-flex">
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                     <div class="star">
                                         <picture>
-                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp">
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://inthebox.net/images/star-full.png" class="lazyload" alt="Star">
+                                            <source type="image/webp" data-srcset="https://inthebox.net/images/star-full.webp" srcset="https://inthebox.net/images/star-full.webp">
+                                            <img src="https://inthebox.net/images/star-full.png" data-src="https://inthebox.net/images/star-full.png" class=" lazyloaded" alt="Star">
                                         </picture>
                                     </div>
                                 </div>
@@ -526,11 +532,7 @@
                         </div>
                     </div>
                 </div>
-                <ul class="custom-pagination">
-                    <li class="page-item">
-                        <a href="https://inthebox.net/id/testimony?page=2" class="page-link">Halaman Berikutnya ›</a>
-                    </li>
-                </ul>
+                <a href="https://inthebox.net/id/testimony?page=2" class="page-link">Halaman Berikutnya ></a>
             </div>
         </section>
     </section>
