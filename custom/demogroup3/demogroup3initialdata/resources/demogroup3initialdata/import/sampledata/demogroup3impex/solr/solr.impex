@@ -18,6 +18,8 @@ $indexBaseSite = demoGroup3
 $indexLanguages = en, id
 $indexCurrencies = IDR
 
+INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]; type(code); multiValue[default = true]; facet[default = true]; facetType(code); facetSort(code); priority; visible; categoryField[default = true]; fieldValueProvider                   ; facetDisplayNameProvider         ; topValuesProvider
+                                 ; $solrIndexedType                          ; merk           ; string    ;                           ;                      ; Refine         ; Alpha          ; 6000    ; true   ;                              ; springELValueProvider ; categoryFacetDisplayNameProvider ; defaultTopValuesProvider
 
 
 #
@@ -138,6 +140,4 @@ INSERT_UPDATE SolrSortField; sort(indexedType(identifier), code)[unique = true];
 #INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]; type(code); multiValue[default = true]; facet[default = true]; facetType(code); facetSort(code); priority; visible; categoryField[default = true]; fieldValueProvider                   ; facetDisplayNameProvider         ; topValuesProvider
 #                                 ; $solrIndexedType                          ; supplier       ; string    ; false                          ;                      ; Refine         ; Alpha          ; 100   ; true  ; false                        ; supplierValueProvider            ;
 #
-## CUSTOM TRAINING
-#INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]       ; name[unique = true]; type(code); multiValue[default = true]; facet[default = true]; facetType(code);  priority; visible; fieldValueProvider
-#                                 ; $solrIndexedType                          ; material           ; string    ; false                     ;                      ; Refine         ;  100     ; true   ; springELValueProvider
+
