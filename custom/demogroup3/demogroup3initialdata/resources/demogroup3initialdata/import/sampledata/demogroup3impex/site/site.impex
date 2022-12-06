@@ -1,0 +1,4 @@
+$siteUid=demoGroup3
+# CMS Site                                                                                                 
+INSERT_UPDATE CMSSite ; uid[unique=true] ; urlPatterns                                                                                                                  ;
+                      ; $siteUid         ; (?i)^https?://[^/]+(/[^?]*)?\?(.*\&)?(site=$siteUid)(|\&.*)$,(?i)^https?://$siteUid\.[^/]+(|/.*|\?.*)$,(?i)^https?://[^/].*$ ;
