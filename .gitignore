@@ -28,6 +28,7 @@ bin/
 **/web/commonwebsrc/*
 **/web/webroot/**/addons/*
 **/web/testclasses/*
+**/web/node_modules/*
 
 /custom/demogroup3/demogroup3storefront/resources/wro_addons.xml
 /custom/demogroup3/demogroup3storefront/web/webroot/_ui/responsive/theme-demogroup3/node_modules
