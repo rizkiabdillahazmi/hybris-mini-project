@@ -538,4 +538,12 @@
 		<property name="itemCleanupHooks" ref="csTicketRetentionHooks"/>
 		<property name="ticketBusinessService" ref="ticketBusinessService"/>
 	</bean>
+
+	<alias name="defaultTestimonyDao" alias="testimonyDao"/>
+	<bean id="defaultTestimonyDao" class="com.hybris.demogroup3.core.testimony.dao.impl.DefaultTestimonyDao">
+	</bean>
+
+	<alias name="defaultTestimonyService" alias="testimonyService"/>
+	<bean id="defaultTestimonyService" class="com.hybris.demogroup3.core.testimony.impl.DefaultTestimonyService">
+	</bean>
 </beans>
