@@ -192,6 +192,9 @@
 		<property name="add" ref="solrResultBasicPopulator"/>
 	</bean>
 
+	<alias name="defaultTestimonyFacade" alias="defaultTestimonyFacade"/>
+	<bean id="defaultTestimonyFacade" class="com.hybris.demogroup3.facades.testimony.impl.DefaultTestimonyFacade"/>
+
 <!--	&lt;!&ndash;converter&ndash;&gt;-->
 <!--	<bean id="solrResultBasicConverter" parent="abstractPopulatingConverter">-->
 <!--		<property name="targetClass" value="de.hybris.platform.commercefacades.product.data.ProductData"/>-->

@@ -11,7 +11,13 @@
 <%@ taglib prefix="common" tagdir="/WEB-INF/tags/responsive/common"%>
 <%@ taglib prefix="cart" tagdir="/WEB-INF/tags/responsive/cart" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:url value="/cart" var="cartUrl"/>
+<c:url value="/" var="homeUrl"/>
+<c:url value="/IntheBox/c/IntheBox" var="productUrl"/>
+<c:url value="/about" var="aboutUrl"/>
+<c:url value="/testimoni" var="testimoniUrl"/>
 <spring:htmlEscape defaultHtmlEscape="true" />
 
 <template:master pageTitle="${pageTitle}">
@@ -69,7 +75,7 @@
                         </div>
                         <div class="col-md-2">
                             <p class="footer-sub-title">PRODUK</p>
-                            <p class="footer-menu-space"><a href="" class="footer-list-menu">Produk</a></p>
+                            <p class="footer-menu-space"><a href="${fn:escapeXml(productUrl)}" class="footer-list-menu">Produk</a></p>
                         </div>
                         <div class="col-md-2">
                             <p class="footer-sub-title">SUPPORT</p>
@@ -82,10 +88,10 @@
                         </div>
                         <div class="col-md-2">
                             <p class="footer-sub-title">ABOUT</p>
-                            <p class="footer-menu-space"><a href="" class="footer-list-menu">Tentang Kami</a></p>
+                            <p class="footer-menu-space"><a href="${fn:escapeXml(aboutUrl)}" class="footer-list-menu">Tentang Kami</a></p>
                             <p class="footer-menu-space"><a href="" class="footer-list-menu">Toko Offline</a></p>
                             <p class="footer-menu-space"><a href="" class="footer-list-menu">Blog</a></p>
-                            <p class="footer-menu-space"><a href="" class="footer-list-menu">Testimoni</a></p>
+                            <p class="footer-menu-space"><a href="${fn:escapeXml(testimoniUrl)}" class="footer-list-menu">Testimoni</a></p>
                         </div>
                     </div>
                 </div>

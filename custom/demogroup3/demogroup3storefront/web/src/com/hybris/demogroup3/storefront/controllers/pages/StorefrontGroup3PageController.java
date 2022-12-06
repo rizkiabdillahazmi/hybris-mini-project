@@ -1,5 +1,6 @@
 package com.hybris.demogroup3.storefront.controllers.pages;
 
+import com.hybris.demogroup3.facades.testimony.impl.DefaultTestimonyFacade;
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.AbstractPageController;
 import de.hybris.platform.cms2.exceptions.CMSItemNotFoundException;
 import de.hybris.platform.cms2.model.pages.ContentPageModel;
@@ -8,9 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.Resource;
+
 @Controller
 //@RequestMapping("/")
 public class StorefrontGroup3PageController extends AbstractPageController {
+
+    @Resource(name = "defaultTestimonyFacade")
+    private DefaultTestimonyFacade defaultTestimonyFacade;
 
     private static final String TEMPLATE_ABOUT_PAGE = "storefrontGroup3AboutPage";
 
@@ -27,6 +33,7 @@ public class StorefrontGroup3PageController extends AbstractPageController {
     @RequestMapping(value = "/testimoni", method = RequestMethod.GET)
     public String getTestimoniPage(final Model model) throws CMSItemNotFoundException{
         final ContentPageModel group3Data =getContentPageForLabelOrId(TEMPLATE_TESTIMONI_PAGE);
+        model.addAttribute("allTestimony", defaultTestimonyFacade.getAllIntheboxTestimony());
         storeCmsPageInModel(model, group3Data);
         setUpMetaDataForContentPage(model, group3Data);
         return getViewForPage(model);
