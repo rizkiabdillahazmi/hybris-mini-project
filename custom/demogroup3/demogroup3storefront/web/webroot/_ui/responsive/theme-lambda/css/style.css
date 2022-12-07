@@ -19392,10 +19392,14 @@ a {
 }
 .testimony-page .page-link {
   max-width: 240px;
-  margin: 0 auto;
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 10px;
+}
+.testimony-page .custom-pagination {
+  justify-content: center;
+  gap: 20px;
+  display: flex;
 }
 .skip,
 .skiptocontent,

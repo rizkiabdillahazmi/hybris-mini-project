@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 
@@ -31,8 +32,12 @@ public class StorefrontGroup3PageController extends AbstractPageController {
     private static final String TEMPLATE_TESTIMONI_PAGE = "storefrontGroup3TestimoniPage";
 
     @RequestMapping(value = "/testimoni", method = RequestMethod.GET)
-    public String getTestimoniPage(final Model model) throws CMSItemNotFoundException{
+    public String getTestimoniPage(@RequestParam(value = "page", required = false) Integer page, final Model model) throws CMSItemNotFoundException{
+        if(page == null) {
+            page = 1;
+        }
         final ContentPageModel group3Data =getContentPageForLabelOrId(TEMPLATE_TESTIMONI_PAGE);
+        model.addAttribute("paginationTestimony", page);
         model.addAttribute("allTestimony", defaultTestimonyFacade.getAllIntheboxTestimony());
         storeCmsPageInModel(model, group3Data);
         setUpMetaDataForContentPage(model, group3Data);
