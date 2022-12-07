@@ -13,6 +13,8 @@
     </c:forEach>
 </div>
 
+
+
 <div id="addToCartTitle" class="display-none">
     <div class="add-to-cart-header">
         <div class="headline">
