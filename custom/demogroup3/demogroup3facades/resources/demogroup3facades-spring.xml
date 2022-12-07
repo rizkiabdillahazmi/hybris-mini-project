@@ -204,4 +204,9 @@
 <!--			</list>-->
 <!--		</property>-->
 <!--	</bean>-->
+
+	<!-- Custom Customer Facade	-->
+	<alias name="defaultCustomCustomerFacade" alias="customerFacade"/>
+	<bean id="defaultCustomCustomerFacade" class="com.hybris.demogroup3.facades.register.DefaultCustomCustomerFacade" parent="defaultCustomerFacade">
+	</bean>
 </beans>
