@@ -3,7 +3,7 @@
 
 
 <div class="register__section">
-	<c:url value="/login/register" var="registerActionUrl" />
+	<c:url value="/register/register" var="registerActionUrl" />
 	<user:register actionNameKey="register.submit"
 		action="${registerActionUrl}" />
 </div>
