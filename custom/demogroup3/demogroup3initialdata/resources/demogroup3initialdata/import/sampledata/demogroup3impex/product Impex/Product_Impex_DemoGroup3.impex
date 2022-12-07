@@ -14,6 +14,7 @@ $baseProduct = baseProduct(code, $catalogVersion)
 $approved = approvalstatus(code)[default='approved']
 
 # Insert Products
+
 #INSERT_UPDATE DemoProduct; code[unique = true]; name        ; $supercategories; varianttype(code)[default = 'KasurVariantProduct']; $approved; unit(code)[default = pieces]; $catalogVersion
 #                         ; Kasur              ; Kasur       ; "Kasur"         ;                                                      ;          ;                             ;
 #                         ; Shofa              ; Shofa       ; "Shofa"         ; ShofaVariantProduct                                  ;          ;                             ;
