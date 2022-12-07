@@ -6,6 +6,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="formElement" tagdir="/WEB-INF/tags/responsive/formElement"%>
 <%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<c:url value="/register" var="registerUrl"/>
 
 <spring:htmlEscape defaultHtmlEscape="true" />
 
@@ -52,5 +55,8 @@
 		<input id="expressCheckoutCheckbox" name="expressCheckoutEnabled" type="checkbox" class="form left doExpressCheckout display-none" />
 	</c:if>
 
+    <div class="mx-auto mt-4">
+    <p class="text-center">Belum Mempunyai Akun ? <a href="${fn:escapeXml(registerUrl)}" class="" >Daftar</a></p>
+    </div>
 </form:form>
 
