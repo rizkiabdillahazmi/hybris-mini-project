@@ -9,6 +9,8 @@
 		<property name="ukuran" type="String"/>
 		<property name="warna" type="String"/>
 		<property name="merk" type="String"/>
+		<property name="attribute" type="String"/>
+
 	</bean>
 
 	<bean class="com.hybris.demogroup3.facades.product.data.GenderData">

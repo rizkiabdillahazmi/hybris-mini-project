@@ -133,6 +133,10 @@
 		<property name="commonI18NService" ref="commonI18NService"/>
 	</bean>
 
+	<bean id="attributeValueProvider" class="com.hybris.demogroup3.core.provider.AttributeValueProvider" parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
+	</bean>
+
 	<bean id="promotionCodeValueProvider"
 	      class="de.hybris.platform.commerceservices.search.solrfacetsearch.provider.impl.PromotionCodeValueProvider"
 	      parent="abstractPropertyFieldValueProvider" >

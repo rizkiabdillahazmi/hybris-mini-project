@@ -11873,14 +11873,16 @@ a.product__listing .product__listing--promo:focus {
   }
 }
 .product__listing .product__list--price-panel {
-  text-align: right;
+  font-size: 1.6rem;
 }
 .product__listing .product__list--name {
   display: block;
   text-transform: uppercase;
   font-weight: bold;
-  margin: 0 0 10px 106px;
   color: inherit;
+  font-size: 1.6rem;
+  margin-bottom: 5px;
+  margin-top: 10px;
 }
 .product__listing .product__listing--description {
   margin: 0 210px 0 106px;
@@ -11970,6 +11972,8 @@ a.product__listing .product__listing--promo:focus {
 .product__listing.product__list .product__list--item {
   padding: 20px 30px;
   border-top: 1px solid #f2f2f2;
+  max-width: 400px;
+  border-right: 1px solid #f2f2f2;
 }
 .product__listing.product__list .product__list--item:nth-of-type(2n) {
   background-color: #f2f2f2;
@@ -11999,18 +12003,15 @@ a.product__listing .product__listing--promo:focus {
 }
 .product__listing.product__list .product__list--item.tag-highlighted:nth-of-type(2n):before {
   top: 1px;
-  background-color: #f2f2f2;
 }
 .product__listing.product__list .product__list--thumb {
-  float: left;
   margin-right: 10px;
   display: block;
 }
 .product__listing.product__list .product__list--thumb > img {
-  width: 96px;
+  width: 300px;
 }
 .product__listing.product__list .product__list--price-panel {
-  float: right;
   width: 200px;
 }
 .product__listing.product__list .ProductListComponent-ListPickUpInStoreAction,
@@ -12225,6 +12226,10 @@ a.product__listing .product__listing--promo:focus {
 }
 .search-results-highlight {
   font-weight: bold;
+}
+.product_list_detail {
+  font-family: Brown;
+  font-size: 1.8rem;
 }
 .product__facet {
   margin: 0;
@@ -17946,7 +17951,10 @@ select[multiple].input-sm {
   padding-left: 0;
 }
 .image-gallery .image-gallery__image .owl-item img {
-  width: 70%;
+  width: 75%;
+}
+.main-pdp {
+  margin-top: 60px;
 }
 .button-quantity-product {
   border-radius: 50% !important;
@@ -18070,6 +18078,9 @@ select[multiple].input-sm {
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
+}
+.product-details .description {
+  font-size: 1.3rem !important;
 }
 .quick-order__introduction {
   padding-top: 13px;

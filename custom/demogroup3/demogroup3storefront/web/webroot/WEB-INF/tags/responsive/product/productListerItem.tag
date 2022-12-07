@@ -19,7 +19,7 @@
 	<c:set value="${productTagClasses} tag-${tag}" var="productTagClasses"/>
 </c:forEach>
 
-<li class="${fn:escapeXml(productTagClasses)}">
+<div class="${fn:escapeXml(productTagClasses)}">
 	<ycommerce:testId code="test_searchPage_wholeProduct">
 		<a class="product__list--thumb" href="${fn:escapeXml(productUrl)}" title="${fn:escapeXml(product.name)}" >
 			<product:productPrimaryImage product="${product}" format="thumbnail"/>
@@ -27,6 +27,19 @@
 		<ycommerce:testId code="searchPage_productName_link_${product.code}">
 			<a class="product__list--name" href="${fn:escapeXml(productUrl)}">${ycommerce:sanitizeHTML(product.name)}</a>
 		</ycommerce:testId>
+
+		<div class = "product_list_detail">
+        	<ycommerce:testId code="searchPage_productName_link_${product.merk}">
+        			${ycommerce:sanitizeHTML(product.merk)}</a>
+        	</ycommerce:testId>
+        </div>
+
+        <div class ="product_list_detail">
+        	<ycommerce:testId code="searchPage_productName_link_${product.attribute}">
+        			${ycommerce:sanitizeHTML(product.attribute)}</a>
+        	</ycommerce:testId>
+        </div>
+
 
 		<div class="product__list--price-panel">
 			<c:if test="${not empty product.potentialPromotions}">
@@ -58,7 +71,7 @@
 		</div>
 
 	</ycommerce:testId>
-</li>
+</div>
 
 
 
