@@ -20,7 +20,7 @@
 	<spring:theme code="register.description" />
 </p>
 
-<form:form method="post" modelAttribute="registerForm" action="${action}">
+<form:form method="post" modelAttribute="customRegisterForm" action="${action}">
 	<formElement:formSelectBoxDefaultEnabled idKey="register.title"
 		labelKey="register.title" selectCSSClass="form-control"
 		path="titleCode" mandatory="true" skipBlank="false"
@@ -31,6 +31,9 @@
 	<formElement:formInputBox idKey="register.lastName"
 		labelKey="register.lastName" path="lastName" inputCSS="form-control"
 		mandatory="true" />
+	<formElement:formInputBox idKey="ID"
+    		labelKey="ID" path="id" inputCSS="form-control"
+    		mandatory="true" />
 	<formElement:formInputBox idKey="register.email"
 		labelKey="register.email" path="email" inputCSS="form-control"
 		mandatory="true" />
