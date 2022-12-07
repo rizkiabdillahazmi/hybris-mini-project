@@ -18815,9 +18815,6 @@ a {
 .login-link a:hover {
   color: white;
 }
-.cart-hp {
-  display: none;
-}
 .navigation--bottom .nav__links--products li a {
   text-transform: capitalize;
   font-weight: bold;
@@ -18830,6 +18827,9 @@ a {
 .cart-1 {
   text-align: right;
   display: inline-block;
+}
+.hp-view {
+  display: none;
 }
 @media screen and (max-width: 960px) {
   .upper {
@@ -18887,19 +18887,40 @@ a {
   .cart-img {
     display: none;
   }
-  .cart-hp {
-    display: inline-block;
-    font-size: 1.3rem;
-    padding-left: 2rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: #ffff;
-    margin-right: 1rem;
-  }
 }
 @media screen and (max-width: 600px) {
+  .desktop-view {
+    display: none;
+  }
+  .hp-view {
+    display: inline;
+  }
   .upper {
     display: none;
+  }
+}
+/*navbar*/
+@media screen and (max-width: 600px) {
+  .navbar-hp {
+    background-color: #7fc5f9;
+  }
+  .nav-list-hp {
+    margin-left: 3rem;
+    font-size: 1.5rem;
+  }
+  .nav-item {
+    margin-bottom: 1rem;
+  }
+  .nav-list-item {
+    color: white;
+  }
+  .logo-hp {
+    width: 10rem;
+    height: 2rem;
+    margin-top: 1rem;
+  }
+  .cart-item-hp {
+    margin-top: -1.2rem;
   }
 }
 /*footer*/

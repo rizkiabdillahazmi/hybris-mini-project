@@ -10,7 +10,10 @@
 <%@ taglib prefix="nav" tagdir="/WEB-INF/tags/responsive/nav"%>
 
 <c:url value="/cart" var="cartUrl"/>
-
+<c:url value="/" var="homeUrl"/>
+<c:url value="/IntheBox/c/IntheBox" var="productUrl"/>
+<c:url value="/about" var="aboutUrl"/>
+<c:url value="/testimoni" var="testimoniUrl"/>
 <spring:htmlEscape defaultHtmlEscape="true" />
 
 
@@ -25,6 +28,7 @@
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<div class="desktop-view">
    <div class="upper">
         <div class="container">
             <div class="d-flex justify-content-between">
@@ -117,11 +121,84 @@
                         </ul>
                  </div>
                  <a href="${fn:escapeXml(cartUrl)}"><img src="https://inthebox.net/images/layout-v2/cart-icon.png" alt="" class="cart-img"></a>
-                 <br>
-                 <a href="" class="cart-hp">keranjang</a>
             </span>
           </div>
         </div>
-      </nav>
+    </nav>
+</div>
 
-</header>
+<div class="hp-view">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-hp">
+          <div class="container-fluid">
+             <div class="navbar-brand">
+                <cms:pageSlot position="SiteLogo" var="logo" limit="1">
+                    <cms:component component="${logo}" element="div" class="yComponentWrapper logo-hp"/>
+                </cms:pageSlot>
+             </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-list-hp">
+                <li class="nav-item">
+                  <a class="nav-list-item" href="${fn:escapeXml(homeUrl)}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-list-item" href="${fn:escapeXml(productUrl)}">Produk</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-list-item" href="${fn:escapeXml(aboutUrl)}">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-list-item" href="${fn:escapeXml(testimoniUrl)}">Testimoni</a>
+                <li class="nav-item">
+                    <a class="nav-list-item" href="${fn:escapeXml(cartUrl)}">Keranjang</a>
+                </li>
+                <li class="nav-item cart-item-hp">
+                    <c:if test="${empty hideHeaderLinks}">
+                        <c:if test="${uiExperienceOverride}">
+                            <li class="backToMobileLink">
+                                <c:url value="/_s/ui-experience?level=" var="backToMobileStoreUrl" />
+                                <a href="${fn:escapeXml(backToMobileStoreUrl)}">
+                                    <spring:theme code="text.backToMobileStore" />
+                                </a>
+                            </li>
+                        </c:if>
+
+                        <sec:authorize access="!hasAnyRole('ROLE_ANONYMOUS')">
+                            <c:set var="maxNumberChars" value="25" />
+                            <c:if test="${fn:length(user.firstName) gt maxNumberChars}">
+                                <c:set target="${user}" property="firstName"
+                                value="${fn:substring(user.firstName, 0, maxNumberChars)}..." />
+                            </c:if>
+                        </sec:authorize>
+
+                        <sec:authorize access="hasAnyRole('ROLE_ANONYMOUS')" >
+                            <li class="liOffcanvas">
+                                <ycommerce:testId code="header_Login_link">
+                                    <c:url value="/login" var="loginUrl" />
+                                    <a href="${fn:escapeXml(loginUrl)}">
+                                        Login
+                                    </a>
+                               </ycommerce:testId>
+                            </li>
+                        </sec:authorize>
+
+                        <sec:authorize access="!hasAnyRole('ROLE_ANONYMOUS')" >
+                            <li class="liOffcanvas">
+                                <ycommerce:testId code="header_signOut">
+                                    <c:url value="/logout" var="logoutUrl"/>
+                                    <a href="${fn:escapeXml(logoutUrl)}">
+                                        <spring:theme code="header.link.logout" />
+                                    </a>
+                                </ycommerce:testId>
+                            </li>
+                        </sec:authorize>
+                    </c:if>
+                </li>
+            </div>
+          </div>
+        </nav>
+</div>
+
+
