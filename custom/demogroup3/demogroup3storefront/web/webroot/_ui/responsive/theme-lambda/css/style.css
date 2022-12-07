@@ -17845,7 +17845,10 @@ select[multiple].input-sm {
   padding-left: 0;
 }
 .image-gallery .image-gallery__image .owl-item img {
-  width: 70%;
+  width: 75%;
+}
+.main-pdp {
+  margin-top: 60px;
 }
 .button-quantity-product {
   border-radius: 50% !important;
@@ -17969,6 +17972,9 @@ select[multiple].input-sm {
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
+}
+.product-details .description {
+  font-size: 1.3rem !important;
 }
 .quick-order__introduction {
   padding-top: 13px;
@@ -18899,11 +18905,11 @@ a {
     background-color: #7fc5f9;
   }
   .nav-list-hp {
-    margin-left: 3rem;
+    margin-left: 3.0rem;
     font-size: 1.5rem;
   }
   .nav-item {
-    margin-bottom: 1rem;
+    margin-bottom: 1.0rem;
   }
   .nav-list-item {
     color: white;
@@ -18911,7 +18917,7 @@ a {
   .logo-hp {
     width: 10rem;
     height: 2rem;
-    margin-top: 1rem;
+    margin-top: 1.0rem;
   }
   .cart-item-hp {
     margin-top: -1.2rem;
