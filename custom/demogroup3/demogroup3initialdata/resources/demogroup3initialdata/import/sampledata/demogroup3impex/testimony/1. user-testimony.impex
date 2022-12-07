@@ -1,0 +1,108 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Product Reviews
+ 
+# Macros / Replacement Parameter definitions
+$catalog-Online=Online
+$product-catalog=demoGroup3ProductCatalog
+$productCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$product-catalog]),CatalogVersion.version[default=$catalog-Online])[default=$product-catalog:$catalog-Online]
+
+$catalogVersion=catalogversion(catalog(id[default=$product-catalog]),version[default='Online'])[unique=true,default=$product-catalog:Online]
+
+# Reviews from Customers
+
+INSERT_UPDATE Customer;groups(uid);uid[unique=true];name;customerId
+"#% beforeEach:
+import java.util.UUID;
+line.put(Integer.valueOf(4), UUID.randomUUID().toString());
+"
+;"customergroup";"usertestimony1@gmail.com";"Nadia Zhu";;
+;"customergroup";"usertestimony2@gmail.com";"Katharina Jessica";;
+;"customergroup";"usertestimony3@gmail.com";"Leo Wiryawan";;
+;"customergroup";"usertestimony4@gmail.com";"Hendrik Christian";;
+;"customergroup";"usertestimony5@gmail.com";"Jane Oktavia";;
+;"customergroup";"usertestimony6@gmail.com";"Meta Arshiani";;
+;"customergroup";"usertestimony7@gmail.com";"Wenny Novian";;
+;"customergroup";"usertestimony8@gmail.com";"Desi Yunita";;
+;"customergroup";"usertestimony9@gmail.com";"Rizky Kurniawan";;
+;"customergroup";"usertestimony10@gmail.com";"Shiuly Suherni";;
+;"customergroup";"usertestimony11@gmail.com";"Pradipta Iman";;
+;"customergroup";"usertestimony12@gmail.com";"John Chandra";;
+;"customergroup";"usertestimony13@gmail.com";"Vicky Garcia";;
+;"customergroup";"usertestimony14@gmail.com";"Edward Chandra";;
+;"customergroup";"usertestimony15@gmail.com";"Billy Fernando";;
+;"customergroup";"usertestimony16@gmail.com";"Febrian Denis";;
+;"customergroup";"usertestimony17@gmail.com";"Doni Irwandi";;
+;"customergroup";"usertestimony18@gmail.com";"Mark Tolga";;
+;"customergroup";"usertestimony19@gmail.com";"Diana Permadi";;
+;"customergroup";"usertestimony20@gmail.com";"Martha Vania";;
+;"customergroup";"usertestimony21@gmail.com";"Stephan Allen";;
+;"customergroup";"usertestimony22@gmail.com";"Nita Karnadi";;
+;"customergroup";"usertestimony23@gmail.com";"Budiman Saputra";;
+;"customergroup";"usertestimony24@gmail.com";"Sebastian Darwin";;
+;"customergroup";"usertestimony25@gmail.com";"Anton Setiawan";;
+;"customergroup";"usertestimony26@gmail.com";"Lia Permatasari";;
+;"customergroup";"usertestimony27@gmail.com";"James Stanley";;
+;"customergroup";"usertestimony28@gmail.com";"Jason Wesley";;
+;"customergroup";"usertestimony29@gmail.com";"July Amelia";;
+;"customergroup";"usertestimony30@gmail.com";"Sarah Conte";;
+;"customergroup";"usertestimony31@gmail.com";"Lorena Jacobson";;
+;"customergroup";"usertestimony32@gmail.com";"Agustin Ayu";;
+;"customergroup";"usertestimony33@gmail.com";"Philip Neumann";;
+;"customergroup";"usertestimony34@gmail.com";"Topher Layson";;
+;"customergroup";"usertestimony35@gmail.com";"Gina Quinn";;
+;"customergroup";"usertestimony36@gmail.com";"Clara Moina";;
+;"customergroup";"usertestimony37@gmail.com";"Dan Spencer";;
+;"customergroup";"usertestimony38@gmail.com";"Amber Robins";;
+;"customergroup";"usertestimony39@gmail.com";"Malcolm Calderon";;
+;"customergroup";"usertestimony40@gmail.com";"Nathan Ross";;
+;"customergroup";"usertestimony41@gmail.com";"Arista Wijaya";;
+;"customergroup";"usertestimony42@gmail.com";"Kylie Daniels";;
+;"customergroup";"usertestimony43@gmail.com";"Jack Harris";;
+;"customergroup";"usertestimony44@gmail.com";"Vitri Aprilia";;
+;"customergroup";"usertestimony45@gmail.com";"Joanna Marie";;
+;"customergroup";"usertestimony46@gmail.com";"Florence Monica";;
+;"customergroup";"usertestimony47@gmail.com";"Ethan Lee";;
+;"customergroup";"usertestimony48@gmail.com";"Winata Eka";;
+;"customergroup";"usertestimony49@gmail.com";"Emily William";;
+;"customergroup";"usertestimony50@gmail.com";"Aaron Pearce";;
+;"customergroup";"usertestimony51@gmail.com";"Rio Denny";;
+;"customergroup";"usertestimony52@gmail.com";"Ravi Sharma";;
+;"customergroup";"usertestimony53@gmail.com";"Frans Rizal";;
+;"customergroup";"usertestimony54@gmail.com";"Neil Ward";;
+;"customergroup";"usertestimony55@gmail.com";"Adiyanto Hardian";;
+;"customergroup";"usertestimony56@gmail.com";"Glenn Devos";;
+;"customergroup";"usertestimony57@gmail.com";"Mabelle Earlene";;
+;"customergroup";"usertestimony58@gmail.com";"Kris Mateo";;
+;"customergroup";"usertestimony59@gmail.com";"Victor Adrianus";;
+;"customergroup";"usertestimony60@gmail.com";"Andre Wongso";;
+;"customergroup";"usertestimony61@gmail.com";"Heni Silviana";;
+;"customergroup";"usertestimony62@gmail.com";"Stella Lee";;
+;"customergroup";"usertestimony63@gmail.com";"Wahyu Kurniawan";;
+;"customergroup";"usertestimony64@gmail.com";"Hartanto Koswara";;
+;"customergroup";"usertestimony65@gmail.com";"Angeline Ngan";;
+;"customergroup";"usertestimony66@gmail.com";"Olivia Natalis";;
+;"customergroup";"usertestimony67@gmail.com";"Yoselita Kusumaningrum";;
+;"customergroup";"usertestimony68@gmail.com";"Renni Pirma";;
+;"customergroup";"usertestimony69@gmail.com";"Dani Rachman";;
+;"customergroup";"usertestimony70@gmail.com";"Ceria Nur Rohmah";;
+;"customergroup";"usertestimony71@gmail.com";"Agung Wisaksono Pangestu";;
+;"customergroup";"usertestimony72@gmail.com";"Aulia Dwi Oktavia";;
+;"customergroup";"usertestimony73@gmail.com";"Wahyuningsih Wahyuningsih";;
+;"customergroup";"usertestimony74@gmail.com";"Maya Sartika";;
+;"customergroup";"usertestimony75@gmail.com";"Rany May";;
+;"customergroup";"usertestimony76@gmail.com";"Nisky Kiki Rasuk";;
+;"customergroup";"usertestimony77@gmail.com";"Tiara Larasati";;
+;"customergroup";"usertestimony78@gmail.com";"Salwa Unknown";;
+;"customergroup";"usertestimony79@gmail.com";"Feni Rizona";;
+;"customergroup";"usertestimony80@gmail.com";"Wulan Permatasari";;
+;"customergroup";"usertestimony81@gmail.com";"Yunni Hikmah";;
+;"customergroup";"usertestimony82@gmail.com";"Rinaldo Fitra";;
+;"customergroup";"usertestimony83@gmail.com";"Andika R";;
+;"customergroup";"usertestimony84@gmail.com";"Diana Veronica";;
+;"customergroup";"usertestimony85@gmail.com";"Rahmatullah Rahmatullah";;
+;"customergroup";"usertestimony86@gmail.com";"Novika Stefani";;
+;"customergroup";"usertestimony87@gmail.com";"Melaney Ricardo";;
+;"customergroup";"usertestimony88@gmail.com";"Raffi Ahmad";;
+;"customergroup";"usertestimony89@gmail.com";"Baim Wong";;
