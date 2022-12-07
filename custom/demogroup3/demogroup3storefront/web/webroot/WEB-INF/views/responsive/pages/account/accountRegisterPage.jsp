@@ -5,16 +5,9 @@
 <template:page pageTitle="${pageTitle}">
 	<div class="row">
 		<div class="col-md-6 mx-auto">
-			<cms:pageSlot position="LeftContentSlot" var="feature" element="div" class="login-left-content-slot">
+			<cms:pageSlot position="RegisterContentSlot" var="feature" element="div" class="login-left-content-slot">
 				<cms:component component="${feature}"  element="div" class="login-left-content-component"/>
 			</cms:pageSlot>
 		</div>
-		<%--
-		<div class="col-md-6">
-			<cms:pageSlot position="RightContentSlot" var="feature" element="div" class="login-right-content-slot">
-				<cms:component component="${feature}"  element="div" class="login-right-content-component"/>
-			</cms:pageSlot>
-		</div>
-		--%>
 	</div>
 </template:page>

@@ -128,7 +128,24 @@
 </div>
 
 <div class="hp-view">
-        <nav class="navbar navbar-expand-lg navbar-light navbar-hp">
+       <div class="upper">
+            <div class="container">
+                <div class="d-flex justify-content-between upper-hp">
+                    <div class="d-flex flex-row">
+                        <div class="upper-img">
+                            <img src="https://inthebox.net/images/layout-v2/header-icon-10y-warranty.png" alt="" class="upper-icon-img">
+                            <p class="upper-text">Garansi 10 Tahun</p>
+                        </div>
+                        <div class="upper-img">
+                            <img src="https://inthebox.net/images/layout-v2/header-icon-free-shipping.png" alt="" class="upper-icon-img">
+                            <p class="upper-text">Free Shipping pulau Jawa & Sumatra</p>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+        <nav class="navbar-expand-lg navbar-light navbar-hp">
           <div class="container-fluid">
              <div class="navbar-brand">
                 <cms:pageSlot position="SiteLogo" var="logo" limit="1">
@@ -140,21 +157,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-list-hp">
-                <li class="nav-item">
-                  <a class="nav-list-item" href="${fn:escapeXml(homeUrl)}">Home</a>
+                <li class="nav-item mx-auto">
+                  <a class="nav-list-item first-list-item" href="${fn:escapeXml(homeUrl)}">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mx-auto">
                   <a class="nav-list-item" href="${fn:escapeXml(productUrl)}">Produk</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mx-auto">
                   <a class="nav-list-item" href="${fn:escapeXml(aboutUrl)}">Tentang Kami</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mx-auto">
                     <a class="nav-list-item" href="${fn:escapeXml(testimoniUrl)}">Testimoni</a>
-                <li class="nav-item">
+                <li class="nav-item mx-auto">
                     <a class="nav-list-item" href="${fn:escapeXml(cartUrl)}">Keranjang</a>
                 </li>
-                <li class="nav-item cart-item-hp">
+                <li class="nav-item login-item-hp">
                     <c:if test="${empty hideHeaderLinks}">
                         <c:if test="${uiExperienceOverride}">
                             <li class="backToMobileLink">
@@ -174,7 +191,7 @@
                         </sec:authorize>
 
                         <sec:authorize access="hasAnyRole('ROLE_ANONYMOUS')" >
-                            <li class="liOffcanvas">
+                            <li class="liOffcanvas mx-auto">
                                 <ycommerce:testId code="header_Login_link">
                                     <c:url value="/login" var="loginUrl" />
                                     <a href="${fn:escapeXml(loginUrl)}">
@@ -185,7 +202,7 @@
                         </sec:authorize>
 
                         <sec:authorize access="!hasAnyRole('ROLE_ANONYMOUS')" >
-                            <li class="liOffcanvas">
+                            <li class="liOffcanvas mx-auto">
                                 <ycommerce:testId code="header_signOut">
                                     <c:url value="/logout" var="logoutUrl"/>
                                     <a href="${fn:escapeXml(logoutUrl)}">
@@ -196,6 +213,9 @@
                         </sec:authorize>
                     </c:if>
                 </li>
+                <div class="sticker">
+                    <img src="https://www.line-stickers.com/wp-content/uploads/2019/04/Shibasays-The-Sleeping-Prince-.png" class="sticker-sleep">
+                </div>
             </div>
           </div>
         </nav>

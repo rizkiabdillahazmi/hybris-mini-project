@@ -13575,6 +13575,46 @@ textarea.quote__comments--textarea {
     height: 28px;
   }
 }
+@font-face {
+  font-family: 'Brown Regular';
+  src: url('../fonts/Brown Regular Regular.eot');
+  src: url('../fonts/Brown Regular Regular.woff2') format('woff2'), url('../fonts/Brown Regular Regular.woff') format('woff'), url('../fonts/Brown Regular Regular.ttf') format('truetype');
+}
+body {
+  font-family: "Brown Regular", "Nunito", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+.cart-section {
+  margin-top: 60px;
+}
+@media (min-width: 768px) {
+  .cart-section-header h1 {
+    font-size: 2.5rem !important;
+  }
+}
+.cart-section-header h1 {
+  font-family: Bw Gradual;
+  font-size: 4rem !important;
+  margin-bottom: 20px !important;
+  font-weight: 700 !important;
+}
+.cart-section .my-5 {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+  font-size: 1.5rem !important;
+  font-family: "Brown Regular" !important;
+}
+.cart-section .my-5 h3 {
+  font-size: 1.8rem !important;
+  font-weight: 500 !important;
+}
+.cart-section .my-5 a {
+  color: #646c9a !important;
+  font-weight: bold !important;
+}
+.cart-section .my-5 a:hover {
+  color: #17afe2 !important;
+  text-decoration: none;
+}
 @media (min-width: 1024px) {
   #colorbox #cboxTitle .headline-text {
     display: block !important;
@@ -17993,7 +18033,7 @@ select[multiple].input-sm {
   color: #a7abc3;
   cursor: pointer;
   display: inline-flex;
-  font-family: "Nunito", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Brown Regular", "Nunito", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
@@ -18038,7 +18078,7 @@ select[multiple].input-sm {
   color: #fff;
   cursor: pointer;
   display: inline-flex;
-  font-family: "Nunito", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Brown Regular", "Nunito", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
@@ -19021,7 +19061,8 @@ a {
     display: none;
   }
 }
-@media screen and (max-width: 600px) {
+/*navbar*/
+@media screen and (max-width: 767px) {
   .desktop-view {
     display: none;
   }
@@ -19029,20 +19070,32 @@ a {
     display: inline;
   }
   .upper {
-    display: none;
+    position: relative;
+    z-index: 10;
   }
-}
-/*navbar*/
-@media screen and (max-width: 600px) {
+  .upper-text {
+    color: var(--second-color);
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+  .upper-hp {
+    padding: 0.8rem 0rem 0.8rem 0rem;
+  }
   .navbar-hp {
     background-color: #7fc5f9;
+    margin-top: -3.1rem;
+  }
+  .first-list-item {
+    padding-top: 2rem;
   }
   .nav-list-hp {
-    margin-left: 3rem;
-    font-size: 1.5rem;
+    margin-top: 10rem;
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom: 3rem;
   }
   .nav-item {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
   .nav-list-item {
     color: white;
@@ -19050,10 +19103,25 @@ a {
   .logo-hp {
     width: 10rem;
     height: 2rem;
-    margin-top: 1rem;
+    margin-top: 5rem;
   }
-  .cart-item-hp {
-    margin-top: -1.2rem;
+  .login-item-hp {
+    margin-top: -1.5rem;
+  }
+  .sticker {
+    margin: 3rem;
+  }
+  .sticker-sleep {
+    opacity: 50%;
+  }
+  .navbar-toggler {
+    margin-left: 90%;
+    margin-bottom: 13px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .upper {
+    display: none;
   }
 }
 /*footer*/

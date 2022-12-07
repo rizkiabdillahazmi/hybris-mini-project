@@ -171,29 +171,42 @@ a {
   }
 }
 
-@media screen and (max-width: 600px) {
+
+/*navbar*/
+@media screen and (max-width: 767px) {
     .desktop-view{
         display : none;
     }
     .hp-view{
-        display: inline;
+         display: inline;
     }
     .upper{
-        display: none;
+         position: relative;
+         z-index: 10;
     }
-}
-
-/*navbar*/
-@media screen and (max-width: 600px) {
+    .upper-text {
+        color: var(--second-color);
+        font-size: 1.2rem;
+        font-weight: normal;
+     }
+    .upper-hp{
+        padding: 0.8rem 0rem 0.8rem 0rem;
+    }
     .navbar-hp{
         background-color : #7fc5f9;
+        margin-top: -3.1rem;
+    }
+    .first-list-item{
+        padding-top : 2.0rem;
     }
     .nav-list-hp{
-        margin-left: 3.0rem;
-        font-size: 1.5rem;
+        margin-top: 10.0rem;
+        font-size: 2.0rem;
+        font-weight : bold;
+        padding-bottom: 3.0rem;
     }
     .nav-item{
-        margin-bottom : 1.0rem;
+        margin-bottom : 2.0rem;
     }
     .nav-list-item{
         color: white;
@@ -201,9 +214,24 @@ a {
     .logo-hp{
         width: 10rem;
         height: 2rem;
-        margin-top : 1.0rem;
+        margin-top : 5.0rem;
     }
-    .cart-item-hp{
-        margin-top: -1.2rem;
+    .login-item-hp{
+        margin-top: -1.5rem;
+    }
+    .sticker{
+        margin: 3.0rem;
+    }
+    .sticker-sleep{
+        opacity: 50%;
+    }
+    .navbar-toggler{
+        margin-left: 90%;
+        margin-bottom: 13px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .upper{
+        display: none;
     }
 }
