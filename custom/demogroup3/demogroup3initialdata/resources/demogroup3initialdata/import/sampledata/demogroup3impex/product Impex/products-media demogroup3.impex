@@ -1,0 +1,275 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImPex for Importing Product Media
+
+# Macros / Replacement Parameter definitions
+$productCatalog = demoGroup3ProductCatalog
+
+$catalogVersion = catalogversion(catalog(id[default=$productCatalog]), version[default='Staged'])[unique=true, default=$productCatalog]
+$media = @media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator]
+$thumbnail = thumbnail(code, $catalogVersion)
+$picture = picture(code, $catalogVersion)
+$thumbnails = thumbnails(code, $catalogVersion)
+$detail = detail(code, $catalogVersion)
+$normal = normal(code, $catalogVersion)
+$others = others(code, $catalogVersion)
+$data_sheet = data_sheet(code, $catalogVersion)
+$medias = medias(code, $catalogVersion)
+$galleryImages = galleryImages(qualifier, $catalogVersion)
+$siteResource = jar:com.hybris.demogroup3.initialdata.setup.InitialDataSystemSetup&/demogroup3initialdata/import/sampledata/productCatalogs/catalogName
+
+# Create Media
+INSERT_UPDATE Media; mediaFormat(qualifier); code[unique = true]         ; $media                                     ; mime[default = 'image/jpeg']; $catalogVersion; folder(qualifier)
+                   ; 1200Wx1200H           ; media-shofaBlack-picture         ; $siteResource/images/product/Shofa_Hitam.jpg ;                             ;                ; images
+                   ; 515Wx515H             ; media-shofaBlack-thumbnail       ; $siteResource/images/product/Shofa_Hitam.jpg ;                             ;                ; images ;
+                   ; 300Wx300H             ; media-shofaBlack-detail          ; $siteResource/images/product/Shofa_Hitam.jpg ;                             ;                ; images ;
+                   ; 96Wx96H               ; media-shofaBlack-other           ; $siteResource/images/product/Shofa_Hitam.jpg ;                             ;                ; images ;
+                   ; 65Wx65H               ; media-shofaBlack-normal          ; $siteResource/images/product/Shofa_Hitam.jpg ;                             ;                ; images ;
+                   ; 30Wx30H               ; media-shofaBlack-thumbnails      ; $siteResource/images/product/Shofa_Hitam.jpg ;                             ;                ; images ;
+                   ; 1200Wx1200H           ; media-shofaWhite-picture         ; $siteResource/images/product/shofa.jpg ;                             ;                ; images
+                   ; 515Wx515H             ; media-shofaWhite-thumbnail       ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
+                   ; 300Wx300H             ; media-shofaWhite-detail          ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
+                   ; 96Wx96H               ; media-shofaWhite-other           ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
+                   ; 65Wx65H               ; media-shofaWhite-normal          ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
+                   ; 30Wx30H               ; media-shofaWhite-thumbnails      ; $siteResource/images/product/shofa.jpg ;                             ;                ; images ;
+                   ; 1200Wx1200H           ; media-kasur_lipat-picture   ; $siteResource/images/product/kasur_lipat.jpg    ;                             ;                ; images
+                   ; 515Wx515H             ; media-kasur_lipat-thumbnail ; $siteResource/images/product/kasur_lipat.jpg    ;                             ;                ; images ;
+                   ; 300Wx300H             ; media-kasur_lipat-detail    ; $siteResource/images/product/kasur_lipat.jpg    ;                             ;                ; images ;
+                   ; 96Wx96H               ; media-kasur_lipat-other     ; $siteResource/images/product/kasur_lipat.jpg    ;                             ;                ; images ;
+                   ; 65Wx65H               ; media-kasur_lipat-normal    ; $siteResource/images/product/kasur_lipat.jpg    ;                             ;                ; images ;
+                   ; 30Wx30H               ; media-kasur_lipat-thumbnails; $siteResource/images/product/kasur_lipat.jpg    ;                             ;                ; images ;
+                    ; 515Wx515H             ; media-flipz-thumbnail ; $siteResource/images/product/intheboxKasur/flipz/inthebox-flipz.jpg    ;                             ;                ; images ;
+                    ; 300Wx300H             ; media-flipz-detail    ; $siteResource/images/product/intheboxKasur/flipz/inthebox-flipz.jpg   ;                             ;                ; images ;
+                    ; 96Wx96H               ; media-flipz-other     ; $siteResource/images/product/intheboxKasur/flipz/inthebox-flipz.jpg    ;                             ;                ; images ;
+                    ; 65Wx65H               ; media-flipz-normal    ; $siteResource/images/product/intheboxKasur/flipz/inthebox-flipz.jpg    ;                             ;                ; images ;
+                    ; 30Wx30H               ; media-flipz-thumbnails; $siteResource/images/product/intheboxKasur/flipz/inthebox-flipz.jpg    ;                             ;                ; images ;
+; 1200Wx1200H             ; media-alpha-picture ; $siteResource/images/product/intheboxKasur/alpha/inthebox-alpha.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-alpha-thumbnail ; $siteResource/images/product/intheboxKasur/alpha/inthebox-alpha.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-alpha-detail    ; $siteResource/images/product/intheboxKasur/alpha/inthebox-alpha.jpg    ;                             ;                ; images ;
+; 96Wx96H               ; media-alpha-other     ; $siteResource/images/product/intheboxKasur/alpha/inthebox-alpha.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-alpha-normal    ; $siteResource/images/product/intheboxKasur/alpha/inthebox-alpha.jpg     ;                             ;                ; images ;
+; 30Wx30H               ; media-alpha-thumbnails; $siteResource/images/product/intheboxKasur/alpha/inthebox-alpha.jpg     ;                             ;                ; images ;
+; 1200Wx1200H             ; media-dash-picture ; $siteResource/images/product/intheboxKasur/dash/inthebox-dash.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-dash-thumbnail ; $siteResource/images/product/intheboxKasur/dash/inthebox-dash.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-dash-detail    ; $siteResource/images/product/intheboxKasur/dash/inthebox-dash.jpg    ;                             ;                ; images ;
+; 96Wx96H               ; media-dash-other     ; $siteResource/images/product/intheboxKasur/dash/inthebox-dash.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-dash-normal    ; $siteResource/images/product/intheboxKasur/dash/inthebox-dash.jpg     ;                             ;                ; images ;
+; 30Wx30H               ; media-dash-thumbnails; $siteResource/images/product/intheboxKasur/dash/inthebox-dash.jpg     ;                             ;                ; images ;
+; 1200Wx1200H             ; media-101-picture ; $siteResource/images/product/intheboxKasur/101/inthebox-101.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-101-thumbnail ; $siteResource/images/product/intheboxKasur/101/inthebox-101.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-101-detail    ; $siteResource/images/product/intheboxKasur/101/inthebox-101.jpg    ;                             ;                ; images ;
+; 96Wx96H               ; media-101-other     ; $siteResource/images/product/intheboxKasur/101/inthebox-101.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-101-normal    ; $siteResource/images/product/intheboxKasur/101/inthebox-101.jpg     ;                             ;                ; images ;
+; 30Wx30H               ; media-101-thumbnails; $siteResource/images/product/intheboxKasur/101/inthebox-101.jpg     ;                             ;                ; images ;
+; 1200Wx1200H             ; media-x-picture ; $siteResource/images/product/intheboxKasur/x/inthebox-x.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-x-thumbnail ; $siteResource/images/product/intheboxKasur/x/inthebox-x.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-x-detail    ; $siteResource/images/product/intheboxKasur/x/inthebox-x.jpg    ;                             ;                ; images ;
+; 96Wx96H               ; media-x-other     ; $siteResource/images/product/intheboxKasur/x/inthebox-x.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-x-normal    ; $siteResource/images/product/intheboxKasur/x/inthebox-x.jpg     ;                             ;                ; images ;
+; 30Wx30H               ; media-x-thumbnails; $siteResource/images/product/intheboxKasur/x/inthebox-x.jpg     ;                             ;                ; images ;
+; 1200Wx1200H             ; media-pro-picture ; $siteResource/images/product/intheboxKasur/pro/inthebox-pro.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-pro-thumbnail ; $siteResource/images/product/intheboxKasur/pro/inthebox-pro.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-pro-detail    ; $siteResource/images/product/intheboxKasur/pro/inthebox-pro.jpg    ;                             ;                ; images ;
+; 96Wx96H               ; media-pro-other     ; $siteResource/images/product/intheboxKasur/pro/inthebox-pro.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-pro-normal    ; $siteResource/images/product/intheboxKasur/pro/inthebox-pro.jpg     ;                             ;                ; images ;
+; 30Wx30H               ; media-pro-thumbnails; $siteResource/images/product/intheboxKasur/pro/inthebox-pro.jpg     ;                             ;                ; images ;
+; 1200Wx1200H             ; media-hybrid-picture ; $siteResource/images/product/intheboxKasur/hybrid/inthebox-hybrid.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-hybrid-thumbnail ; $siteResource/images/product/intheboxKasur/hybrid/inthebox-hybrid.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-hybrid-detail    ; $siteResource/images/product/intheboxKasur/hybrid/inthebox-hybrid.jpg    ;                             ;                ; images ;
+; 96Wx96H               ; media-hybrid-other     ; $siteResource/images/product/intheboxKasur/hybrid/inthebox-hybrid.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-hybrid-normal    ; $siteResource/images/product/intheboxKasur/hybrid/inthebox-hybrid.jpg     ;                             ;                ; images ;
+; 30Wx30H               ; media-hybrid-thumbnails; $siteResource/images/product/intheboxKasur/hybrid/inthebox-hybrid.jpg     ;                             ;                ; images ;
+; 1200Wx1200H             ; media-hybrid15-picture ; $siteResource/images/product/intheboxKasur/hybrid15/inthebox-hybrid15.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-hybrid15-thumbnail ; $siteResource/images/product/intheboxKasur/hybrid15/inthebox-hybrid15.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-hybrid15-detail    ; $siteResource/images/product/intheboxKasur/hybrid15/inthebox-hybrid15.jpg    ;                             ;                ; images ;
+; 96Wx96H               ; media-hybrid15-other     ; $siteResource/images/product/intheboxKasur/hybrid15/inthebox-hybrid15.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-hybrid15-normal    ; $siteResource/images/product/intheboxKasur/hybrid15/inthebox-hybrid15.jpg     ;                             ;                ; images ;
+; 30Wx30H               ; media-hybrid15-thumbnails; $siteResource/images/product/intheboxKasur/hybrid15/inthebox-hybrid15.jpg    ;                             ;                ; images ;
+; 1200Wx1200H             ; media-kasur-picture ; $siteResource/images/product/intheboxKasur/kasur/inthebox-kasur.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-kasur-thumbnail ; $siteResource/images/product/intheboxKasur/kasur/inthebox-kasur.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-kasur-detail    ; $siteResource/images/product/intheboxKasur/kasur/inthebox-kasur.jpg    ;                             ;                ; images ;
+; 96Wx96H               ; media-kasur-other     ; $siteResource/images/product/intheboxKasur/kasur/inthebox-kasur.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-kasur-normal    ; $siteResource/images/product/intheboxKasur/kasur/inthebox-kasur.jpg     ;                             ;                ; images ;
+; 30Wx30H               ; media-kasur-thumbnails; $siteResource/images/product/intheboxKasur/kasur/inthebox-kasur.jpg    ;                             ;                ; images ;
+; 1200Wx1200H             ; media-legacyCollection-picture ; $siteResource/images/product/intheboxKasur/legacyCollection/inthebox-legacyCollection.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-legacyCollection-thumbnail ; $siteResource/images/product/intheboxKasur/legacyCollection/inthebox-legacyCollection.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-legacyCollection-detail    ; $siteResource/images/product/intheboxKasur/legacyCollection/inthebox-legacyCollection.jpg    ;                             ;                ; images ;
+; 96Wx96H               ; media-legacyCollection-other     ; $siteResource/images/product/intheboxKasur/legacyCollection/inthebox-legacyCollection.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-legacyCollection-normal    ; $siteResource/images/product/intheboxKasur/legacyCollection/inthebox-legacyCollection.jpg    ;                             ;                ; images ;
+; 30Wx30H               ; media-legacyCollection-thumbnails; $siteResource/images/product/intheboxKasur/legacyCollection/inthebox-legacyCollection.jpg   ;                             ;                ; images ;
+; 1200Wx1200H             ; media-legacyCollectionPlush-picture ; $siteResource/images/product/intheboxKasur/legacyCollectionPlush/inthebox-legacyCollectionPlush.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-legacyCollectionPlush-thumbnail ; $siteResource/images/product/intheboxKasur/legacyCollectionPlush/inthebox-legacyCollectionPlush.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-legacyCollectionPlush-detail    ; $siteResource/images/product/intheboxKasur/legacyCollectionPlush/inthebox-legacyCollectionPlush.jpg   ;                             ;                ; images ;
+; 96Wx96H               ; media-legacyCollectionPlush-other     ; $siteResource/images/product/intheboxKasur/legacyCollectionPlush/inthebox-legacyCollectionPlush.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-legacyCollectionPlush-normal    ; $siteResource/images/product/intheboxKasur/legacyCollectionPlush/inthebox-legacyCollectionPlush.jpg    ;                             ;                ; images ;
+; 30Wx30H               ; media-legacyCollectionPlush-thumbnails; $siteResource/images/product/intheboxKasur/legacyCollectionPlush/inthebox-legacyCollectionPlush.jpg   ;                             ;                ; images ;
+; 1200Wx1200H             ; media-organixHybrid-picture ; $siteResource/images/product/intheboxKasur/organixHybrid/inthebox-organixHybrid.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-organixHybrid-thumbnail ; $siteResource/images/product/intheboxKasur/organixHybrid/inthebox-organixHybrid.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-organixHybrid-detail    ; $siteResource/images/product/intheboxKasur/organixHybrid/inthebox-organixHybrid.jpg   ;                             ;                ; images ;
+; 96Wx96H               ; media-organixHybrid-other     ; $siteResource/images/product/intheboxKasur/organixHybrid/inthebox-organixHybrid.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-organixHybrid-normal    ; $siteResource/images/product/intheboxKasur/organixHybrid/inthebox-organixHybrid.jpg    ;                             ;                ; images ;
+; 30Wx30H               ; media-organixHybrid-thumbnails; $siteResource/images/product/intheboxKasur/organixHybrid/inthebox-organixHybrid.jpg   ;                             ;                ; images ;
+; 1200Wx1200H             ; media-organixLite-picture ; $siteResource/images/product/intheboxKasur/organixLite/inthebox-organixLite.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-organixLite-thumbnail ; $siteResource/images/product/intheboxKasur/organixLite/inthebox-organixLite.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-organixLite-detail    ; $siteResource/images/product/intheboxKasur/organixLite/inthebox-organixLite.jpg   ;                             ;                ; images ;
+; 96Wx96H               ; media-organixLite-other     ; $siteResource/images/product/intheboxKasur/organixLite/inthebox-organixLite.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-organixLite-normal    ; $siteResource/images/product/intheboxKasur/organixLite/inthebox-organixLite.jpg    ;                             ;                ; images ;
+; 30Wx30H               ; media-organixLite-thumbnails; $siteResource/images/product/intheboxKasur/organixLite/inthebox-organixLite.jpg   ;                             ;                ; images ;
+; 1200Wx1200H             ; media-organixPlush-picture ; $siteResource/images/product/intheboxKasur/organixPlush/inthebox-organixPlush.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-organixPlush-thumbnail ; $siteResource/images/product/intheboxKasur/organixPlush/inthebox-organixPlush.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-organixPlush-detail    ; $siteResource/images/product/intheboxKasur/organixPlush/inthebox-organixPlush.jpg   ;                             ;                ; images ;
+; 96Wx96H               ; media-organixPlush-other     ; $siteResource/images/product/intheboxKasur/organixPlush/inthebox-organixPlush.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-organixPlush-normal    ; $siteResource/images/product/intheboxKasur/organixPlush/inthebox-organixPlush.jpg    ;                             ;                ; images ;
+; 30Wx30H               ; media-organixPlush-thumbnails; $siteResource/images/product/intheboxKasur/organixPlush/inthebox-organixPlush.jpg   ;                             ;                ; images ;
+; 1200Wx1200H           ; media-plush-picture ; $siteResource/images/product/intheboxKasur/plus/inthebox-plus.jpg    ;                             ;                ; images ;
+; 515Wx515H             ; media-plush-thumbnail ; $siteResource/images/product/intheboxKasur/plus/inthebox-plus.jpg    ;                             ;                ; images ;
+; 300Wx300H             ; media-plush-detail    ; $siteResource/images/product/intheboxKasur/plus/inthebox-plus.jpg   ;                             ;                ; images ;
+; 96Wx96H               ; media-plush-other     ; $siteResource/images/product/intheboxKasur/plus/inthebox-plus.jpg     ;                             ;                ; images ;
+; 65Wx65H               ; media-plush-normal    ; $siteResource/images/product/intheboxKasur/plus/inthebox-plus.jpg    ;                             ;                ; images ;
+; 30Wx30H               ; media-plush-thumbnails; $siteResource/images/product/intheboxKasur/plus/inthebox-plus.jpg   ;                             ;                ; images ;
+
+# Create Media Containers
+INSERT_UPDATE MediaContainer; qualifier[unique = true]; $medias                                                                                                                                                                  ; $catalogVersion
+                            ; shofaBlack-medias         ; media-shofaBlack-picture,media-shofaBlack-picture,media-shofaBlack-thumbnail,media-shofaBlack-detail,media-shofaBlack-other,media-shofaBlack-normal,media-shofaBlack-thumbnails ; ;
+                            ; shofaWhite-medias        ; media-shofaWhite-picture,media-shofaWhite-picture,media-shofaWhite-thumbnail,media-shofaWhite-detail,media-shofaWhite-other,media-shofaWhite-normal,media-shofaWhite-thumbnails ; ;
+                            ; kasur_lipat-medias           ; media-kasur_lipat-picture,media-kasur_lipat-picture,media-kasur_lipat-thumbnail,media-kasur_lipat-detail,media-kasur_lipat-other,media-kasur_lipat-normal,media-kasur_lipat-thumbnails                      ; ;
+                            ; flipz-medias           ;media-flipz-picture,media-flipz-picture,media-flipz-thumbnail,media-flipz-detail,media-flipz-other,media-flipz-normal,media-flipz-thumbnails                      ; ;
+                            ; alpha-medias           ;media-alpha-picture,media-alpha-picture,media-alpha-thumbnail,media-alpha-detail,media-alpha-other,media-alpha-normal,media-alpha-thumbnails                      ; ;
+                            ; dash-medias           ;media-dash-picture,media-dash-picture,media-dash-thumbnail,media-dash-detail,media-dash-other,media-dash-normal,media-dash-thumbnails                      ; ;
+                            ; 101-medias           ;media-101-picture,media-101-picture,media-101-thumbnail,media-101-detail,media-101-other,media-101-normal,media-101-thumbnails                      ; ;
+                            ; x-medias           ;media-x-picture,media-x-picture,media-x-thumbnail,media-x-detail,media-x-other,media-x-normal,media-x-thumbnails                      ; ;
+; pro-medias           ;media-pro-picture,media-pro-picture,media-pro-thumbnail,media-pro-detail,media-pro-other,media-pro-normal,media-pro-thumbnails                      ; ;
+; hybrid-medias           ;media-hybrid-picture,media-hybrid-picture,media-hybrid-thumbnail,media-hybrid-detail,media-hybrid-other,media-hybrid-normal,media-hybrid-thumbnails                      ; ;
+; hybrid15-medias           ;media-hybrid15-picture,media-hybrid15-picture,media-hybrid15-thumbnail,media-hybrid15-detail,media-hybrid15-other,media-hybrid15-normal,media-hybrid15-thumbnails                      ; ;
+; kasur-medias           ;media-kasur-picture,media-kasur-picture,media-kasur-thumbnail,media-kasur-detail,media-kasur-other,media-kasur-normal,media-kasur-thumbnails                      ; ;
+; legacyCollection-medias           ;media-legacyCollection-picture,media-legacyCollection-picture,media-legacyCollection-thumbnail,media-legacyCollection-detail,media-legacyCollection-other,media-legacyCollection-normal,media-legacyCollection-thumbnails                      ; ;
+; legacyCollectionPlush-medias           ;media-legacyCollectionPlush-picture,media-legacyCollectionPlush-picture,media-legacyCollectionPlush-thumbnail,media-legacyCollectionPlush-detail,media-legacyCollectionPlush-other,media-legacyCollectionPlush-normal,media-legacyCollectionPlush-thumbnails                      ; ;
+; organixHybrid-medias           ;media-organixHybrid-picture,media-organixHybrid-picture,media-organixHybrid-thumbnail,media-organixHybrid-detail,media-organixHybrid-other,media-organixHybrid-normal,media-organixHybrid-thumbnails                      ; ;
+; organixLite-medias           ;media-organixLite-picture,media-organixLite-picture,media-organixLite-thumbnail,media-organixLite-detail,media-organixLite-other,media-organixLite-normal,media-organixLite-thumbnails                      ; ;
+; organixPlush-medias           ;media-organixPlush-picture,media-organixPlush-picture,media-organixPlush-thumbnail,media-organixPlush-detail,media-organixPlush-other,media-organixPlush-normal,media-organixPlush-thumbnails                      ; ;
+; plush-medias           ;media-plush-picture,media-plush-picture,media-plush-thumbnail,media-plush-detail,media-plush-other,media-plush-normal,media-plush-thumbnails                      ; ;
+
+# Update Products with Media and Media Containers
+UPDATE Product; code[unique = true]                  ; $picture                 ; $thumbnail                 ; $detail                 ; $others                ; $normal                 ; $thumbnails                 ; $galleryImages    ; $catalogVersion
+              ; Sheate3Black               ; media-shofaBlack-picture   ; media-shofaBlack-thumbnail   ; media-shofaBlack-detail   ; media-shofaBlack-other   ; media-shofaBlack-normal   ; media-shofaBlack-thumbnails   ; shofaBlack-medias   ;
+              ; Sheate3White                         ; media-shofa-picture  ; media-shofaWhite-thumbnail  ; media-shofaWhite-detail  ; media-shofaWhite-other  ; media-shofaWhite-normal  ; media-shofaWhite-thumbnails  ; shofaWhite-medias  ;
+              ; Lipat_Travel_Mattress                ; media-kasur_lipat-picture     ; media-kasur_lipat-thumbnail     ; media-kasur_lipat-detail     ; media-kasur_lipat-other     ; media-kasur_lipat-normal     ; media-kasur_lipat-thumbnails     ; kasur_lipat-medias     ;
+              ; INTHEBOX_Flip_Z_90x200                ; media-flipz-picture     ; media-flipz-thumbnail     ; media-flipz-detail     ; media-flipz-other     ; media-flipz-normal     ; media-flipz-thumbnails     ; flipz-medias     ;
+              ; INTHEBOX_Flip_Z_100x200                ; media-flipz-picture     ; media-flipz-thumbnail     ; media-flipz-detail     ; media-flipz-other     ; media-flipz-normal     ; media-flipz-thumbnails     ; flipz-medias     ;
+              ; INTHEBOX_Flip_Z_120x200                ; media-flipz-picture     ; media-flipz-thumbnail     ; media-flipz-detail     ; media-flipz-other     ; media-flipz-normal     ; media-flipz-thumbnails     ; flipz-medias     ;
+              ; INTHEBOX_Flip_Z_140x200                ; media-flipz-picture     ; media-flipz-thumbnail     ; media-flipz-detail     ; media-flipz-other     ; media-flipz-normal     ; media-flipz-thumbnails     ; flipz-medias     ;
+              ; INTHEBOX_Flip_Z_160x200                ; media-flipz-picture     ; media-flipz-thumbnail     ; media-flipz-detail     ; media-flipz-other     ; media-flipz-normal     ; media-flipz-thumbnails     ; flipz-medias     ;
+              ; INTHEBOX_Flip_Z_180x200                ; media-flipz-picture     ; media-flipz-thumbnail     ; media-flipz-detail     ; media-flipz-other     ; media-flipz-normal     ; media-flipz-thumbnails     ; flipz-medias     ;
+              ; INTHEBOX_Flip_Z_200x200                ; media-flipz-picture     ; media-flipz-thumbnail     ; media-flipz-detail     ; media-flipz-other     ; media-flipz-normal     ; media-flipz-thumbnails     ; flipz-medias     ;
+; INTHEBOX_X_90x200                ; media-x-picture     ; media-x-thumbnail     ; media-x-detail     ; media-x-other     ; media-x-normal     ; media-x-thumbnails     ; x-medias     ;
+; INTHEBOX_X_100x200                ; media-x-picture     ; media-x-thumbnail     ; media-x-detail     ; media-x-other     ; media-x-normal     ; media-x-thumbnails     ; x-medias     ;
+; INTHEBOX_X_120x200                ; media-x-picture     ; media-x-thumbnail     ; media-x-detail     ; media-x-other     ; media-x-normal     ; media-x-thumbnails     ; x-medias     ;
+; INTHEBOX_X_140x200                ; media-x-picture     ; media-x-thumbnail     ; media-x-detail     ; media-x-other     ; media-x-normal     ; media-x-thumbnails     ; x-medias     ;
+; INTHEBOX_X_160x200                ; media-x-picture     ; media-x-thumbnail     ; media-x-detail     ; media-x-other     ; media-x-normal     ; media-x-thumbnails     ; x-medias     ;
+; INTHEBOX_X_180x200                ; media-x-picture     ; media-x-thumbnail     ; media-x-detail     ; media-x-other     ; media-x-normal     ; media-x-thumbnails     ; x-medias     ;
+; INTHEBOX_X_200x200                ; media-x-picture     ; media-x-thumbnail     ; media-x-detail     ; media-x-other     ; media-x-normal     ; media-x-thumbnails     ; x-medias     ;
+
+; INTHEBOX_Alpha_90x200                ; media-alpha-picture     ; media-alpha-thumbnail     ; media-alpha-detail     ; media-alpha-other     ; media-alpha-normal     ; media-alpha-thumbnails     ; alpha-medias     ;
+; INTHEBOX_Alpha_100x200                ; media-alpha-picture     ; media-alpha-thumbnail     ; media-alpha-detail     ; media-alpha-other     ; media-alpha-normal     ; media-alpha-thumbnails     ; alpha-medias     ;
+; INTHEBOX_Alpha_120x200                ; media-alpha-picture     ; media-alpha-thumbnail     ; media-alpha-detail     ; media-alpha-other     ; media-alpha-normal     ; media-alpha-thumbnails     ; alpha-medias     ;
+; INTHEBOX_Alpha_140x200                ; media-alpha-picture     ; media-alpha-thumbnail     ; media-alpha-detail     ; media-alpha-other     ; media-alpha-normal     ; media-alpha-thumbnails     ; alpha-medias     ;
+; INTHEBOX_Alpha_160x200                ; media-alpha-picture     ; media-alpha-thumbnail     ; media-alpha-detail     ; media-alpha-other     ; media-alpha-normal     ; media-alpha-thumbnails     ; alpha-medias     ;
+; INTHEBOX_Alpha_180x200                ; media-alpha-picture     ; media-alpha-thumbnail     ; media-alpha-detail     ; media-alpha-other     ; media-alpha-normal     ; media-alpha-thumbnails     ; alpha-medias     ;
+; INTHEBOX_Alpha_200x200                ; media-alpha-picture     ; media-alpha-thumbnail     ; media-alpha-detail     ; media-alpha-other     ; media-alpha-normal     ; media-alpha-thumbnails     ; alpha-medias     ;
+
+; INTHEBOX_Pro_90x200                ; media-pro-picture     ; media-pro-thumbnail     ; media-pro-detail     ; media-pro-other     ; media-pro-normal     ; media-pro-thumbnails     ; pro-medias     ;
+; INTHEBOX_Pro_100x200                ; media-pro-picture     ; media-pro-thumbnail     ; media-pro-detail     ; media-pro-other     ; media-pro-normal     ; media-pro-thumbnails     ; pro-medias     ;
+; INTHEBOX_Pro_120x200                ; media-pro-picture     ; media-pro-thumbnail     ; media-pro-detail     ; media-pro-other     ; media-pro-normal     ; media-pro-thumbnails     ; pro-medias     ;
+; INTHEBOX_Pro_140x200                ; media-pro-picture     ; media-pro-thumbnail     ; media-pro-detail     ; media-pro-other     ; media-pro-normal     ; media-pro-thumbnails     ; pro-medias     ;
+; INTHEBOX_Pro_160x200                ; media-pro-picture     ; media-pro-thumbnail     ; media-pro-detail     ; media-pro-other     ; media-pro-normal     ; media-pro-thumbnails     ; pro-medias     ;
+; INTHEBOX_Pro_180x200                ; media-pro-picture     ; media-pro-thumbnail     ; media-pro-detail     ; media-pro-other     ; media-pro-normal     ; media-pro-thumbnails     ; pro-medias     ;
+; INTHEBOX_Pro_200x200                ; media-pro-picture     ; media-pro-thumbnail     ; media-pro-detail     ; media-pro-other     ; media-pro-normal     ; media-pro-thumbnails     ; pro-medias     ;
+
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_90x200                ; media-legacyCollection-picture     ; media-legacyCollection-thumbnail     ; media-legacyCollection-detail     ; media-legacyCollection-other     ; media-legacyCollection-normal     ; media-legacyCollection-thumbnails     ; legacyCollection-medias     ;
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_100x200                ; media-legacyCollection-picture     ; media-legacyCollection-thumbnail     ; media-legacyCollection-detail     ; media-legacyCollection-other     ; media-legacyCollection-normal     ; media-legacyCollection-thumbnails     ; legacyCollection-medias     ;
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_120x200                ; media-legacyCollection-picture     ; media-legacyCollection-thumbnail     ; media-legacyCollection-detail     ; media-legacyCollection-other     ; media-legacyCollection-normal     ; media-legacyCollection-thumbnails     ; legacyCollection-medias     ;
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_140x200                ; media-legacyCollection-picture     ; media-legacyCollection-thumbnail     ; media-legacyCollection-detail     ; media-legacyCollection-other     ; media-legacyCollection-normal     ; media-legacyCollection-thumbnails     ; legacyCollection-medias     ;
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_160x200                ; media-legacyCollection-picture     ; media-legacyCollection-thumbnail     ; media-legacyCollection-detail     ; media-legacyCollection-other     ; media-legacyCollection-normal     ; media-legacyCollection-thumbnails     ; legacyCollection-medias     ;
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_180x200                ; media-legacyCollection-picture     ; media-legacyCollection-thumbnail     ; media-legacyCollection-detail     ; media-legacyCollection-other     ; media-legacyCollection-normal     ; media-legacyCollection-thumbnails     ; legacyCollection-medias     ;
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_200x200                ; media-legacyCollection-picture     ; media-legacyCollection-thumbnail     ; media-legacyCollection-detail     ; media-legacyCollection-other     ; media-legacyCollection-normal     ; media-legacyCollection-thumbnails     ; legacyCollection-medias     ;
+
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_Plush_Top_90x200                ; media-legacyCollectionPlush-picture     ; media-legacyCollectionPlush-thumbnail     ; media-legacyCollectionPlush-detail     ; media-legacyCollectionPlush-other     ; media-legacyCollectionPlush-normal     ; media-legacyCollectionPlush-thumbnails     ; legacyCollectionPlush-medias     ;
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_Plush_Top_100x200                ; media-legacyCollectionPlush-picture     ; media-legacyCollectionPlush-thumbnail     ; media-legacyCollectionPlush-detail     ; media-legacyCollectionPlush-other     ; media-legacyCollectionPlush-normal     ; media-legacyCollectionPlush-thumbnails     ; legacyCollectionPlush-medias     ;
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_Plush_Top_120x200                ; media-legacyCollectionPlush-picture     ; media-legacyCollectionPlush-thumbnail     ; media-legacyCollectionPlush-detail     ; media-legacyCollectionPlush-other     ; media-legacyCollectionPlush-normal     ; media-legacyCollectionPlush-thumbnails     ; legacyCollectionPlush-medias     ;
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_Plush_Top_140x200                ; media-legacyCollectionPlush-picture     ; media-legacyCollectionPlush-thumbnail     ; media-legacyCollectionPlush-detail     ; media-legacyCollectionPlush-other     ; media-legacyCollectionPlush-normal     ; media-legacyCollectionPlush-thumbnails     ; legacyCollectionPlush-medias     ;
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_Plush_Top_160x200                ; media-legacyCollectionPlush-picture     ; media-legacyCollectionPlush-thumbnail     ; media-legacyCollectionPlush-detail     ; media-legacyCollectionPlush-other     ; media-legacyCollectionPlush-normal     ; media-legacyCollectionPlush-thumbnails     ; legacyCollectionPlush-medias     ;
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_Plush_Top_180x200                ; media-legacyCollectionPlush-picture     ; media-legacyCollectionPlush-thumbnail     ; media-legacyCollectionPlush-detail     ; media-legacyCollectionPlush-other     ; media-legacyCollectionPlush-normal     ; media-legacyCollectionPlush-thumbnails     ; legacyCollectionPlush-medias     ;
+; INTHEBOX_Space_Jam_A_New_Legancy_Collection_Plush_Top_200x200                ; media-legacyCollectionPlush-picture     ; media-legacyCollectionPlush-thumbnail     ; media-legacyCollectionPlush-detail     ; media-legacyCollectionPlush-other     ; media-legacyCollectionPlush-normal     ; media-legacyCollectionPlush-thumbnails     ; legacyCollectionPlush-medias     ;
+
+; INTHEBOX_Dash_90x200                ; media-dash-picture     ; media-dash-thumbnail     ; media-dash-detail     ; media-dash-other     ; media-dash-normal     ; media-dash-thumbnails     ; dash-medias     ;
+; INTHEBOX_Dash_100x200                ; media-dash-picture     ; media-dash-thumbnail     ; media-dash-detail     ; media-dash-other     ; media-dash-normal     ; media-dash-thumbnails     ; dash-medias     ;
+; INTHEBOX_Dash_120x200                ; media-dash-picture     ; media-dash-thumbnail     ; media-dash-detail     ; media-dash-other     ; media-dash-normal     ; media-dash-thumbnails     ; dash-medias     ;
+; INTHEBOX_Dash_140x200                ; media-dash-picture     ; media-dash-thumbnail     ; media-dash-detail     ; media-dash-other     ; media-dash-normal     ; media-dash-thumbnails     ; dash-medias     ;
+; INTHEBOX_Dash_160x200                ; media-dash-picture     ; media-dash-thumbnail     ; media-dash-detail     ; media-dash-other     ; media-dash-normal     ; media-dash-thumbnails     ; dash-medias     ;
+; INTHEBOX_Dash_180x200                ; media-dash-picture     ; media-dash-thumbnail     ; media-dash-detail     ; media-dash-other     ; media-dash-normal     ; media-dash-thumbnails     ; dash-medias     ;
+; INTHEBOX_Dash_200x200                ; media-dash-picture     ; media-dash-thumbnail     ; media-dash-detail     ; media-dash-other     ; media-dash-normal     ; media-dash-thumbnails     ; dash-medias     ;
+
+; INTHEBOX_101_90x200                ; media-101-picture     ; media-101-thumbnail     ; media-101-detail     ; media-101-other     ; media-101-normal     ; media-101-thumbnails     ; 101-medias     ;
+; INTHEBOX_101_100x200                ; media-101-picture     ; media-101-thumbnail     ; media-101-detail     ; media-101-other     ; media-101-normal     ; media-101-thumbnails     ; 101-medias     ;
+; INTHEBOX_101_120x200                ; media-101-picture     ; media-101-thumbnail     ; media-101-detail     ; media-101-other     ; media-101-normal     ; media-101-thumbnails     ; 101-medias     ;
+; INTHEBOX_101_140x200                ; media-101-picture     ; media-101-thumbnail     ; media-101-detail     ; media-101-other     ; media-101-normal     ; media-101-thumbnails     ; 101-medias     ;
+; INTHEBOX_101_160x200                ; media-101-picture     ; media-101-thumbnail     ; media-101-detail     ; media-101-other     ; media-101-normal     ; media-101-thumbnails     ; 101-medias     ;
+; INTHEBOX_101_180x200                ; media-101-picture     ; media-101-thumbnail     ; media-101-detail     ; media-101-other     ; media-101-normal     ; media-101-thumbnails     ; 101-medias     ;
+; INTHEBOX_101_200x200                ; media-101-picture     ; media-101-thumbnail     ; media-101-detail     ; media-101-other     ; media-101-normal     ; media-101-thumbnails     ; 101-medias     ;
+
+; INTHEBOX_Hybrid_90x200                ; media-hybrid-picture     ; media-hybrid-thumbnail     ; media-hybrid-detail     ; media-hybrid-other     ; media-hybrid-normal     ; media-hybrid-thumbnails     ; hybrid-medias     ;
+; INTHEBOX_Hybrid_100x200                ; media-hybrid-picture     ; media-hybrid-thumbnail     ; media-hybrid-detail     ; media-hybrid-other     ; media-hybrid-normal     ; media-hybrid-thumbnails     ; hybrid-medias     ;
+; INTHEBOX_Hybrid_120x200                ; media-hybrid-picture     ; media-hybrid-thumbnail     ; media-hybrid-detail     ; media-hybrid-other     ; media-hybrid-normal     ; media-hybrid-thumbnails     ; hybrid-medias     ;
+; INTHEBOX_Hybrid_140x200                ; media-hybrid-picture     ; media-hybrid-thumbnail     ; media-hybrid-detail     ; media-hybrid-other     ; media-hybrid-normal     ; media-hybrid-thumbnails     ; hybrid-medias     ;
+; INTHEBOX_Hybrid_160x200                ; media-hybrid-picture     ; media-hybrid-thumbnail     ; media-hybrid-detail     ; media-hybrid-other     ; media-hybrid-normal     ; media-hybrid-thumbnails     ; hybrid-medias     ;
+; INTHEBOX_Hybrid_180x200                ; media-hybrid-picture     ; media-hybrid-thumbnail     ; media-hybrid-detail     ; media-hybrid-other     ; media-hybrid-normal     ; media-hybrid-thumbnails     ; hybrid-medias     ;
+; INTHEBOX_Hybrid_200x200                ; media-hybrid-picture     ; media-hybrid-thumbnail     ; media-hybrid-detail     ; media-hybrid-other     ; media-hybrid-normal     ; media-hybrid-thumbnails     ; hybrid-medias     ;
+
+; INTHEBOX_Hybrid_15_90x200                ; media-hybrid15-picture     ; media-hybrid15-thumbnail     ; media-hybrid15-detail     ; media-hybrid15-other     ; media-hybrid15-normal     ; media-hybrid15-thumbnails     ; hybrid15-medias     ;
+; INTHEBOX_Hybrid_15_100x200                ; media-hybrid15-picture     ; media-hybrid15-thumbnail     ; media-hybrid15-detail     ; media-hybrid15-other     ; media-hybrid15-normal     ; media-hybrid15-thumbnails     ; hybrid15-medias     ;
+; INTHEBOX_Hybrid_15_120x200                ; media-hybrid15-picture     ; media-hybrid15-thumbnail     ; media-hybrid15-detail     ; media-hybrid15-other     ; media-hybrid15-normal     ; media-hybrid15-thumbnails     ; hybrid15-medias     ;
+; INTHEBOX_Hybrid_15_140x200                ; media-hybrid15-picture     ; media-hybrid15-thumbnail     ; media-hybrid15-detail     ; media-hybrid15-other     ; media-hybrid15-normal     ; media-hybrid15-thumbnails     ; hybrid15-medias     ;
+; INTHEBOX_Hybrid_15_160x200                ; media-hybrid15-picture     ; media-hybrid15-thumbnail     ; media-hybrid15-detail     ; media-hybrid15-other     ; media-hybrid15-normal     ; media-hybrid15-thumbnails     ; hybrid15-medias     ;
+; INTHEBOX_Hybrid_15_180x200                ; media-hybrid15-picture     ; media-hybrid15-thumbnail     ; media-hybrid15-detail     ; media-hybrid15-other     ; media-hybrid15-normal     ; media-hybrid15-thumbnails     ; hybrid15-medias     ;
+; INTHEBOX_Hybrid_15_200x200                ; media-hybrid15-picture     ; media-hybrid15-thumbnail     ; media-hybrid15-detail     ; media-hybrid15-other     ; media-hybrid15-normal     ; media-hybrid15-thumbnails     ; hybrid15-medias     ;
+
+; Kasur_INTHEBOX_90x200                ; media-kasur-picture     ; media-kasur-thumbnail     ; media-kasur-detail     ; media-kasur-other     ; media-kasur-normal     ; media-kasur-thumbnails     ; kasur-medias     ;
+; Kasur_INTHEBOX_100x200                ; media-kasur-picture     ; media-kasur-thumbnail     ; media-kasur-detail     ; media-kasur-other     ; media-kasur-normal     ; media-kasur-thumbnails     ; kasur-medias     ;
+; Kasur_INTHEBOX_120x200                ; media-kasur-picture     ; media-kasur-thumbnail     ; media-kasur-detail     ; media-kasur-other     ; media-kasur-normal     ; media-kasur-thumbnails     ; kasur-medias     ;
+; Kasur_INTHEBOX_140x200                ; media-kasur-picture     ; media-kasur-thumbnail     ; media-kasur-detail     ; media-kasur-other     ; media-kasur-normal     ; media-kasur-thumbnails     ; kasur-medias     ;
+; Kasur_INTHEBOX_160x200                ; media-kasur-picture     ; media-kasur-thumbnail     ; media-kasur-detail     ; media-kasur-other     ; media-kasur-normal     ; media-kasur-thumbnails     ; kasur-medias     ;
+; Kasur_INTHEBOX_180x200                ; media-kasur-picture     ; media-kasur-thumbnail     ; media-kasur-detail     ; media-kasur-other     ; media-kasur-normal     ; media-kasur-thumbnails     ; kasur-medias     ;
+; Kasur_INTHEBOX_200x200                ; media-kasur-picture     ; media-kasur-thumbnail     ; media-kasur-detail     ; media-kasur-other     ; media-kasur-normal     ; media-kasur-thumbnails     ; kasur-medias     ;
+
+; INTHEBOX_Plus_90x200                ; media-plush-picture     ; media-plush-thumbnail     ; media-plush-detail     ; media-plush-other     ; media-plush-normal     ; media-plush-thumbnails     ; plush-medias     ;
+; INTHEBOX_Plus_100x200                ; media-plush-picture     ; media-plush-thumbnail     ; media-plush-detail     ; media-plush-other     ; media-plush-normal     ; media-plush-thumbnails     ; plush-medias     ;
+; INTHEBOX_Plus_120x200                ; media-plush-picture     ; media-plush-thumbnail     ; media-plush-detail     ; media-plush-other     ; media-plush-normal     ; media-plush-thumbnails     ; plush-medias     ;
+; INTHEBOX_Plus_140x200                ; media-plush-picture     ; media-plush-thumbnail     ; media-plush-detail     ; media-plush-other     ; media-plush-normal     ; media-plush-thumbnails     ; plush-medias     ;
+; INTHEBOX_Plus_160x200                ; media-plush-picture     ; media-plush-thumbnail     ; media-plush-detail     ; media-plush-other     ; media-plush-normal     ; media-plush-thumbnails     ; plush-medias     ;
+; INTHEBOX_Plus_180x200                ; media-plush-picture     ; media-plush-thumbnail     ; media-plush-detail     ; media-plush-other     ; media-plush-normal     ; media-plush-thumbnails     ; plush-medias     ;
+; INTHEBOX_Plus_200x200                ; media-plush-picture     ; media-plush-thumbnail     ; media-plush-detail     ; media-plush-other     ; media-plush-normal     ; media-plush-thumbnails     ; plush-medias     ;
+
+; INTHEBOX_Organix_Hybrid_90x200               ; media-organixHybrid-picture     ; media-organixHybrid-thumbnail     ; media-organixHybrid-detail     ; media-organixHybrid-other     ; media-organixHybrid-normal     ; media-organixHybrid-thumbnails     ; organixHybrid-medias     ;
+; INTHEBOX_Organix_Hybrid_100x200               ; media-organixHybrid-picture     ; media-organixHybrid-thumbnail     ; media-organixHybrid-detail     ; media-organixHybrid-other     ; media-organixHybrid-normal     ; media-organixHybrid-thumbnails     ; organixHybrid-medias     ;
+; INTHEBOX_Organix_Hybrid_120x200               ; media-organixHybrid-picture     ; media-organixHybrid-thumbnail     ; media-organixHybrid-detail     ; media-organixHybrid-other     ; media-organixHybrid-normal     ; media-organixHybrid-thumbnails     ; organixHybrid-medias     ;
+; INTHEBOX_Organix_Hybrid_140x200               ; media-organixHybrid-picture     ; media-organixHybrid-thumbnail     ; media-organixHybrid-detail     ; media-organixHybrid-other     ; media-organixHybrid-normal     ; media-organixHybrid-thumbnails     ; organixHybrid-medias     ;
+; INTHEBOX_Organix_Hybrid_160x200               ; media-organixHybrid-picture     ; media-organixHybrid-thumbnail     ; media-organixHybrid-detail     ; media-organixHybrid-other     ; media-organixHybrid-normal     ; media-organixHybrid-thumbnails     ; organixHybrid-medias     ;
+; INTHEBOX_Organix_Hybrid_180x200               ; media-organixHybrid-picture     ; media-organixHybrid-thumbnail     ; media-organixHybrid-detail     ; media-organixHybrid-other     ; media-organixHybrid-normal     ; media-organixHybrid-thumbnails     ; organixHybrid-medias     ;
+; INTHEBOX_Organix_Hybrid_200x200               ; media-organixHybrid-picture     ; media-organixHybrid-thumbnail     ; media-organixHybrid-detail     ; media-organixHybrid-other     ; media-organixHybrid-normal     ; media-organixHybrid-thumbnails     ; organixHybrid-medias     ;
+
+; INTHEBOX_Organix_Lite_90x200                ; media-organixLite-picture     ; media-organixLite-thumbnail     ; media-organixLite-detail     ; media-organixLite-other     ; media-organixLite-normal     ; media-organixLite-thumbnails     ; organixLite-medias     ;
+; INTHEBOX_Organix_Lite_100x200                ; media-organixLite-picture     ; media-organixLite-thumbnail     ; media-organixLite-detail     ; media-organixLite-other     ; media-organixLite-normal     ; media-organixLite-thumbnails     ; organixLite-medias     ;
+; INTHEBOX_Organix_Lite_120x200                ; media-organixLite-picture     ; media-organixLite-thumbnail     ; media-organixLite-detail     ; media-organixLite-other     ; media-organixLite-normal     ; media-organixLite-thumbnails     ; organixLite-medias     ;
+; INTHEBOX_Organix_Lite_140x200                ; media-organixLite-picture     ; media-organixLite-thumbnail     ; media-organixLite-detail     ; media-organixLite-other     ; media-organixLite-normal     ; media-organixLite-thumbnails     ; organixLite-medias     ;
+; INTHEBOX_Organix_Lite_160x200                ; media-organixLite-picture     ; media-organixLite-thumbnail     ; media-organixLite-detail     ; media-organixLite-other     ; media-organixLite-normal     ; media-organixLite-thumbnails     ; organixLite-medias     ;
+; INTHEBOX_Organix_Lite_180x200                ; media-organixLite-picture     ; media-organixLite-thumbnail     ; media-organixLite-detail     ; media-organixLite-other     ; media-organixLite-normal     ; media-organixLite-thumbnails     ; organixLite-medias     ;
+; INTHEBOX_Organix_Lite_200x200                ; media-organixLite-picture     ; media-organixLite-thumbnail     ; media-organixLite-detail     ; media-organixLite-other     ; media-organixLite-normal     ; media-organixLite-thumbnails     ; organixLite-medias     ;
+
+; INTHEBOX_Organix_Plush_90x200               ; media-organixPlush-picture     ; media-organixPlush-thumbnail     ; media-organixPlush-detail     ; media-organixPlush-other     ; media-organixPlush-normal     ; media-organixPlush-thumbnails     ; organixPlush-medias     ;
+; INTHEBOX_Organix_Plush_100x200               ; media-organixPlush-picture     ; media-organixPlush-thumbnail     ; media-organixPlush-detail     ; media-organixPlush-other     ; media-organixPlush-normal     ; media-organixPlush-thumbnails     ; organixPlush-medias     ;
+; INTHEBOX_Organix_Plush_120x200               ; media-organixPlush-picture     ; media-organixPlush-thumbnail     ; media-organixPlush-detail     ; media-organixPlush-other     ; media-organixPlush-normal     ; media-organixPlush-thumbnails     ; organixPlush-medias     ;
+; INTHEBOX_Organix_Plush_140x200               ; media-organixPlush-picture     ; media-organixPlush-thumbnail     ; media-organixPlush-detail     ; media-organixPlush-other     ; media-organixPlush-normal     ; media-organixPlush-thumbnails     ; organixPlush-medias     ;
+; INTHEBOX_Organix_Plush_160x200               ; media-organixPlush-picture     ; media-organixPlush-thumbnail     ; media-organixPlush-detail     ; media-organixPlush-other     ; media-organixPlush-normal     ; media-organixPlush-thumbnails     ; organixPlush-medias     ;
+; INTHEBOX_Organix_Plush_180x200               ; media-organixPlush-picture     ; media-organixPlush-thumbnail     ; media-organixPlush-detail     ; media-organixPlush-other     ; media-organixPlush-normal     ; media-organixPlush-thumbnails     ; organixPlush-medias     ;
+; INTHEBOX_Organix_Plush_200x200               ; media-organixPlush-picture     ; media-organixPlush-thumbnail     ; media-organixPlush-detail     ; media-organixPlush-other     ; media-organixPlush-normal     ; media-organixPlush-thumbnails     ; organixPlush-medias     ;
