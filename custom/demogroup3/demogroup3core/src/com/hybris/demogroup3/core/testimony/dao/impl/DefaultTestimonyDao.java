@@ -18,7 +18,7 @@ public class DefaultTestimonyDao implements TestimonyDao {
 
     @Override
     public List<CustomerReviewModel> getAllIntheboxTestimony() {
-        final String query = "SELECT {cr:pk} FROM {CustomerReview AS cr JOIN Product AS p ON {cr.product}={p.pk} JOIN User AS u ON {cr.user}={u.pk}} WHERE {p.catalog} LIKE '8796093383256'";
+        final String query = "SELECT {cr:pk} FROM {CustomerReview AS cr JOIN Product AS p ON {cr.product}={p.pk} JOIN User AS u ON {cr.user}={u.pk} JOIN Catalog AS c ON {p.catalog}={c.pk}} WHERE {c.id} LIKE 'demoGroup3ProductCatalog'";
         final FlexibleSearchQuery flexibleSearchQuery = new FlexibleSearchQuery(query);
         final SearchResult<CustomerReviewModel> searchResult = flexibleSearchService.search(flexibleSearchQuery);
         List<CustomerReviewModel> customerReviewModels = searchResult.getResult();
