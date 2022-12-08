@@ -18,7 +18,7 @@ $indexBaseSite = demoGroup3
 $indexLanguages = en, id
 $indexCurrencies = IDR
 
-INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]; type(code); multiValue[default = true]; facet[default = true]; facetType(code); facetSort(code); priority; visible; categoryField[default = true]; fieldValueProvider                   ; facetDisplayNameProvider         ; topValuesProvider
+INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = false]; type(code); multiValue[default = true]; facet[default = true]; facetType(code); facetSort(code); priority; visible; categoryField[default = true]; fieldValueProvider                   ; facetDisplayNameProvider         ; topValuesProvider
                                  ; $solrIndexedType                          ; attribute           ; string    ;                           ;                      ; Refine         ; Alpha          ; 6000    ; true   ;                              ; attributeValueProvider ; categoryFacetDisplayNameProvider ; defaultTopValuesProvider
 
 
