@@ -11,73 +11,88 @@
 
 <spring:htmlEscape defaultHtmlEscape="true" />
 
+<c:url value="/login" var="loginUrl"/>
+
 <spring:url value="/login/register/termsandconditions" var="getTermsAndConditionsUrl"/>
 
-<div class="user-register__headline">
-	<spring:theme code="register.new.customer" />
-</div>
-<p>
-	<spring:theme code="register.description" />
-</p>
-
-<form:form method="post" modelAttribute="customRegisterForm" action="${action}">
-	<formElement:formSelectBoxDefaultEnabled idKey="register.title"
-		labelKey="register.title" selectCSSClass="form-control"
-		path="titleCode" mandatory="true" skipBlank="false"
-		skipBlankMessageKey="form.select.none" items="${titles}" />
-	<formElement:formInputBox idKey="register.firstName"
-		labelKey="register.firstName" path="firstName" inputCSS="form-control"
-		mandatory="true" />
-	<formElement:formInputBox idKey="register.lastName"
-		labelKey="register.lastName" path="lastName" inputCSS="form-control"
-		mandatory="true" />
-	<formElement:formInputBox idKey="ID"
-    		labelKey="ID" path="id" inputCSS="form-control"
-    		mandatory="true" />
-	<formElement:formInputBox idKey="register.email"
-		labelKey="register.email" path="email" inputCSS="form-control"
-		mandatory="true" />
-	<formElement:formPasswordBox idKey="password" labelKey="register.pwd"
-		path="pwd" inputCSS="form-control password-strength" mandatory="true" />
-	<formElement:formPasswordBox idKey="register.checkPwd"
-		labelKey="register.checkPwd" path="checkPwd" inputCSS="form-control"
-		mandatory="true" />
-
-    <c:if test="${ not empty consentTemplateData }">
-        <form:hidden path="consentForm.consentTemplateId" value="${consentTemplateData.id}" />
-        <form:hidden path="consentForm.consentTemplateVersion" value="${consentTemplateData.version}" />
-        <div class="checkbox">
-            <label class="control-label uncased">
-                <form:checkbox path="consentForm.consentGiven" disabled="true"/>
-                <c:out value="${consentTemplateData.description}" />
-
-            </label>
+<!-- begin:: Page -->
+<div class="container login-page">
+    <div class="card">
+        <div class="card__logo">
+            <a href="card__logo-link">
+                <img class="card__img" src="https://inthebox.net/images/logo-inthebox-440x80.png">
+            </a>
         </div>
-		<div class="help-block">
-			<spring:theme code="registration.consent.link" />
-		</div>
 
-    </c:if>
+        <div>
+            <h1 class="card__title">Daftar Sekarang</h1>
+            <p class="card__subtitle">Masukkan detail Anda untuk menciptakan akun:</p>
+        </div>
 
-	<spring:theme code="register.termsConditions" arguments="${getTermsAndConditionsUrl}" var="termsConditionsHtml" htmlEscape="false" />
-	<template:errorSpanField path="termsCheck">
-		<div class="checkbox">
-			<label class="control-label uncased">
-				<form:checkbox id="registerChkTermsConditions" path="termsCheck" disabled="true"/>
-				${ycommerce:sanitizeHTML(termsConditionsHtml)}
-			</label>
-		</div>
-	</template:errorSpanField>
+        <form:form method="post" modelAttribute="customRegisterForm" action="${action}" cssClass="card__form">
+            <formElement:formSelectBoxDefaultEnabled idKey="register.title"
+                labelKey="register.title" selectCSSClass="form-control hide"
+                path="titleCode" mandatory="true" skipBlank="false"
+                skipBlankMessageKey="form.select.none" items="${titles}" />
 
-	<input type="hidden" id="recaptchaChallangeAnswered"
-		value="${fn:escapeXml(requestScope.recaptchaChallangeAnswered)}" />
-	<div class="form_field-elements control-group js-recaptcha-captchaaddon"></div>
-	<div class="form-actions clearfix">
-		<ycommerce:testId code="register_Register_button">
-			<button type="submit" class="btn btn-default btn-block" disabled="disabled">
-				<spring:theme code='${actionNameKey}' />
-			</button>
-		</ycommerce:testId>
-	</div>
+            <formElement:formInputBox idKey="ID"
+                    labelKey="ID" path="id" inputCSS="form-control" placeholder="ID"
+                    mandatory="true" />
+            <formElement:formInputBox idKey="register.firstName"
+                labelKey="register.firstName" path="firstName" inputCSS="form-control" placeholder="Nama Awal"
+                mandatory="true" />
+            <formElement:formInputBox idKey="register.lastName"
+                labelKey="register.lastName" path="lastName" inputCSS="form-control" placeholder="Nama Akhir"
+                mandatory="true" />
+            <formElement:formInputBox idKey="register.email"
+                labelKey="register.email" path="email" inputCSS="form-control" placeholder="Alamat Email"
+                mandatory="true" />
+            <formElement:formPasswordBox idKey="password" labelKey="register.pwd" placeholder="Kata Sandi"
+                path="pwd" inputCSS="form-control" mandatory="true" />
+            <formElement:formPasswordBox idKey="register.checkPwd" placeholder="Ulangi Kata Sandi"
+                labelKey="register.checkPwd" path="checkPwd" inputCSS="form-control"
+                mandatory="true" />
 
-</form:form>
+            <c:if test="${ not empty consentTemplateData }">
+                <form:hidden path="consentForm.consentTemplateId" value="${consentTemplateData.id}" />
+                <form:hidden path="consentForm.consentTemplateVersion" value="${consentTemplateData.version}" />
+                <div class="checkbox">
+                    <label class="control-label uncased">
+                        <form:checkbox path="consentForm.consentGiven" disabled="true"/>
+                        <c:out value="${consentTemplateData.description}" />
+
+                    </label>
+                </div>
+                <div class="help-block">
+                    <spring:theme code="registration.consent.link" />
+                </div>
+
+            </c:if>
+
+            <spring:theme code="register.termsConditions" arguments="${getTermsAndConditionsUrl}" var="termsConditionsHtml" htmlEscape="false" />
+            <template:errorSpanField path="termsCheck">
+                <div class="checkbox">
+                    <label class="control-label uncased">
+                        <form:checkbox id="registerChkTermsConditions" path="termsCheck" disabled="true" checked="checked"/>
+                        ${ycommerce:sanitizeHTML(termsConditionsHtml)}
+                    </label>
+                </div>
+            </template:errorSpanField>
+
+            <input type="hidden" id="recaptchaChallangeAnswered"
+                value="${fn:escapeXml(requestScope.recaptchaChallangeAnswered)}" />
+            <div class="form_field-elements control-group js-recaptcha-captchaaddon"></div>
+            <div class="form-actions clearfix">
+                <ycommerce:testId code="register_Register_button">
+                    <button class="card__form-button" type="submit">Daftar</button>
+                </ycommerce:testId>
+            </div>
+
+        </form:form>
+
+        <div class="card__register">
+            <p class="card__register-msg">Sudah Memiliki Akun ? <a href="${fn:escapeXml(loginUrl)}" class="card__register-link">Masuk</a></p>
+        </div>
+    </div>
+</div>
+<!-- end:: Page -->

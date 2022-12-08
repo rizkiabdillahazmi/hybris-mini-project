@@ -14,49 +14,48 @@
 
 <c:set var="hideDescription" value="checkout.login.loginAndCheckout" />
 
-<div class="login-page__headline">
-	<spring:theme code="login.title" />
-</div>
 
-<c:if test="${actionNameKey ne hideDescription}">
-	<p>
-		<spring:theme code="login.description" />
-	</p>
-</c:if>
+<!-- begin:: Page -->
+<div class="container login-page">
+    <div class="card">
+        <div class="card__logo">
+            <a href="card__logo-link">
+                <img class="card__img" src="https://inthebox.net/images/logo-inthebox-440x80.png">
+            </a>
+        </div>
 
-<form:form action="${action}" method="post" modelAttribute="loginForm">
-	<c:if test="${not empty message}">
-		<span class="has-error"> <spring:theme code="${message}" />
-		</span>
-	</c:if>	
-	
-		<formElement:formInputBox idKey="j_username" labelKey="login.email"
-			path="j_username" mandatory="true" />
-		<formElement:formPasswordBox idKey="j_password"
-			labelKey="login.password" path="j_password" inputCSS="form-control"
-			mandatory="true" />
-	
-			<div class="forgotten-password">
-				<ycommerce:testId code="login_forgotPassword_link">
-					<a href="#" data-link="<c:url value='/login/pw/request'/>" class="js-password-forgotten" data-cbox-title="<spring:theme code="forgottenPwd.title"/>">
-						<spring:theme code="login.link.forgottenPwd" />
-					</a>
-				</ycommerce:testId>
-			</div>
-		<ycommerce:testId code="loginAndCheckoutButton">
-			<button type="submit" class="btn btn-primary btn-block">
-				<spring:theme code="${actionNameKey}" />
-			</button>
-		</ycommerce:testId>
+        <div class="card__title">
+            <h1>Masuk</h1>
+        </div>
 
-	
-	<c:if test="${expressCheckoutAllowed}">
-		<button type="submit" class="btn btn-default btn-block expressCheckoutButton"><spring:theme code="text.expresscheckout.header" /></button>
-		<input id="expressCheckoutCheckbox" name="expressCheckoutEnabled" type="checkbox" class="form left doExpressCheckout display-none" />
-	</c:if>
+        <form:form action="${action}" method="post" modelAttribute="loginForm" cssClass="card__form">
+            <c:if test="${not empty message}">
+                <span class="has-error"> <spring:theme code="${message}" />
+                </span>
+            </c:if>
 
-    <div class="mx-auto mt-4">
-    <p class="text-center">Belum Mempunyai Akun ? <a href="${fn:escapeXml(registerUrl)}" class="" >Daftar</a></p>
+                <formElement:formInputBox idKey="j_username" labelKey="login.email" placeholder="Alamat Email"
+                    path="j_username" mandatory="true" />
+                <formElement:formPasswordBox idKey="j_password" placeholder="Kata Sandi"
+                    labelKey="login.password" path="j_password" inputCSS="form-control"
+                    mandatory="true" />
+                <ycommerce:testId code="loginAndCheckoutButton">
+                    <button class="card__form-button" type="submit">Masuk</button>
+                </ycommerce:testId>
+
+
+            <c:if test="${expressCheckoutAllowed}">
+                <button type="submit" class="btn btn-default btn-block expressCheckoutButton"><spring:theme code="text.expresscheckout.header" /></button>
+                <input id="expressCheckoutCheckbox" name="expressCheckoutEnabled" type="checkbox" class="form left doExpressCheckout display-none" />
+            </c:if>
+
+            <div class="mx-auto mt-4 card__register">
+                <p class="text-center card__register-msg">Belum Memiliki Akun ? <a href="${fn:escapeXml(registerUrl)}" class="" >Daftar Sekarang</a></p>
+            </div>
+        </form:form>
     </div>
-</form:form>
+</div>
+<!-- end:: Page -->
+
+
 
