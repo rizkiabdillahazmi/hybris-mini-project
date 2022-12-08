@@ -43,7 +43,9 @@
 			<a href="#skiptonavigation" class="skiptonavigation" data-role="none">${fn:escapeXml(skipToNavigation)}</a>
 
 
-			<header:header hideHeaderLinks="${hideHeaderLinks}" />
+			<c:if test = "${pageTitle !='Login | Demo Group 3 Site' && pageTitle !='Register | Demo Group 3 Site'}">
+			    <header:header hideHeaderLinks="${hideHeaderLinks}" />
+            </c:if>
 
 
 			
@@ -57,61 +59,63 @@
 			</div>
 
 
-          <!--Footer-->
-            <div class="footer-new">
-                <div class="container">
-                    <div class="row footer-component">
-                        <div class="col-md-6">
-                            <img src="https://inthebox.net/images/layout-v2/header-logo-white.png" alt="" class="logo">
-                            <div class="contact">
-                                <input type="text" class="contact-input" placeholder="Masukkan Alamat Email">
-                                <button class="contact-button">Tambah</button>
-                                <div class="footer-icon">
-                                    <i class="fa fa-facebook footer-icon-fa" aria-hidden="true"></i>
-                                    <i class="fa fa-instagram footer-icon-fa" aria-hidden="true"></i>
-                                    <i class="fa fa-envelope footer-icon-fa" aria-hidden="true"></i>
+        <!--Footer-->
+            <c:if test = "${pageTitle !='Login | Demo Group 3 Site' && pageTitle !='Register | Demo Group 3 Site'}">
+                <div class="footer-new">
+                    <div class="container">
+                        <div class="row footer-component">
+                            <div class="col-md-6">
+                                <img src="https://inthebox.net/images/layout-v2/header-logo-white.png" alt="" class="logo">
+                                <div class="contact">
+                                    <input type="text" class="contact-input" placeholder="Masukkan Alamat Email">
+                                    <button class="contact-button">Tambah</button>
+                                    <div class="footer-icon">
+                                        <i class="fa fa-facebook footer-icon-fa" aria-hidden="true"></i>
+                                        <i class="fa fa-instagram footer-icon-fa" aria-hidden="true"></i>
+                                        <i class="fa fa-envelope footer-icon-fa" aria-hidden="true"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <p class="footer-sub-title">PRODUK</p>
-                            <p class="footer-menu-space"><a href="${fn:escapeXml(productUrl)}" class="footer-list-menu">Produk</a></p>
-                        </div>
-                        <div class="col-md-2">
-                            <p class="footer-sub-title">SUPPORT</p>
-                            <p class="footer-menu-space"><a href="" class="footer-list-menu">Aktivasi gerai</a></p>
-                            <p class="footer-menu-space"><a href="" class="footer-list-menu">Cek Resi</a></p>
-                            <p class="footer-menu-space"><a href="" class="footer-list-menu">FAQ</a></p>
-                            <p class="footer-menu-space"><a href="" class="footer-list-menu">Bantuan</a></p>
-                            <p class="footer-menu-space"><a href="" class="footer-list-menu">Syarat & Ketentuan</a></p>
-                            <p class="footer-menu-space"><a href="" class="footer-list-menu">Kebijakan Privasi</a></p>
-                        </div>
-                        <div class="col-md-2">
-                            <p class="footer-sub-title">ABOUT</p>
-                            <p class="footer-menu-space"><a href="${fn:escapeXml(aboutUrl)}" class="footer-list-menu">Tentang Kami</a></p>
-                            <p class="footer-menu-space"><a href="" class="footer-list-menu">Toko Offline</a></p>
-                            <p class="footer-menu-space"><a href="" class="footer-list-menu">Blog</a></p>
-                            <p class="footer-menu-space"><a href="${fn:escapeXml(testimoniUrl)}" class="footer-list-menu">Testimoni</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <div class="container">
-                    <div class="row copyright-items">
-                        <div class="col-md-2">
-                            <p><i class="fa fa-phone" aria-hidden="true"></i> (021) 30306286</p>
-                        </div>
-                        <div class="col-md-2">
-                            <p><i class="fa fa-commenting" aria-hidden="true"></i>+62 819 234 659</p>
-                        </div>
-                        <div class="col-md-5"></div>
-                        <div class="col-md-3">
-                            Copyright &copy; 2019-2022
+                            <div class="col-md-2">
+                                <p class="footer-sub-title">PRODUK</p>
+                                <p class="footer-menu-space"><a href="${fn:escapeXml(productUrl)}" class="footer-list-menu">Produk</a></p>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="footer-sub-title">SUPPORT</p>
+                                <p class="footer-menu-space"><a href="" class="footer-list-menu">Aktivasi gerai</a></p>
+                                <p class="footer-menu-space"><a href="" class="footer-list-menu">Cek Resi</a></p>
+                                <p class="footer-menu-space"><a href="" class="footer-list-menu">FAQ</a></p>
+                                <p class="footer-menu-space"><a href="" class="footer-list-menu">Bantuan</a></p>
+                                <p class="footer-menu-space"><a href="" class="footer-list-menu">Syarat & Ketentuan</a></p>
+                                <p class="footer-menu-space"><a href="" class="footer-list-menu">Kebijakan Privasi</a></p>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="footer-sub-title">ABOUT</p>
+                                <p class="footer-menu-space"><a href="${fn:escapeXml(aboutUrl)}" class="footer-list-menu">Tentang Kami</a></p>
+                                <p class="footer-menu-space"><a href="" class="footer-list-menu">Toko Offline</a></p>
+                                <p class="footer-menu-space"><a href="" class="footer-list-menu">Blog</a></p>
+                                <p class="footer-menu-space"><a href="${fn:escapeXml(testimoniUrl)}" class="footer-list-menu">Testimoni</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="copyright">
+                    <div class="container">
+                        <div class="row copyright-items">
+                            <div class="col-md-2">
+                                <p><i class="fa fa-phone" aria-hidden="true"></i> (021) 30306286</p>
+                            </div>
+                            <div class="col-md-2">
+                                <p><i class="fa fa-commenting" aria-hidden="true"></i>+62 819 234 659</p>
+                            </div>
+                            <div class="col-md-5"></div>
+                            <div class="col-md-3">
+                                Copyright &copy; 2019-2022
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
 
 		    <script
               src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
