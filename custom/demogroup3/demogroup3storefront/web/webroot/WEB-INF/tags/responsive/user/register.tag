@@ -91,7 +91,7 @@
         </form:form>
 
         <div class="card__register">
-            <p class="card__register-msg">Sudah Memiliki Akun ? <a href="${fn:escapeXml(loginUrl)}" class="card__register-link">Masuk</a></p>
+            <p class="card__register-msg">Sudah Memiliki Akun ? <a href="${fn:escapeXml(loginUrl)}" class="">Masuk</a></p>
         </div>
     </div>
 </div>
