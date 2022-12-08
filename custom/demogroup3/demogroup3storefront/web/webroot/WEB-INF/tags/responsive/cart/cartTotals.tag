@@ -12,12 +12,12 @@
 
 <div class="js-cart-totals row">
     <div class="col-xs-6 cart-totals-left"><spring:theme code="basket.page.totals.subtotal"/></div>
-    <div class="col-xs-6 cart-totals-right text-right"><ycommerce:testId code="Order_Totals_Subtotal"><format:price priceData="${cartData.subTotal}"/></ycommerce:testId></div>
+    <div class="col-xs-6 cart-totals-right text-right custom-cart-subtotal"><ycommerce:testId code="Order_Totals_Subtotal"><format:price priceData="${cartData.subTotal}"/></ycommerce:testId></div>
 
 
     <c:if test="${not empty cartData.deliveryCost}">
         <div class="col-xs-6 cart-totals-left"><spring:theme code="basket.page.totals.delivery"/></div>
-        <div class="col-xs-6 cart-totals-right text-right"><format:price priceData="${cartData.deliveryCost}" displayFreeForZero="TRUE"/></div>
+        <div class="col-xs-6 cart-totals-right text-right custom-cart-delivery-cost"><format:price priceData="${cartData.deliveryCost}" displayFreeForZero="TRUE"/></div>
      </c:if>
 
 
@@ -53,7 +53,7 @@
 	</c:if>
 
     <div class="col-xs-6 cart-totals-left grand-total"><spring:theme code="basket.page.totals.total"/></div>
-    <div class="col-xs-6 cart-totals-right text-right grand-total">
+    <div class="col-xs-6 cart-totals-right text-right grand-total custom-cart-grand-total">
         <ycommerce:testId code="cart_totalPrice_label">
             <c:choose>
                 <c:when test="${showTax}">

@@ -8,7 +8,7 @@
 <spring:htmlEscape defaultHtmlEscape="true" />
 
 <c:url value="/cart/checkout" var="checkoutUrl" scope="session"/>
-<div class="row">
+<div class="row d-none">
     <div class="col-xs-12 col-sm-10 col-md-7 col-lg-6 pull-right cart-actions--print">
         <div class="express-checkout">
             <div class="headline"><spring:theme code="text.expresscheckout.header"/></div>
@@ -33,14 +33,25 @@
     </div>
 </div>
 
-<div class="cart__actions">
-    <div class="row">
+<div class="row mt-5">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-6 col-md-8 mt-4">
+            <div class="form-group">
+                <label class="custom-text-transform"><spring:theme code="cart.page.note"/></label>
+                <div>
+                    <textarea rows="5" name="notes" placeholder="" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cart__actions mt-5">
+    <div class="row d-flex justify-content-center">
         <div class="col-sm-4 col-md-3 pull-right">
-            <ycommerce:testId code="checkoutButton">
-                <button class="btn btn-primary btn-block btn--continue-checkout js-continue-checkout-button" data-checkout-url="${fn:escapeXml(checkoutUrl)}">
-                    <spring:theme code="checkout.checkout"/>
-                </button>
-            </ycommerce:testId>
+            <button class="button-6 btn--continue-shopping js-continue-shopping-button" data-continue-shopping-url="${fn:escapeXml(continueShoppingUrl)}">
+                <spring:theme code="cart.page.continue"/>
+            </button>
         </div>
 
         <sec:authorize access="!hasAnyRole('ROLE_ANONYMOUS')">
@@ -54,16 +65,18 @@
         </sec:authorize>
 
         <div class="col-sm-4 col-md-3 pull-right">
-            <button class="btn btn-default btn-block btn--continue-shopping js-continue-shopping-button" data-continue-shopping-url="${fn:escapeXml(continueShoppingUrl)}">
-                <spring:theme code="cart.page.continue"/>
-            </button>
+            <ycommerce:testId code="checkoutButton">
+                <button class="button-5 btn--continue-checkout js-continue-checkout-button" data-checkout-url="${fn:escapeXml(checkoutUrl)}">
+                    <spring:theme code="checkout.checkout"/>
+                </button>
+            </ycommerce:testId>
         </div>
     </div>
 </div>
 
 
 <c:if test="${showCheckoutStrategies && not empty cartData.entries}" >
-    <div class="cart__actions">
+    <div class="cart__actions d-none">
         <div class="row">
             <div class="col-xs-12 col-sm-5 col-md-3 col-lg-2 pull-right">
                 <input type="hidden" name="flow" id="flow"/>
