@@ -48,9 +48,11 @@
             <cms:pageSlot position="CenterRightContentSlot" var="feature">
                 <cms:component component="${feature}" element="div" class="yComponentWrapper"/>
             </cms:pageSlot>
-            <cms:pageSlot position="BottomContentSlot" var="feature">
-                <cms:component component="${feature}" element="div" class="yComponentWrapper"/>
-            </cms:pageSlot>
+            <div class="container">
+                <cms:pageSlot position="BottomContentSlot" var="feature">
+                    <cms:component component="${feature}" element="div" class="yComponentWrapper"/>
+                </cms:pageSlot>
+            </div>
 		</c:if>
 				
 		<c:if test="${empty cartData.rootGroups}">
