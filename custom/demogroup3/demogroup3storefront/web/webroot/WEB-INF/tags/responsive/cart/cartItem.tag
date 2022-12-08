@@ -23,6 +23,15 @@
 <c:set var="entryNumberHtml" value="${fn:escapeXml(entry.entryNumber)}"/>
 <c:set var="productCodeHtml" value="${fn:escapeXml(entry.product.code)}"/>
 <c:set var="quantityHtml" value="${fn:escapeXml(entry.quantity)}"/>
+<c:set var="isForceInStock" value="${entry.product.stock.stockLevelStatus.code eq 'inStock' and empty entry.product.stock.stockLevel}"/>
+<c:choose>
+  <c:when test="${isForceInStock}">
+    <c:set var="maxQty" value="FORCE_IN_STOCK"/>
+  </c:when>
+  <c:otherwise>
+    <c:set var="maxQty" value="${entry.product.stock.stockLevel}"/>
+  </c:otherwise>
+</c:choose>
 
 <c:if test="${empty index}">
     <c:set property="index" value="${entryNumber}"/>
@@ -49,7 +58,7 @@
         <c:set var="showEditableGridClass" value=""/>
         <c:url value="${entry.product.url}" var="productUrl"/>
 
-        <li class="item__list--item">
+        <li class="item__list--item" id="li-quantity-cart">
             <%-- chevron for multi-d products --%>
             <div class="hidden-xs hidden-sm item__toggle">
                 <c:if test="${entry.product.multidimensional}" >
@@ -99,6 +108,12 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
+                </div>
+
+                <%-- price --%>
+                <div class="item__price">
+                    <%-- <span class="visible-xs visible-sm"><spring:theme code="basket.page.itemPrice"/>: </span> --%>
+                    <format:price priceData="${entry.basePrice}" displayFreeForZero="true"/>
                 </div>
 
                 <c:if test="${ycommerce:doesPotentialPromotionExistForOrderEntryOrOrderEntryGroup(cartData, entry)}">
@@ -168,11 +183,7 @@
                 </c:if>
             </div>
 
-            <%-- price --%>
-            <div class="item__price">
-                <span class="visible-xs visible-sm"><spring:theme code="basket.page.itemPrice"/>: </span>
-                <format:price priceData="${entry.basePrice}" displayFreeForZero="true"/>
-            </div>
+
 
             <%-- quantity --%>
             <div class="item__quantity hidden-xs hidden-sm">
@@ -186,10 +197,23 @@
                             <input type="hidden" name="entryNumber" value="${entryNumberHtml}"/>
                             <input type="hidden" name="productCode" value="${productCodeHtml}"/>
                             <input type="hidden" name="initialQuantity" value="${quantityHtml}"/>
-                            <ycommerce:testId code="cart_product_quantity">
-                                <form:label cssClass="visible-xs visible-sm" path="quantity" for="quantity${entry.entryNumber}"></form:label>
-                                <form:input cssClass="form-control js-update-entry-quantity-input" disabled="${not entry.updateable}" type="text" size="1" maxlength="10" id="quantity_${entry.entryNumber}" path="quantity" />
-                            </ycommerce:testId>
+
+                            <div id="cart-item-count" class="js-qty-selector d-flex justify-content-evenly">
+                                <ycommerce:testId code="cart_product_quantity">
+
+                                    <button class="btn btn-block spinner-button down bootstrap-touchspin-down js-qty-selector-minus-cart-det button-quantity-product" type="button" <c:if test="${qtyMinus <= 1}"><c:out value="disabled='disabled'"/></c:if> ><span class="palmer-lake-icon palmer-lake-minus" aria-hidden="true" ></span></button>
+
+                                    <form:label cssClass="visible-xs visible-sm" path="quantity" for="quantity${entry.entryNumber}"></form:label>
+                                    <form:input cssClass="form-control js-update-entry-quantity-input d-none" disabled="${not entry.updateable}" type="text" size="1" maxlength="10" id="quantity_${entry.entryNumber}" path="quantity" />
+                                    <form:input type="text" maxlength="10" cssClass="form-control func_touchspin  js-qty-selector-input-cart-det quantity-product-form-control" size="1"
+                                           data-max="${fn:escapeXml(maxQty)}" data-min="1" id="quantity_${entry.entryNumber}" path="quantity"
+                                           data-buttondown_class="btn btn-block spinner-button down" data-buttonup_class="btn btn-block spinner-button up" disabled="${not entry.updateable}" />
+
+                                    <button class="btn btn-block spinner-button up bootstrap-touchspin-up js-qty-selector-plus-cart-det button-quantity-product" type="button"><span class="palmer-lake-icon palmer-lake-plus" aria-hidden="true"></span></button>
+
+                                </ycommerce:testId>
+                            </div>
+
                         </form:form>
                     </c:when>
                     <c:otherwise>
@@ -210,7 +234,7 @@
             </div>
 
             <%-- delivery --%>
-            <div class="item__delivery">
+            <div class="item__delivery d-none">
                 <c:if test="${entry.product.purchasable}">
                     <c:if test="${not empty entryStock and entryStock ne 'outOfStock'}">
                         <c:if test="${entry.deliveryPointOfService eq null or not entry.product.availableForPickup}">

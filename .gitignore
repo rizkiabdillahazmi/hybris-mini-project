@@ -29,10 +29,12 @@ bin/
 **/web/webroot/**/addons/*
 **/web/testclasses/*
 **/web/node_modules/*
+**/web/webroot/_ui/responsive/common/js/*
+**/.classpath
 
 /custom/demogroup3/demogroup3storefront/resources/wro_addons.xml
-/custom/demogroup3/demogroup3storefront/web/webroot/_ui/responsive/theme-demogroup3/node_modules
-/custom/demogroup3/demogroup3storefront/web/webroot/_ui/responsive/theme-demogroup3/.sass-cache
+/custom/demogroup3/demogroup3storefront/web/webroot/_ui/responsive/theme-alpha/*
+/custom/demogroup3/demogroup3storefront/web/webroot/_ui/responsive/theme-lambda/*
 
 # *.jpg
 # *.png
