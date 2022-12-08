@@ -829,6 +829,103 @@ body {
     &:hover {
        color: #17afe2 !important;
        text-decoration: none;
-     }
+    }
 }
 
+.item__list .item__list--header li {
+    background-color : transparent !important;
+}
+
+.item__list .item__image img {
+  max-width: 120px !important;
+}
+
+#li-quantity-cart .item__info {
+    vertical-align : top !important;
+    padding-top: 10px;
+    padding-left: 20px;
+
+    .item__name {
+        color: #000 !important;
+        font-weight: 600;
+        &:hover {
+            color: #17afe2 !important;
+            text-decoration: none;
+        }
+    }
+
+    @media (min-width: 480px) {
+        .item__name {
+          font-size: 2rem !important;
+        }
+    }
+
+    .item__code {
+        font-size: 1.2rem !important;
+    }
+
+    .item__price {
+        padding: 0 !important;
+    }
+
+    .item__price {
+        font-family: 'Palmer Lake' !important;
+        font-weight: 400 !important;
+        font-style: normal;
+        font-size: 5rem !important;
+        line-height: .6;
+        color: #6086c2;
+    }
+}
+
+
+#li-quantity-cart .item__total {
+    font-family: 'Palmer Lake' !important;
+    font-weight: 400 !important;
+    font-style: normal;
+    font-size: 5rem !important;
+    line-height: .6;
+    color: #6086c2;
+}
+
+
+.custom-export__cart--link {
+  text-align: right;
+  margin-top: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  white-space: nowrap;
+  float: right;
+  padding: 0 5px;
+  font-size: 1rem;
+  color: #6086c2;
+
+  &:before {
+    content: "|";
+    position: relative;
+    left: -2px;
+    color: @text-color-secondary;
+    font-weight: 400;
+    vertical-align: top;
+  }
+
+  &:hover {
+    color: #17afe2 !important;
+  }
+}
+
+@media (max-width: 639px) {
+    .custom-export__cart--link {
+      text-align: center;
+      margin-top: 0;
+      color: #6086c2;
+    }
+}
+
+.save__cart--link {
+    color: #6086c2 !important;
+    &:hover {
+        color: #17afe2 !important;
+    }
+}
