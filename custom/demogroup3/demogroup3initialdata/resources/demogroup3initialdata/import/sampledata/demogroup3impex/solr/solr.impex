@@ -22,8 +22,8 @@ INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; n
                                  ; $solrIndexedType                          ; attribute          ; string    ;                            ;                       ; Refine         ; Alpha          ; 6000    ; true   ;                              ; attributeValueProvider ; categoryFacetDisplayNameProvider ; defaultTopValuesProvider
 
 
-INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]  ; type(code); sortableType(code); currency[default = false]; localized[default = false]; multiValue[default = false]; facet[default = true]; categoryField[default = false]; useForSpellchecking[default = false]; useForAutocomplete[default = false]; fieldValueProvider                      ; valueProviderParameter[map-delimiter = |]; ftsPhraseQuery[default = false]; ftsPhraseQueryBoost; ftsQuery[default = false]; ftsQueryBoost; ftsFuzzyQuery[default = false]; ftsFuzzyQueryBoost; ftsWildcardQuery[default = false]; ftsWildcardQueryType(code)[default = POSTFIX]; ftsWildcardQueryBoost; ftsWildcardQueryMinTermLength; rangeSets(name)
-                                 ; $solrIndexedType                           ; pricesort           ; double    ;                   ; true                     ;                           ;                            ;                       ;                      ;                                     ;                                    ; productPriceValueProvider               ;                                          ;                                ;                    ;                          ;              ;                               ;                   ;                                  ;                                              ;                      ;                              ;demoGroup3PriceRangeIDR
+INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true] ; name[unique = true]  ; type(code); sortableType(code); currency[default = false]; localized[default = false]; multiValue[default = false]; facet[default = true]; categoryField[default = false]; useForSpellchecking[default = false]; useForAutocomplete[default = false]; fieldValueProvider       ;facetType(code) ;priority; valueProviderParameter[map-delimiter = |]; ftsPhraseQuery[default = false]; ftsPhraseQueryBoost; ftsQuery[default = false]; ftsQueryBoost; ftsFuzzyQuery[default = false]; ftsFuzzyQueryBoost; ftsWildcardQuery[default = false]; ftsWildcardQueryType(code)[default = POSTFIX]; ftsWildcardQueryBoost; ftsWildcardQueryMinTermLength; rangeSets(name)
+                                 ; $solrIndexedType                           ; pricesort            ; double    ;                   ; true                     ;                           ;                            ;                      ;                               ;                                     ;                                    ; productPriceValueProvider;MultiSelectOr   ; 1000   ;                                         ;                                ;                    ;                          ;              ;                               ;                   ;                                  ;                                              ;                      ;                              ;demoGroup3PriceRangeIDR
 
 #
 # Setup the Solr server, indexer, and search configs
@@ -56,13 +56,21 @@ UPDATE BaseSite; uid[unique = true]; solrFacetSearchConfiguration(name)
 
 # Define price range set
 INSERT_UPDATE SolrValueRangeSet; name[unique = true]   ; qualifier; type   ; solrValueRanges(&rangeValueRefID)
-                               ; demoGroup3PriceRangeIDR ; IDR      ; double ; rangeRefIDR1,rangeRefIDR2,rangeRefIDR3
+                               ; demoGroup3PriceRangeIDR ; IDR      ; double ; rangeRefIDR1,rangeRefIDR2,rangeRefIDR3,rangeRefIDR4
 
 # Define price ranges
-INSERT_UPDATE SolrValueRange; &rangeValueRefID; solrValueRangeSet(name)[unique = true]; name[unique = true]   ; from    ; to
-                            ; rangeRefIDR1    ; demoGroup3PriceRangeIDR                 ; Rp.1 Juta-Rp.1,5 Juta ; 0       ; 1500000
-                            ; rangeRefIDR2    ; demoGroup3PriceRangeIDR                 ; Rp.1,5 Juta-Rp.2 Juta ; 1500001 ; 2000000
-                            ; rangeRefIDR3    ; demoGroup3PriceRangeIDR                 ; > Rp.2 Juta           ; 2000001 ; 10000000
+#INSERT_UPDATE SolrValueRange; &rangeValueRefID; solrValueRangeSet(name)[unique = true]; name[unique = true]     ; from      ; to
+#                            ; rangeRefIDR1    ; demoGroup3PriceRangeIDR                 ; Rp.1 Juta-Rp.1,5 Juta ; 0       ; 1500000
+#                            ; rangeRefIDR2    ; demoGroup3PriceRangeIDR                 ; Rp.1,5 Juta-Rp.2 Juta ; 1500001 ; 2000000
+#                            ; rangeRefIDR3    ; demoGroup3PriceRangeIDR                 ; > Rp.2 Juta           ; 2000001 ; 10000000
+
+# Define price ranges
+INSERT_UPDATE SolrValueRange; &rangeValueRefID; solrValueRangeSet(name)[unique = true]; name[unique = true]    ; from    ; to
+                            ; rangeRefIDR1    ; demoGroup3PriceRangeIDR                 ; < Rp.1 Juta          ; 0       ; 1000000
+                            ; rangeRefIDR2    ; demoGroup3PriceRangeIDR                 ; Rp.1 Juta-Rp.2 Juta  ; 1000001 ; 2000000
+                            ; rangeRefIDR3    ; demoGroup3PriceRangeIDR                 ; Rp.2 Juta-Rp.3 Juta  ; 2000001 ; 3000000
+                            ; rangeRefIDR4    ; demoGroup3PriceRangeIDR                 ; > Rp.3 Juta          ; 3000001 ; 10000000
+
 
 
 INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]  ; type(code); sortableType(code); currency[default = false]; localized[default = false]; multiValue[default = false]; categoryField[default = false]; useForSpellchecking[default = false]; useForAutocomplete[default = false]; fieldValueProvider                      ; valueProviderParameter[map-delimiter = |]; ftsPhraseQuery[default = false]; ftsPhraseQueryBoost; ftsQuery[default = false]; ftsQueryBoost; ftsFuzzyQuery[default = false]; ftsFuzzyQueryBoost; ftsWildcardQuery[default = false]; ftsWildcardQueryType(code)[default = POSTFIX]; ftsWildcardQueryBoost; ftsWildcardQueryMinTermLength
