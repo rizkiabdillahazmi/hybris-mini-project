@@ -13,14 +13,14 @@
 <ul class="item__list item__list__cart">
     <li class="hidden-xs hidden-sm">
         <ul class="item__list--header">
-            <li class="item__toggle"></li>
-            <li class="item__image"><spring:theme code="basket.page.item"/></li>
-            <li class="item__info"></li>
-            <%-- <li class="item__price"><spring:theme code="basket.page.price"/></li> --%>
-            <li class="item__quantity text-center"><spring:theme code="basket.page.qty"/></li>
+            <li class="item__toggle custom_item_list"></li>
+            <li class="item__image custom_item_list"><spring:theme code="basket.page.item"/></li>
+            <li class="item__info custom_item_list"></li>
+            <%-- <li class="item__price custom_item_list"><spring:theme code="basket.page.price"/></li> --%>
+            <li class="item__quantity text-center custom_item_list"><spring:theme code="basket.page.qty"/></li>
             <li class="item__delivery d-none"><spring:theme code="basket.page.delivery"/></li>
-            <li class="item__total--column"><spring:theme code="basket.page.total"/></li>
-            <li class="item__remove"></li>
+            <li class="item__total--column custom_item_list"><spring:theme code="basket.page.total"/></li>
+            <li class="item__remove custom_item_list"></li>
         </ul>
     </li>
 
