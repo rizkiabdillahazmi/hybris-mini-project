@@ -47,7 +47,7 @@
             </label>
         </div>
 
-        <button id="placeOrder" type="submit" class="btn btn-primary btn-place-order btn-block">
+        <button id="placeOrder" type="submit" class="btn-place-order btn-order">
             <spring:theme code="checkout.summary.placeOrder" />
         </button>
     </form:form>

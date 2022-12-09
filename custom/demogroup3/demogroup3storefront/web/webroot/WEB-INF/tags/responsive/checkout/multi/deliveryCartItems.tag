@@ -21,6 +21,7 @@
 </c:if>
 
 <ul class="checkout-order-summary-list">
+<multi-checkout:shipmentItems cartData="${cartData}" showDeliveryAddress="true" />
 <c:if test="${hasShippedItems}">
 	<li class="checkout-order-summary-list-heading">
 		<c:choose>
