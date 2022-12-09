@@ -555,4 +555,20 @@
 		  class ="com.hybris.demogroup3.core.job.CronjobDemo"
 		  parent="abstractJobPerformable">
 	</bean>
+
+	<!-- dao -->
+	<alias name="defaultKasurVariantProductDao" alias="kasurVariantProductDao" />
+	<bean id="defaultKasurVariantProductDao" class="com.hybris.demogroup3.core.custom.productdetail.kasurvariandemo.dao.impl.DefaultKasurVariantProductDao" />
+
+	<alias name="defaultShofaVariantProductDao" alias="shofaVariantProductDao" />
+	<bean id="defaultShofaVariantProductDao" class="com.hybris.demogroup3.core.custom.productdetail.shofavariandemo.dao.impl.DefaultShofaVariantProductDao" />
+	<!-- dao -->
+
+	<!-- service -->
+	<alias name="defaultKasurVariantProductService" alias="kasurVariantProductService" />
+	<bean id="defaultKasurVariantProductService" class="com.hybris.demogroup3.core.custom.productdetail.kasurvariandemo.impl.DefaultKasurVariantProductService" />
+
+	<alias name="defaultShofaVariantProductService" alias="shofaVariantProductService" />
+	<bean id="defaultShofaVariantProductService" class="com.hybris.demogroup3.core.custom.productdetail.shofavariandemo.impl.DefaultShofaVariantProductService" />
+	<!-- service -->
 </beans>
