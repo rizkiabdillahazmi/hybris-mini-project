@@ -23,4 +23,22 @@
 	<bean class="de.hybris.platform.commercefacades.user.data.RegisterData">
 		<property name="id" type="String"/>
 	</bean>
+
+	<bean class="com.hybris.demogroup3.facades.product.data.KasurVariantProductData">
+		<property name="name" type="String"/>
+		<property name="code" type="String"/>
+		<property name="merk" type="String"/>
+		<property name="ukuran" type="String"/>
+		<property name="strPrice" type="String"/>
+		<property name="imgUrl" type="String"/>
+	</bean>
+
+	<bean class="com.hybris.demogroup3.facades.product.data.ShofaVariantProductData">
+		<property name="name" type="String"/>
+		<property name="code" type="String"/>
+		<property name="merk" type="String"/>
+		<property name="warna" type="String"/>
+		<property name="strPrice" type="String"/>
+		<property name="imgUrl" type="String"/>
+	</bean>
 </beans>

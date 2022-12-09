@@ -16,7 +16,7 @@
         <c:url value="${continueUrl}" var="continueShoppingUrl" scope="session"/>
         <c:set var="showTax" value="false"/>
 
-        <div class="container">
+        <div id="custom-cart-main" class="container">
             <div class="cart-header border-bottom">
                 <div class="row">
                     <div class="col-xs-12 col-sm-5">

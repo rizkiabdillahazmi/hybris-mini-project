@@ -58,7 +58,7 @@
         <c:set var="showEditableGridClass" value=""/>
         <c:url value="${entry.product.url}" var="productUrl"/>
 
-        <li class="item__list--item" id="li-quantity-cart">
+        <li class="item__list--item border-bottom" id="li-quantity-cart">
             <%-- chevron for multi-d products --%>
             <div class="hidden-xs hidden-sm item__toggle">
                 <c:if test="${entry.product.multidimensional}" >

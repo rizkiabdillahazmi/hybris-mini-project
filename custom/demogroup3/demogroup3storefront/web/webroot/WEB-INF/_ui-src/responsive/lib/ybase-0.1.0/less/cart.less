@@ -832,43 +832,57 @@ body {
     }
 }
 
-.item__list .item__list--header li {
+.custom_item_list {
     background-color : transparent !important;
+    color : #7f919e !important;
 }
 
 .item__list .item__image img {
   max-width: 120px !important;
 }
 
-#li-quantity-cart .item__info {
-    vertical-align : top !important;
-    padding-top: 10px;
-    padding-left: 20px;
+#li-quantity-cart {
+    background-color: transparent !important;
 
-    .item__name {
-        color: #000 !important;
-        font-weight: 600;
-        &:hover {
-            color: #17afe2 !important;
-            text-decoration: none;
-        }
-    }
+    .item__info {
+        vertical-align : top !important;
+        padding-top: 10px;
+        padding-left: 20px;
 
-    @media (min-width: 480px) {
         .item__name {
-          font-size: 2rem !important;
+            color: #000 !important;
+            font-weight: 600;
+            &:hover {
+                color: #17afe2 !important;
+                text-decoration: none;
+            }
+        }
+
+        @media (min-width: 480px) {
+            .item__name {
+              font-size: 2rem !important;
+            }
+        }
+
+        .item__code {
+            font-size: 1.2rem !important;
+        }
+
+        .item__price {
+            padding: 0 !important;
+        }
+
+        .item__price {
+            font-family: 'Palmer Lake' !important;
+            font-weight: 400 !important;
+            font-style: normal;
+            font-size: 5rem !important;
+            line-height: .6;
+            color: #6086c2;
         }
     }
 
-    .item__code {
-        font-size: 1.2rem !important;
-    }
-
-    .item__price {
-        padding: 0 !important;
-    }
-
-    .item__price {
+    .item__total {
         font-family: 'Palmer Lake' !important;
         font-weight: 400 !important;
         font-style: normal;
@@ -877,17 +891,6 @@ body {
         color: #6086c2;
     }
 }
-
-
-#li-quantity-cart .item__total {
-    font-family: 'Palmer Lake' !important;
-    font-weight: 400 !important;
-    font-style: normal;
-    font-size: 5rem !important;
-    line-height: .6;
-    color: #6086c2;
-}
-
 
 .custom-export__cart--link {
   text-align: right;

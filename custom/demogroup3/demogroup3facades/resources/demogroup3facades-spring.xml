@@ -183,7 +183,7 @@
 
 	<bean id="genderData" class="com.hybris.demogroup3.facades.product.data.GenderData" scope="prototype"/>
 
-	<!--	Populator-->
+	<!-- Populators -->
 	<alias name="defaultSolrResultBasicPopulator" alias="solrResultBasicPopulator"/>
 	<bean id="defaultSolrResultBasicPopulator" class="com.hybris.demogroup3.facades.populators.SolrResultBasicPopulator" parent="defaultCommerceSearchResultProductPopulator"/>
 
@@ -192,6 +192,24 @@
 		<property name="add" ref="solrResultBasicPopulator"/>
 	</bean>
 
+	<alias name="kasurVariantProductBasicPopulator" alias="kasurVariantBasicPopulator"/>
+	<bean id="kasurVariantProductBasicPopulator"
+		  class="com.hybris.demogroup3.facades.populators.KasurVariantProductBasicPopulator"/>
+	<!-- Populators -->
+
+	<!-- Converters-->
+	<alias name="kasurVariantBasicConverter" alias="kasurVariantBasicConverter"/>
+	<bean id="kasurVariantBasicConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="com.hybris.demogroup3.facades.product.data.KasurVariantProductData"/>
+		<property name="populators">
+			<list merge="true">
+				<ref bean="kasurVariantProductBasicPopulator"/>
+			</list>
+		</property>
+	</bean>
+	<!-- Converters-->
+
+	<!-- Facades -->
 	<alias name="defaultTestimonyFacade" alias="defaultTestimonyFacade"/>
 	<bean id="defaultTestimonyFacade" class="com.hybris.demogroup3.facades.testimony.impl.DefaultTestimonyFacade"/>
 
@@ -209,4 +227,11 @@
 	<alias name="defaultCustomCustomerFacade" alias="customerFacade"/>
 	<bean id="defaultCustomCustomerFacade" class="com.hybris.demogroup3.facades.register.DefaultCustomCustomerFacade" parent="defaultCustomerFacade">
 	</bean>
+
+	<!-- Kasur Variant Facade	-->
+	<alias name="defaultKasurVariantProductBasicFacade" alias="kasurVariantBasicFacade"/>
+	<bean id="defaultKasurVariantProductBasicFacade" class="com.hybris.demogroup3.facades.custom.productdetail.kasurvariantdemo.impl.DefaultKasurVariantProductBasicFacade">
+	</bean>
+
+	<!-- Facades -->
 </beans>
