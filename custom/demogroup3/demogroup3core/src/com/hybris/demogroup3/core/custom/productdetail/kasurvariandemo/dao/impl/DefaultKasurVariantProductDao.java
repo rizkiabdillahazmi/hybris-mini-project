@@ -5,11 +5,14 @@ import com.hybris.demogroup3.core.model.KasurVariantProductDemoModel;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.FlexibleSearchService;
 import de.hybris.platform.servicelayer.search.SearchResult;
+import de.hybris.platform.variants.model.VariantProductModel;
 import org.apache.commons.collections.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The Class DefaultKasurVariantProductDao
@@ -22,15 +25,19 @@ public class DefaultKasurVariantProductDao implements KasurVariantProductDao {
     @Resource(name = "flexibleSearchService")
     private FlexibleSearchService flexibleSearchService;
 
-    private final String SELECT_KASUR_VARIANT = "select {k.pk} from {KasurVariantProductDemo as k} ";
-
     @Override
     public List<KasurVariantProductDemoModel> getKasurVariantByMerk(String merk) {
-        final String query = SELECT_KASUR_VARIANT +
-                "where {k.merk} like ?merk";
-        final FlexibleSearchQuery flexibleSearchQuery = new FlexibleSearchQuery(query);
-        flexibleSearchQuery.addQueryParameter("merk", merk);
-        final SearchResult<KasurVariantProductDemoModel> searchResult = flexibleSearchService.search(flexibleSearchQuery);
+        final String query = "select {k.pk} from " +
+                             "{KasurVariantProductDemo as k join Product as p on {p.pk} = {k.baseproduct}} " +
+                             "where {k.merk}=?merk";
+
+        final Map<String, Object> params = new HashMap<String, Object>();
+        params.put("merk", merk);
+
+        final FlexibleSearchQuery searchQuery = new FlexibleSearchQuery(query);
+        searchQuery.addQueryParameters(params);
+        searchQuery.setResultClassList(Collections.singletonList(KasurVariantProductDemoModel.class));
+        final SearchResult searchResult = flexibleSearchService.search(searchQuery);
         List<KasurVariantProductDemoModel> models = searchResult.getResult();
 
         if (CollectionUtils.isNotEmpty(models)) {
