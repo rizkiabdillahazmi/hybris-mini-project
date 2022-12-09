@@ -550,4 +550,9 @@
 	<alias name="defaultTestimonyService" alias="testimonyService"/>
 	<bean id="defaultTestimonyService" class="com.hybris.demogroup3.core.testimony.impl.DefaultTestimonyService">
 	</bean>
+
+	<bean id ="cronJobDemo"
+		  class ="com.hybris.demogroup3.core.job.CronjobDemo"
+		  parent="abstractJobPerformable">
+	</bean>
 </beans>
