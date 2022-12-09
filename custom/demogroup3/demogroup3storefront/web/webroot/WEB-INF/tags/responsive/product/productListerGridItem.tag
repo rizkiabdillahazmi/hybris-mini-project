@@ -31,11 +31,6 @@
 				</a>
 			</ycommerce:testId>
 
-			<div class = "product_list_detail">
-                 <ycommerce:testId code="searchPage_productName_link_${product.merk}">
-                    ${ycommerce:sanitizeHTML(product.merk)}</a>
-                 </ycommerce:testId>
-             </div>
 
              <div class ="product_list_detail">
                   <ycommerce:testId code="searchPage_productName_link_${product.attribute}">
@@ -43,7 +38,13 @@
                   </ycommerce:testId>
               </div>
 
-		
+
+			<div class = "product_list_detail">
+                 <ycommerce:testId code="searchPage_productName_link_${product.keterangan}">
+                    ${ycommerce:sanitizeHTML(product.keterangan)}</a>
+                 </ycommerce:testId>
+             </div>
+
 			<c:if test="${not empty product.potentialPromotions}">
 				<div class="promo">
 					<c:forEach items="${product.potentialPromotions}" var="promotion">

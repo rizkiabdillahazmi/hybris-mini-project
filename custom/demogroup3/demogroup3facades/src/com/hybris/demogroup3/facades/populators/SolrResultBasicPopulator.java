@@ -16,6 +16,7 @@ public class SolrResultBasicPopulator extends SearchResultProductPopulator {
         target.setMerk(this.<String>getValue(source,"merk"));
         target.setUkuran(this.<String>getValue(source,"ukuran"));
         target.setAttribute(this.<String>getValue(source,"attribute"));
+        target.setKeterangan(this.<String>getValue(source,"keterangan"));
         target.setWarna(this.<String>getValue(source,"warna"));
 
     }
