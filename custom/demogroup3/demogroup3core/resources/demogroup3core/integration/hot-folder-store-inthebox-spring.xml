@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:file="http://www.springframework.org/schema/integration/file"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration
+		http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/file
+		http://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+		http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <bean id="baseDirectoryDemoGroup3" class="java.lang.String">
+        <constructor-arg value="#{baseDirectory}/${tenantId}/demoGroup3" />
+    </bean>
+    <!-- 1) Scan for files -->
+    <file:inbound-channel-adapter id="batchFilesDemoGroup3" directory="#{baseDirectoryDemoGroup3}"
+                                  filename-regex="^(.*)-(\d+)\.csv" comparator="fileOrderComparator">
+        <int:poller fixed-rate="1000" />
+    </file:inbound-channel-adapter>
+
+    <!-- 2) move the file to processing and setup header -->
+    <file:outbound-gateway request-channel="batchFilesDemoGroup3" reply-channel="batchFilesDemoGroup3Proc"
+                           directory="#{baseDirectoryDemoGroup3}/processing" delete-source-files="true" />
+    <int:service-activator input-channel="batchFilesDemoGroup3Proc" output-channel="batchFilesHeaderInit"
+                           ref="demoGroup3HeaderSetupTask" method="execute" />
+
+    <bean id="demoGroup3HeaderSetupTask" class="de.hybris.platform.acceleratorservices.dataimport.batch.task.HeaderSetupTask">
+        <property name="catalog" value="demoGroup3ProductCatalog" />
+        <property name="net" value="false" />
+        <property name="storeBaseDirectory" ref="baseDirectoryDemoGroup3" />
+    </bean>
+
+    <!-- Transformer converters mappings -->
+    <bean id="batchDemoGroup3ShofaVariantProductConverterMapping"
+          class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+          p:mapping="shofa_variant_product"
+          p:converter-ref="batchDemoGroup3ShofaVariantProductConverter"/>
+
+    <bean id="batchDemoGroup3KasurVariantProductConverterMapping"
+          class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+          p:mapping="kasur_variant_product"
+          p:converter-ref="batchDemoGroup3KasurVariantProductConverter"/>
+
+    <bean id="demoGroup3ProductImpexHeader" class="java.lang.String">
+        <constructor-arg>
+            <value>
+                # ImpEx for Importing Products
+                # Macros / Replacement Parameter definitions
+                $productCatalog = demoGroup3ProductCatalog
+                $productCatalogName = Demo Group 3 Product Catalog
+                $catalogVersion = catalogversion(catalog(id[default=$productCatalog]), version[default='Staged'])[unique=true, default=$productCatalog:Staged]
+                $supercategories = supercategories(code, $catalogVersion)
+                $baseProduct = baseProduct(code, $catalogVersion)
+                $approved = approvalstatus(code)[default='approved']
+            </value>
+        </constructor-arg>
+    </bean>
+
+    <!-- Converters -->
+    <bean id="batchDemoGroup3ShofaVariantProductConverter" parent="abstractDefaultImpexConverter">
+        <property name="header">
+            <value>#{demoGroup3ProductImpexHeader}
+                # Insert Products
+                INSERT_UPDATE ShofaVariantProductDemo;$baseProduct;code[unique = true];name;name[lang=en];warna;$supercategories;merk;unit(code)[default = pieces];$approved;$catalogVersion
+            </value>
+        </property>
+        <property name="impexRow">
+            <value>;{+0};{1};{2};{3};{4};{5};{6}</value>
+        </property>
+        <property name="type" value="ShofaVariantProductDemo"/>
+    </bean>
+
+    <bean id="batchDemoGroup3KasurVariantProductConverter" parent="abstractDefaultImpexConverter">
+        <property name="header">
+            <value>#{demoGroup3ProductImpexHeader}
+                # Insert Products
+                INSERT_UPDATE KasurVariantProductDemo;$baseProduct;code[unique = true];name;name[lang=en];ukuran;$supercategories;merk;unit(code)[default = pieces];$approved;$catalogVersion
+            </value>
+        </property>
+        <property name="impexRow">
+            <value>;{+0};{1};{2};{3};{4};{5};{6}</value>
+        </property>
+        <property name="type" value="KasurVariantProductDemo"/>
+    </bean>
+</beans>
