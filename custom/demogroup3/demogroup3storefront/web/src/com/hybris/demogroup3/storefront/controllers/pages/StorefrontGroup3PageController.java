@@ -31,7 +31,7 @@ public class StorefrontGroup3PageController extends AbstractPageController {
 
     private static final String TEMPLATE_TESTIMONI_PAGE = "storefrontGroup3TestimoniPage";
 
-    @RequestMapping(value = "/testimoni", method = RequestMethod.GET)
+    @RequestMapping(value = "/testimony", method = RequestMethod.GET)
     public String getTestimoniPage(@RequestParam(value = "page", required = false) Integer page, final Model model) throws CMSItemNotFoundException{
         if(page == null) {
             page = 1;
