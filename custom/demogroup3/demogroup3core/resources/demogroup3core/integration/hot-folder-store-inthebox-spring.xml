@@ -51,6 +51,31 @@
           p:mapping="kasur_variant_product"
           p:converter-ref="batchDemoGroup3KasurVariantProductConverter"/>
 
+    <bean id="batchDemoGroup3ShofaVariantDescriptionConverterMapping"
+          class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+          p:mapping="shofa_variant_description"
+          p:converter-ref="batchDemoGroup3ShofaVariantDescriptionConverter"/>
+
+    <bean id="batchDemoGroup3KasurVariantDescriptionConverterMapping"
+          class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+          p:mapping="kasur_variant_description"
+          p:converter-ref="batchDemoGroup3KasurVariantDescriptionConverter"/>
+
+    <bean id="batchDemoGroup3PriceRowConverterMapping"
+          class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+          p:mapping="inthebox_price"
+          p:converter-ref="batchDemoGroup3PriceRowConverter"/>
+
+    <bean id="batchDemoGroup3StockLevelConverterMapping"
+          class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+          p:mapping="inthebox_stock_level"
+          p:converter-ref="batchDemoGroup3StockLevelConverter"/>
+
+    <bean id="batchDemoGroup3StockProductConverterMapping"
+          class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+          p:mapping="inthebox_stock_product"
+          p:converter-ref="batchDemoGroup3StockProductConverter"/>
+
     <bean id="demoGroup3ProductImpexHeader" class="java.lang.String">
         <constructor-arg>
             <value>
@@ -62,6 +87,7 @@
                 $supercategories = supercategories(code, $catalogVersion)
                 $baseProduct = baseProduct(code, $catalogVersion)
                 $approved = approvalstatus(code)[default='approved']
+                $vendor = demoGroup3
             </value>
         </constructor-arg>
     </bean>
@@ -71,11 +97,11 @@
         <property name="header">
             <value>#{demoGroup3ProductImpexHeader}
                 # Insert Products
-                INSERT_UPDATE ShofaVariantProductDemo;$baseProduct;code[unique = true];name;name[lang=en];warna;$supercategories;merk;unit(code)[default = pieces];$approved;$catalogVersion
+                INSERT_UPDATE ShofaVariantProductDemo;$baseProduct;code[unique = true];name;name[lang=en];warna;$supercategories;merk;keterangan;unit(code)[default = pieces];$approved;$catalogVersion
             </value>
         </property>
         <property name="impexRow">
-            <value>;{+0};{1};{2};{3};{4};{5};{6}</value>
+            <value>;{+0};{1};{2};{3};{4};{5};{6};{7}</value>
         </property>
         <property name="type" value="ShofaVariantProductDemo"/>
     </bean>
@@ -84,12 +110,77 @@
         <property name="header">
             <value>#{demoGroup3ProductImpexHeader}
                 # Insert Products
-                INSERT_UPDATE KasurVariantProductDemo;$baseProduct;code[unique = true];name;name[lang=en];ukuran;$supercategories;merk;unit(code)[default = pieces];$approved;$catalogVersion
+                INSERT_UPDATE KasurVariantProductDemo;$baseProduct;code[unique = true];name;name[lang=en];ukuran;$supercategories;merk;keterangan;unit(code)[default = pieces];$approved;$catalogVersion
             </value>
         </property>
         <property name="impexRow">
-            <value>;{+0};{1};{2};{3};{4};{5};{6}</value>
+            <value>;{+0};{1};{2};{3};{4};{5};{6};{7}</value>
         </property>
         <property name="type" value="KasurVariantProductDemo"/>
+    </bean>
+
+    <bean id="batchDemoGroup3ShofaVariantDescriptionConverter" parent="abstractDefaultImpexConverter">
+        <property name="header">
+            <value>#{demoGroup3ProductImpexHeader}
+                # Insert Products
+                INSERT_UPDATE ShofaVariantProductDemo;code[unique = true];description[lang=en];description[lang=id];$approved;$catalogVersion
+            </value>
+        </property>
+        <property name="impexRow">
+            <value>;{+0};{1};{2}</value>
+        </property>
+        <property name="type" value="ShofaVariantProductDemo"/>
+    </bean>
+
+    <bean id="batchDemoGroup3KasurVariantDescriptionConverter" parent="abstractDefaultImpexConverter">
+        <property name="header">
+            <value>#{demoGroup3ProductImpexHeader}
+                # Insert Products
+                INSERT_UPDATE KasurVariantProductDemo;code[unique = true];description[lang=en];description[lang=id];$approved;$catalogVersion
+            </value>
+        </property>
+        <property name="impexRow">
+            <value>;{+0};{1};{2}</value>
+        </property>
+        <property name="type" value="KasurVariantProductDemo"/>
+    </bean>
+
+    <bean id="batchDemoGroup3PriceRowConverter" parent="abstractDefaultImpexConverter">
+        <property name="header">
+            <value>#{demoGroup3ProductImpexHeader}
+                # Insert Products
+                INSERT_UPDATE PriceRow;product(code, $catalogVersion)[unique = true];price[translator = de.hybris.platform.acceleratorservices.dataimport.batch.converter.PriceTranslator];currency(isocode)[unique = true][default = IDR];$catalogVersion;unit(code[unique = true, default = pieces])
+            </value>
+        </property>
+        <property name="impexRow">
+            <value>;{+0};{1}</value>
+        </property>
+        <property name="type" value="PriceRow"/>
+    </bean>
+
+    <bean id="batchDemoGroup3StockLevelConverter" parent="abstractDefaultImpexConverter">
+        <property name="header">
+            <value>#{demoGroup3ProductImpexHeader}
+                # Insert Products
+                INSERT_UPDATE StockLevel;available;warehouse(code)[unique = true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique = true];reserved
+            </value>
+        </property>
+        <property name="impexRow">
+            <value>;{+0};{1};{2};{3};{4};{5};{6};{7};{8}</value>
+        </property>
+        <property name="type" value="StockLevel"/>
+    </bean>
+
+    <bean id="batchDemoGroup3StockProductConverter" parent="abstractDefaultImpexConverter">
+        <property name="header">
+            <value>#{demoGroup3ProductImpexHeader}
+                # Insert Products
+                UPDATE Product; code[unique = true]; stockLevels(productCode, warehouse(code)); vendors(code); $catalogVersion
+            </value>
+        </property>
+        <property name="impexRow">
+            <value>;{+0};{1};$vendor</value>
+        </property>
+        <property name="type" value="Product"/>
     </bean>
 </beans>
