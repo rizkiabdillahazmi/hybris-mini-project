@@ -26,13 +26,15 @@ public class DefaultKasurVariantProductDao implements KasurVariantProductDao {
     private FlexibleSearchService flexibleSearchService;
 
     @Override
-    public List<KasurVariantProductDemoModel> getKasurVariantByMerk(String merk) {
+    public List<KasurVariantProductDemoModel> getOtherKasurVariant(String merk, String code) {
         final String query = "select {k.pk} from " +
                              "{KasurVariantProductDemo as k join Product as p on {p.pk} = {k.baseproduct}} " +
-                             "where {k.merk}=?merk";
+                             "where {k.merk} = ?merk " +
+                             "and {k.code} <> ?code";
 
         final Map<String, Object> params = new HashMap<String, Object>();
         params.put("merk", merk);
+        params.put("code", code);
 
         final FlexibleSearchQuery searchQuery = new FlexibleSearchQuery(query);
         searchQuery.addQueryParameters(params);

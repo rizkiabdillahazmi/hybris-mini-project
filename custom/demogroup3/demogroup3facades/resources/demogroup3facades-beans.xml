@@ -32,6 +32,7 @@
 		<property name="keterangan" type="String"/>
 		<property name="strPrice" type="String"/>
 		<property name="priceData" type="de.hybris.platform.commercefacades.product.data.PriceData"/>
+		<property name="pageUrl" type="String"/>
 		<property name="imgUrl" type="String"/>
 	</bean>
 
@@ -43,6 +44,7 @@
 		<property name="keterangan" type="String"/>
 		<property name="strPrice" type="String"/>
 		<property name="priceData" type="de.hybris.platform.commercefacades.product.data.PriceData"/>
+		<property name="pageUrl" type="String"/>
 		<property name="imgUrl" type="String"/>
 	</bean>
 </beans>

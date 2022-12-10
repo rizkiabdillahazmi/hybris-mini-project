@@ -19,7 +19,7 @@ public class DefaultShofaVariantProductService implements ShofaVariantProductSer
     private ShofaVariantProductDao shofaVariantProductDao;
 
     @Override
-    public List<ShofaVariantProductDemoModel> getShofaVariantByMerk(String merk) {
-        return shofaVariantProductDao.getShofaVariantByMerk(merk);
+    public List<ShofaVariantProductDemoModel> getOtherShofaVariant(String merk, String code) {
+        return shofaVariantProductDao.getOtherShofaVariant(merk, code);
     }
 }

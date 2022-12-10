@@ -19,7 +19,7 @@ public class DefaultKasurVariantProductService implements KasurVariantProductSer
     private KasurVariantProductDao kasurVariantProductDao;
 
     @Override
-    public List<KasurVariantProductDemoModel> getKasurVariantByMerk(String merk) {
-        return kasurVariantProductDao.getKasurVariantByMerk(merk);
+    public List<KasurVariantProductDemoModel> getOtherKasurVariant(String merk, String code) {
+        return kasurVariantProductDao.getOtherKasurVariant(merk, code);
     }
 }

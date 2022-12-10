@@ -12,6 +12,6 @@ import java.util.List;
 
 public interface KasurVariantProductBasicFacade {
 
-    List<KasurVariantProductData> getKasurVariantByMerk(String merk);
+    List<KasurVariantProductData> getOtherKasurVariant(String merk, String code);
 
 }
