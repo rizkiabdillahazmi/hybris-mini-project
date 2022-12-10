@@ -581,7 +581,7 @@
   align-items: center !important;
   background-color: #fff !important;
   border: 1px solid #e8ecfa !important;
-  border-radius: .25rem !important;
+  border-radius: .4rem !important;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0 !important;
   box-sizing: border-box !important;
   color: #a7abc3 !important;
@@ -589,7 +589,7 @@
   display: inline-flex !important;
   font-family: "Brown Regular", "Nunito","Helvetica Neue",Helvetica,Arial,sans-serif !important;
   font-size: 16px !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
   justify-content: center !important;
   line-height: 1.25 !important;
   margin: 0 !important;
@@ -604,6 +604,7 @@
   vertical-align: baseline !important;
   width: auto !important;
   width: 100% !important;
+  padding: 10px 25px 10px !important;
 }
 
 .button-6:hover,
@@ -630,7 +631,7 @@
   align-items: center;
   background-color: #6086c2;
   border: 1px solid #6086c2;
-  border-radius: .25rem;
+  border-radius: .4rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
   color: #fff;
@@ -638,7 +639,7 @@
   display: inline-flex;
   font-family: "Brown Regular", "Nunito","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   justify-content: center;
   line-height: 1.25;
   margin: 0;
@@ -653,6 +654,7 @@
   vertical-align: baseline;
   width: auto;
   width: 100%;
+  padding: 10px 25px 10px;
 }
 
 .button-5:hover,
@@ -681,4 +683,57 @@
 
 .rating .rating-stars span.active {
   color: #fee180;
+}
+
+// ================================================= pdp-list-variant-product-projek =================================================
+
+@media (min-width: 1200px) {
+    #variant-product-list.container-sm{
+        max-width: 65%;
+    }
+}
+
+#variant-product-list {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.catalog-product-block {
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+.catalog-product-block a:hover .size,
+.catalog-product-block a:hover .name{
+  color: #6086c2;
+}
+
+.catalog-product-block a .name {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 5px !important;
+  color: #000;
+  margin: 0;
+}
+
+.catalog-product-block a .size {
+    color: #555;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.variant-price {
+    font-family: 'Palmer Lake' !important;
+    font-weight: 400 !important;
+    font-style: normal;
+    font-size: 4rem !important;
+    color: #6086c2;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+}
+
+.button-5.js-continue-shopping-button:hover {
+  background-color: #7fc5f9 !important;
 }
