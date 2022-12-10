@@ -1,0 +1,30 @@
+
+$contentCatalog = demoGroup3ContentCatalog
+$contentCatalogName = Demo Group 3 Content Catalog
+$productCatalog = demoGroup3ProductCatalog
+$productCatalogName = Demo Group 3 Product Catalog
+
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCV = catalogVersion(catalog(id[default=$productCatalog]), version[default='Staged'])[unique=true, default=$productCatalog:Staged]
+
+$medias = medias(code, $contentCV);
+$mediaContainer = media(qualifier, $contentCV);
+$contentPage = contentPage(uid, $contentCV);
+$product = product(code, $productCV)
+$category = category(code, $productCV)
+$siteResource = jar:org.demoGroup3.initialdata.setup.InitialDataSystemSetup&/demoGroup3initialdata/import/sampledata/contentCatalogs/$contentCatalog
+$productResource = jar:org.demoGroup3.initialdata.setup.InitialDataSystemSetup&/demoGroup3initialdata/import/sampledata/productCatalogs/$productCatalog
+$jarResourceCms = jar:org.demoGroup3.initialdata.setup.InitialDataSystemSetup&/demoGroup3initialdata/import/sampledata/cockpits/cmscockpit
+$lang = en
+
+## SECTION 4 - Jsp Content
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true]; uid[unique=true]               ; name                           ; page                                                                                           ; actions(uid,$contentCV); &componentRef
+                                 ;                       ; CustomProductDetailVariantCard ; CustomProductDetailVariantCard ; /WEB-INF/views/responsive/pages/layout/components/customproductdetail/variantproductcard.jsp   ;                        ; CustomProductDetailVariantCard
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]                            ; name                                     ; cmsComponents(&componentRef)               ; active[default = true]
+                         ;                          ; Section4-CustomProductDetailVariantCardSlot   ; Section4-CustomProductDetailVariantCard  ; CustomProductDetailVariantCard             ; true
+
+
+INSERT_UPDATE ContentSlotForPage; $contentCV[unique = true]; uid[unique = true]                                ; position[unique = true]; page(uid, $contentCV)[unique = true][default = 'productDetails']; contentSlot(uid, $contentCV)[unique = true]; ; ;
+                                ;                          ; Section4-CustomProductDetailVariantCardContent    ; Section4               ;                                                                 ; Section4-CustomProductDetailVariantCardSlot; ; ;
+
