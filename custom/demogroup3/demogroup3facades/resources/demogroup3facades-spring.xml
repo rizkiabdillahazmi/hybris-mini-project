@@ -195,6 +195,11 @@
 	<alias name="kasurVariantProductBasicPopulator" alias="kasurVariantBasicPopulator"/>
 	<bean id="kasurVariantProductBasicPopulator"
 		  class="com.hybris.demogroup3.facades.populators.KasurVariantProductBasicPopulator"/>
+
+
+	<alias name="shofaVariantProductBasicPopulator" alias="shofaVariantBasicPopulator"/>
+	<bean id="shofaVariantProductBasicPopulator"
+		  class="com.hybris.demogroup3.facades.populators.ShofaVariantProductBasicPopulator"/>
 	<!-- Populators -->
 
 	<!-- Converters-->
@@ -204,6 +209,16 @@
 		<property name="populators">
 			<list merge="true">
 				<ref bean="kasurVariantProductBasicPopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="shofaVariantBasicConverter" alias="shofaVariantBasicConverter"/>
+	<bean id="shofaVariantBasicConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="com.hybris.demogroup3.facades.product.data.ShofaVariantProductData"/>
+		<property name="populators">
+			<list merge="true">
+				<ref bean="shofaVariantProductBasicPopulator"/>
 			</list>
 		</property>
 	</bean>
@@ -231,6 +246,11 @@
 	<!-- Kasur Variant Facade	-->
 	<alias name="defaultKasurVariantProductBasicFacade" alias="kasurVariantBasicFacade"/>
 	<bean id="defaultKasurVariantProductBasicFacade" class="com.hybris.demogroup3.facades.custom.productdetail.kasurvariantdemo.impl.DefaultKasurVariantProductBasicFacade">
+	</bean>
+
+	<!-- Shofa Variant Facade	-->
+	<alias name="defaultShofaVariantProductBasicFacade" alias="shofaVariantBasicFacade"/>
+	<bean id="defaultShofaVariantProductBasicFacade" class="com.hybris.demogroup3.facades.custom.productdetail.shofavariantdemo.impl.DefaultShofaVariantProductBasicFacade">
 	</bean>
 
 	<!-- Facades -->

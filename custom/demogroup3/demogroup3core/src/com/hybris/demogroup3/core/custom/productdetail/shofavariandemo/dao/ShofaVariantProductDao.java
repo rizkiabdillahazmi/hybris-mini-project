@@ -12,5 +12,5 @@ import java.util.List;
 
 public interface ShofaVariantProductDao {
 
-    List<ShofaVariantProductDemoModel> getShofaVariantByMerk(String merk);
+    List<ShofaVariantProductDemoModel> getOtherShofaVariant(String merk, String code);
 }

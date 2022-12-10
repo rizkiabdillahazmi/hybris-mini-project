@@ -4,6 +4,7 @@
 package com.hybris.demogroup3.storefront.controllers.pages;
 
 import com.hybris.demogroup3.facades.custom.productdetail.kasurvariantdemo.KasurVariantProductBasicFacade;
+import com.hybris.demogroup3.facades.custom.productdetail.shofavariantdemo.ShofaVariantProductBasicFacade;
 import de.hybris.platform.acceleratorfacades.futurestock.FutureStockFacade;
 import de.hybris.platform.acceleratorservices.controllers.page.PageType;
 import de.hybris.platform.acceleratorstorefrontcommons.breadcrumb.impl.ProductBreadcrumbBuilder;
@@ -88,6 +89,9 @@ public class ProductPageController extends AbstractPageController
 	private static final String STOCK_SERVICE_UNAVAILABLE = "basket.page.viewFuture.unavailable";
 	private static final String NOT_MULTISKU_ITEM_ERROR = "basket.page.viewFuture.not.multisku";
 
+	private static final String KASUR = "kasur";
+	private static final String SHOFA = "shofa";
+
 	@Resource(name = "productDataUrlResolver")
 	private UrlResolver<ProductData> productDataUrlResolver;
 
@@ -115,6 +119,9 @@ public class ProductPageController extends AbstractPageController
 	@Resource(name = "kasurVariantBasicFacade")
 	private KasurVariantProductBasicFacade kasurVariantBasicFacade;
 
+	@Resource(name = "shofaVariantBasicFacade")
+	private ShofaVariantProductBasicFacade shofaVariantBasicFacade;
+
 	@RequestMapping(value = PRODUCT_CODE_PATH_VARIABLE_PATTERN, method = RequestMethod.GET)
 	public String productDetail(@PathVariable("productCode") final String productCode, final Model model,
 			final HttpServletRequest request, final HttpServletResponse response)
@@ -124,7 +131,8 @@ public class ProductPageController extends AbstractPageController
 				ProductOption.VARIANT_MATRIX_MEDIA);
 
 		final ProductData productData = productFacade.getProductForCodeAndOptions(productCode, extraOptions);
-
+		final ProductModel productModel = productService.getProductForCode(productCode);
+		productModel.getSupercategories().stream();
 		final String redirection = checkRequestUrl(request, response, productDataUrlResolver.resolve(productData));
 		if (StringUtils.isNotEmpty(redirection))
 		{
@@ -139,7 +147,19 @@ public class ProductPageController extends AbstractPageController
 		model.addAttribute(new ReviewForm());
 		model.addAttribute("pageType", PageType.PRODUCT.name());
 		model.addAttribute("futureStockEnabled", Boolean.valueOf(Config.getBoolean(FUTURE_STOCK_ENABLED, false)));
-		model.addAttribute("kasurVariant", kasurVariantBasicFacade.getKasurVariantByMerk("Flip"));
+
+		if (null != productData && null != productData.getBaseProduct()) {
+
+			if (productData.getBaseProduct().toLowerCase().contains(KASUR)) {
+				model.addAttribute("otherVariants",
+									kasurVariantBasicFacade.getOtherKasurVariant(productModel.getMerk(), productCode));
+			}
+
+			if (productData.getBaseProduct().toLowerCase().contains(SHOFA)) {
+				model.addAttribute("otherVariants",
+									shofaVariantBasicFacade.getOtherShofaVariant(productModel.getMerk(), productCode));
+			}
+		}
 
 		final String metaKeywords = MetaSanitizerUtil.sanitizeKeywords(productData.getKeywords());
 		final String metaDescription = MetaSanitizerUtil.sanitizeDescription(productData.getDescription());

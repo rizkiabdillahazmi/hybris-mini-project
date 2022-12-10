@@ -27,14 +27,18 @@ public class DefaultKasurVariantProductBasicFacade implements KasurVariantProduc
     private Converter<KasurVariantProductDemoModel, KasurVariantProductData> kasurVariantBasicConverter;
 
     @Override
-    public List<KasurVariantProductData> getKasurVariantByMerk(String merk) {
-        List<KasurVariantProductDemoModel> models = kasurVariantProductService.getKasurVariantByMerk(merk);
-        List<KasurVariantProductData> datas = new ArrayList<>();
+    public List<KasurVariantProductData> getOtherKasurVariant(String merk, String code) {
 
-        if (CollectionUtils.isNotEmpty(models)) {
-            datas.addAll(kasurVariantBasicConverter.convertAll(models));
-            return datas;
+        if (null != merk) {
+            List<KasurVariantProductDemoModel> models = kasurVariantProductService.getOtherKasurVariant(merk, code);
+            List<KasurVariantProductData> datas = new ArrayList<>();
+
+            if (CollectionUtils.isNotEmpty(models)) {
+                datas.addAll(kasurVariantBasicConverter.convertAll(models));
+                return datas;
+            }
         }
+
         return Collections.emptyList();
     }
 }

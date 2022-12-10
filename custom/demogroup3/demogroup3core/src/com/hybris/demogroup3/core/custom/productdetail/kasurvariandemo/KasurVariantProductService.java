@@ -11,5 +11,5 @@ import java.util.List;
  */
 
 public interface KasurVariantProductService {
-    List<KasurVariantProductDemoModel> getKasurVariantByMerk(String merk);
+    List<KasurVariantProductDemoModel> getOtherKasurVariant(String merk, String code);
 }
