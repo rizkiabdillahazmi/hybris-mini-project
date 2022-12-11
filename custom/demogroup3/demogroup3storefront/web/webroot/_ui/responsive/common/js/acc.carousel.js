@@ -2,7 +2,7 @@ ACC.carousel = {
 
 	_autoload: [
 		["bindCarousel", $(".js-owl-carousel").length >0],
-		"bindJCarousel"
+		"bindJCarousel",
 	],
 
 	carouselConfig:{

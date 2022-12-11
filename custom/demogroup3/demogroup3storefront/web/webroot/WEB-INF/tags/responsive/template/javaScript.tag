@@ -37,7 +37,13 @@
 		<script src="${commonResourcePathHtml}/js/jquery.slideviewer.custom.1.2.js"></script>
 		
 		<%-- Custom ACC JS --%>
-		
+
+        <c:if test = "${pageTitle =='Demo Group 3'}">
+            <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>--%>
+            <script src="${commonResourcePathHtml}/js/owl-carousel.js"></script>
+            <script src="${commonResourcePathHtml}/js/acc.carouselCustom.js"></script>
+        </c:if>
+
 		<script src="${commonResourcePathHtml}/js/acc.address.js"></script>
 		<script src="${commonResourcePathHtml}/js/acc.autocomplete.js"></script>
 		<script src="${commonResourcePathHtml}/js/acc.carousel.js"></script>

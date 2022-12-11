@@ -12,6 +12,7 @@
 <spring:htmlEscape defaultHtmlEscape="true" />
 
 <c:url value="/login" var="loginUrl"/>
+<c:url value="/" var="homeUrl"/>
 
 <spring:url value="/login/register/termsandconditions" var="getTermsAndConditionsUrl"/>
 
@@ -19,7 +20,7 @@
 <div class="container login-page">
     <div class="card">
         <div class="card__logo">
-            <a href="card__logo-link">
+            <a href="${fn:escapeXml(homeUrl)}">
                 <img class="card__img" src="https://inthebox.net/images/logo-inthebox-440x80.png">
             </a>
         </div>
@@ -35,9 +36,9 @@
                 path="titleCode" mandatory="true" skipBlank="false"
                 skipBlankMessageKey="form.select.none" items="${titles}" />
 
-            <formElement:formInputBox idKey="ID"
-                    labelKey="ID" path="id" inputCSS="form-control" placeholder="ID"
-                    mandatory="true" />
+            <formElement:formInputBox idKey="register.id"
+                labelKey="register.id" path="id" inputCSS="form-control" placeholder="ID"
+                mandatory="true" />
             <formElement:formInputBox idKey="register.firstName"
                 labelKey="register.firstName" path="firstName" inputCSS="form-control" placeholder="Nama Awal"
                 mandatory="true" />
