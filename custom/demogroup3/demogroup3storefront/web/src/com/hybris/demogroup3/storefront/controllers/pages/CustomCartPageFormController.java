@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,19 +34,15 @@ public class CustomCartPageFormController {
     private static final Logger LOG = Logger.getLogger(CustomCartPageFormController.class);
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public void updateCart(final CustomCartPageForm form) {
+    public void updateCart(@RequestBody final CustomCartPageForm form) {
 
         CartModel cart = cartService.getSessionCart();
         cart.setNote(form.getNote());
 
         try {
-            LOG.info("++++++++++++++++++ form note ++++++++++++++++++++++" + form.getNote() + "++++++++++++++++++++++++++++++++++++++++++++++++++");
             cart.setNote(form.getNote());
             modelService.save(cart);
-
-
         } catch (Exception ex) {
-
             LOG.error("Couldn't insert cart note: " + cart.getSessionId() + ".", ex);
         }
 

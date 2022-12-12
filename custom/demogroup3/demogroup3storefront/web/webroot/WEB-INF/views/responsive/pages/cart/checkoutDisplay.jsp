@@ -4,7 +4,6 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <spring:htmlEscape defaultHtmlEscape="true" />
 
@@ -37,14 +36,14 @@
 <div class="row mt-5">
     <div class="row justify-content-md-center">
         <div class="col-lg-6 col-md-8 mt-4">
-            <form:form id="customUpdateCartForm" action="/demogroup3storefront/demoGroup3/en/cart/custom/update" method="post" modelAttribute="customUpdateCartForm">
+            <form id="customUpdateCartForm" action="/demogroup3storefront/demoGroup3/en/cart/custom/update">
                 <div class="form-group">
                     <label class="custom-text-transform"><spring:theme code="cart.page.note"/></label>
                     <div>
                         <textarea rows="5" name="note" placeholder="" class="form-control"></textarea>
                     </div>
                 </div>
-            </form:form>
+            </form>
         </div>
     </div>
 </div>
@@ -69,16 +68,10 @@
 
         <div class="col-sm-4 col-md-3 pull-right">
             <ycommerce:testId code="checkoutButton">
-                <button class="button-5 btn--continue-checkout js-continue-checkout-button" data-checkout-url="${fn:escapeXml(checkoutUrl)}">
+                <button class="button-5 btn--continue-checkout js-continue-checkout-button js-custom-update-cart" data-checkout-url="${fn:escapeXml(checkoutUrl)}">
                     <spring:theme code="checkout.checkout"/>
                 </button>
             </ycommerce:testId>
-        </div>
-
-        <div class="col-sm-4 col-md-3 pull-right">
-            <button class="button-5 btn--continue-checkout js-custom-update-cart">
-                <spring:theme code="checkout.checkout"/>
-            </button>
         </div>
     </div>
 </div>
