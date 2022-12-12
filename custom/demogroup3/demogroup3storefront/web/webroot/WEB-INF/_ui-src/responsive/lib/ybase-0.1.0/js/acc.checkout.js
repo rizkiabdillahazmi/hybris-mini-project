@@ -130,6 +130,11 @@ ACC.checkout = {
 			return false;
 		});
 
+
+		$('.js-custom-update-cart').click(function (){
+		    let form = $('#customUpdateCartForm');
+		    form.submit();
+		})
 	}
 
 };
