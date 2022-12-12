@@ -43,7 +43,7 @@
 			<a href="#skiptonavigation" class="skiptonavigation" data-role="none">${fn:escapeXml(skipToNavigation)}</a>
 
 
-			<c:if test = "${pageTitle !='Login | Demo Group 3' && pageTitle !='Register | Demo Group 3'}">
+			<c:if test = "${pageTitle !='Login | Demo Group 3 Site' && pageTitle !='Register | Demo Group 3 Site'}">
 			    <header:header hideHeaderLinks="${hideHeaderLinks}" />
             </c:if>
 
@@ -60,7 +60,7 @@
 
 
         <!--Footer-->
-            <c:if test = "${pageTitle !='Login | Demo Group 3' && pageTitle !='Register | Demo Group 3'}">
+            <c:if test = "${pageTitle !='Login | Demo Group 3 Site' && pageTitle !='Register | Demo Group 3 Site'}">
                 <div class="footer-new">
                     <div class="container">
                         <div class="row footer-component">
