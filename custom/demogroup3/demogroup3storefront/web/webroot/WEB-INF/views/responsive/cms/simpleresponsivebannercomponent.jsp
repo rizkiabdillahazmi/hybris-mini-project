@@ -20,16 +20,19 @@
 
 <c:url value="${urlLink}" var="simpleResponsiveBannerUrl" />
 
-<div class="simple-banner banner__component--responsive">
 	<c:set var="imagerDataJson" value="{${imagerData}}"/>
 	<c:choose>
 		<c:when test="${empty simpleResponsiveBannerUrl || simpleResponsiveBannerUrl eq '#' || !ycommerce:validateUrlScheme(simpleResponsiveBannerUrl)}">
 			<img class="js-responsive-image" data-media='${fn:escapeXml(imagerDataJson)}' alt='${altTextHtml}' title='${altTextHtml}' style="">
 		</c:when>
 		<c:otherwise>
-			<a href="${fn:escapeXml(simpleResponsiveBannerUrl)}">
-				<img class="js-responsive-image" data-media='${fn:escapeXml(imagerDataJson)}' title='${altTextHtml}' alt='${altTextHtml}' style="">
-			</a>
+		     <div class="owl-item">
+                <a href="${fn:escapeXml(simpleResponsiveBannerUrl)}">
+                    <div class="banner__img-container slide-item">
+                        <img class="banner__img js-responsive-image" data-media='${fn:escapeXml(imagerDataJson)}' title='${altTextHtml}' alt='${altTextHtml}' style="">
+                    </div>
+                </a>
+             </div>
+
 		</c:otherwise>
 	</c:choose>
-</div>

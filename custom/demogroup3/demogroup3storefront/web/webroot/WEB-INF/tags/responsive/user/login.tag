@@ -9,6 +9,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <c:url value="/register" var="registerUrl"/>
+<c:url value="/" var="homeUrl"/>
 
 <spring:htmlEscape defaultHtmlEscape="true" />
 
@@ -19,7 +20,7 @@
 <div class="container login-page">
     <div class="card">
         <div class="card__logo">
-            <a href="card__logo-link">
+            <a href="${fn:escapeXml(homeUrl)}">
                 <img class="card__img" src="https://inthebox.net/images/logo-inthebox-440x80.png">
             </a>
         </div>
