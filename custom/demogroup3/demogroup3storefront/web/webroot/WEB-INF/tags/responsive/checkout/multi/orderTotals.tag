@@ -7,8 +7,13 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="multi-checkout" tagdir="/WEB-INF/tags/responsive/checkout/multi" %>
 
 <spring:htmlEscape defaultHtmlEscape="true" />
+
+<div class="checkout-voucher-hp">
+    <multi-checkout:checkoutVoucher cartData="${cartData}"/>
+</div>
 
 <div class="subtotals ${fn:escapeXml(subtotalsCssClasses)}">
 	<div class="subtotal">
