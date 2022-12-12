@@ -28,22 +28,20 @@
 			<ycommerce:testId code="product_productName">
 				<a class="name" href="${fn:escapeXml(productUrl)}">
 					<c:out escapeXml="false" value="${ycommerce:sanitizeHTML(product.name)}" />
+                     <div class ="product_list_detail">
+                          <ycommerce:testId code="searchPage_productName_link_${product.attribute}">
+                             ${ycommerce:sanitizeHTML(product.attribute)}
+                          </ycommerce:testId>
+                      </div>
+
+
+                    <div class = "product_list_detail">
+                         <ycommerce:testId code="searchPage_productName_link_${product.keterangan}">
+                            ${ycommerce:sanitizeHTML(product.keterangan)}
+                         </ycommerce:testId>
+                     </div>
 				</a>
 			</ycommerce:testId>
-
-
-             <div class ="product_list_detail">
-                  <ycommerce:testId code="searchPage_productName_link_${product.attribute}">
-                     ${ycommerce:sanitizeHTML(product.attribute)}</a>
-                  </ycommerce:testId>
-              </div>
-
-
-			<div class = "product_list_detail">
-                 <ycommerce:testId code="searchPage_productName_link_${product.keterangan}">
-                    ${ycommerce:sanitizeHTML(product.keterangan)}</a>
-                 </ycommerce:testId>
-             </div>
 
 			<c:if test="${not empty product.potentialPromotions}">
 				<div class="promo">
