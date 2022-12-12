@@ -17,7 +17,7 @@
 	<cms:pageSlot position="UpSelling" var="comp" element="div" class="productDetailsPageSectionUpSelling">
 		<cms:component component="${comp}" element="div" class="productDetailsPageSectionUpSelling-component"/>
 	</cms:pageSlot>
-	<product:productPageTabs />
+	<!-- <product:productPageTabs /> -->
 	<cms:pageSlot position="Section4" var="comp" element="div" class="productDetailsPageSection4">
 		<cms:component component="${comp}" element="div" class="productDetailsPageSection4-component"/>
 	</cms:pageSlot>
