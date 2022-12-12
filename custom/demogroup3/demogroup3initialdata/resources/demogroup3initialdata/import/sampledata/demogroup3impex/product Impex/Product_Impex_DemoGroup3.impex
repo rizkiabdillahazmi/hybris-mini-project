@@ -144,3 +144,5 @@ INSERT_UPDATE ShofaProductDemo ;code[unique = true]; name   ;name[lang=en]     ;
 INSERT_UPDATE ShofaVariantProductDemo;$baseProduct;code[unique = true]     ;name                 ;name[lang=en]       ;warna        ; unit(code)[default = pieces]; $approved; $catalogVersion; $supercategories;merk
                                      ; Shofa      ; Sheate3White           ;Shofa 3 Sheate White ;Shofa 3 Sheate White;putih         ;                             ;          ;                ; "Shofa"        ;Sheater3
                                      ; Shofa      ; Sheate3Black           ;Shofa 3 Sheate Black ;Shofa 3 Sheate Black;hitam         ;                             ;          ;                ; "Shofa"        ;Sheater3
+
+
