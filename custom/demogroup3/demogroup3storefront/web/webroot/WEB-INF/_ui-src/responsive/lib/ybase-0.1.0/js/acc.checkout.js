@@ -130,6 +130,34 @@ ACC.checkout = {
 			return false;
 		});
 
+
+		$('.js-custom-update-cart').click(function (){
+            //let form = $('#customUpdateCartForm');
+		    //form.submit();
+		    if ($('#customUpdateCartForm').parsley().validate()) {
+                let form = $('#customUpdateCartForm');
+                let dataResult = getJsonForm($("#customUpdateCartForm").serializeArray(), true);;
+                let actionUrl = form.attr('action');
+                let jsonData = JSON.stringify(dataResult);
+
+                $.ajax({
+                    url: actionUrl,
+                    method: 'post',
+                    contentType: 'application/json',
+                    data: jsonData,
+                    success: function (res, status, xhr) {
+                        if (xhr.status == 200 || xhr.status == 201) {
+                            // do somthing
+                        } else {
+                            // do somthing
+                        }
+                    },
+                    erorrr: function (err) {
+                        // do somthing
+                    }
+                  });
+                }
+		})
 	}
 
 };

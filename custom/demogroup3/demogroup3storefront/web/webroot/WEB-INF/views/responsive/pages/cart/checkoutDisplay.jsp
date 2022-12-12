@@ -36,12 +36,14 @@
 <div class="row mt-5">
     <div class="row justify-content-md-center">
         <div class="col-lg-6 col-md-8 mt-4">
-            <div class="form-group">
-                <label class="custom-text-transform"><spring:theme code="cart.page.note"/></label>
-                <div>
-                    <textarea rows="5" name="notes" placeholder="" class="form-control"></textarea>
+            <form id="customUpdateCartForm" action="/demogroup3storefront/demoGroup3/en/cart/custom/update">
+                <div class="form-group">
+                    <label class="custom-text-transform"><spring:theme code="cart.page.note"/></label>
+                    <div>
+                        <textarea rows="5" name="note" placeholder="" class="form-control"></textarea>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -66,7 +68,7 @@
 
         <div class="col-sm-4 col-md-3 pull-right">
             <ycommerce:testId code="checkoutButton">
-                <button class="button-5 btn--continue-checkout js-continue-checkout-button" data-checkout-url="${fn:escapeXml(checkoutUrl)}">
+                <button class="button-5 btn--continue-checkout js-continue-checkout-button js-custom-update-cart" data-checkout-url="${fn:escapeXml(checkoutUrl)}">
                     <spring:theme code="checkout.checkout"/>
                 </button>
             </ycommerce:testId>

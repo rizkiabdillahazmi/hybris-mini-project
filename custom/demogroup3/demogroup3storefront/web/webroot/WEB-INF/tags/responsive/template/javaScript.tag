@@ -91,6 +91,8 @@
 		<script src="${commonResourcePathHtml}/js/acc.csv-import.js"></script>
 
 		<script src="${commonResourcePathHtml}/js/_autoload.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.1/parsley.min.js"></script>
+		<script src="${commonResourcePathHtml}/js/custom-default.js"></script>
 		
 		<%-- Cms Action JavaScript files --%>
 		<c:forEach items="${cmsActionsJsFiles}" var="actionJsFile">
