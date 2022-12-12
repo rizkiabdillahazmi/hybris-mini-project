@@ -76,6 +76,21 @@
           p:mapping="inthebox_stock_product"
           p:converter-ref="batchDemoGroup3StockProductConverter"/>
 
+    <bean id="batchDemoGroup3MediaConverterMapping"
+          class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+          p:mapping="inthebox_media"
+          p:converter-ref="batchDemoGroup3MediaConverter"/>
+
+    <bean id="batchDemoGroup3MediaContainerConverterMapping"
+          class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+          p:mapping="inthebox_media_container"
+          p:converter-ref="batchDemoGroup3MediaContainerConverter"/>
+
+    <bean id="batchDemoGroup3ProductMediaConverterMapping"
+          class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+          p:mapping="inthebox_product_media"
+          p:converter-ref="batchDemoGroup3ProductMediaConverter"/>
+
     <bean id="demoGroup3ProductImpexHeader" class="java.lang.String">
         <constructor-arg>
             <value>
@@ -88,6 +103,17 @@
                 $baseProduct = baseProduct(code, $catalogVersion)
                 $approved = approvalstatus(code)[default='approved']
                 $vendor = demoGroup3
+                $media = @media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator]
+                $thumbnail = thumbnail(code, $catalogVersion)
+                $picture = picture(code, $catalogVersion)
+                $thumbnails = thumbnails(code, $catalogVersion)
+                $detail = detail(code, $catalogVersion)
+                $normal = normal(code, $catalogVersion)
+                $others = others(code, $catalogVersion)
+                $data_sheet = data_sheet(code, $catalogVersion)
+                $medias = medias(code, $catalogVersion)
+                $galleryImages = galleryImages(qualifier, $catalogVersion)
+                $siteResource = jar:com.hybris.demogroup3.initialdata.setup.InitialDataSystemSetup&amp;/demogroup3initialdata/import/sampledata/productCatalogs/catalogName
             </value>
         </constructor-arg>
     </bean>
@@ -180,6 +206,45 @@
         </property>
         <property name="impexRow">
             <value>;{+0};{1};$vendor</value>
+        </property>
+        <property name="type" value="Product"/>
+    </bean>
+
+    <bean id="batchDemoGroup3MediaConverter" parent="abstractDefaultImpexConverter">
+        <property name="header">
+            <value>#{demoGroup3ProductImpexHeader}
+                # Insert Media
+                INSERT_UPDATE Media; mediaFormat(qualifier); code[unique = true]; $media; folder(qualifier); mime[default = 'image/jpeg']; $catalogVersion
+            </value>
+        </property>
+        <property name="impexRow">
+            <value>;{+0};{1};{2};images</value>
+        </property>
+        <property name="type" value="Media"/>
+    </bean>
+
+    <bean id="batchDemoGroup3MediaContainerConverter" parent="abstractDefaultImpexConverter">
+        <property name="header">
+            <value>#{demoGroup3ProductImpexHeader}
+                # Insert Media
+                INSERT_UPDATE MediaContainer; qualifier[unique = true]; $medias; $catalogVersion
+            </value>
+        </property>
+        <property name="impexRow">
+            <value>;{+0};{1}</value>
+        </property>
+        <property name="type" value="MediaContainer"/>
+    </bean>
+
+    <bean id="batchDemoGroup3ProductMediaConverter" parent="abstractDefaultImpexConverter">
+        <property name="header">
+            <value>#{demoGroup3ProductImpexHeader}
+                # Insert Media
+                UPDATE Product; code[unique = true]; $picture; $thumbnail; $detail; $others; $normal; $thumbnails; $galleryImages; $catalogVersion
+            </value>
+        </property>
+        <property name="impexRow">
+            <value>;{+0};{1};{2};{3};{4};{5};{6};{7}</value>
         </property>
         <property name="type" value="Product"/>
     </bean>
