@@ -18952,6 +18952,7 @@ a {
 .footer-new {
   background-color: var(--main-color);
   padding: 6rem 0rem;
+  margin-top: 0rem;
 }
 .contact {
   margin-top: 2rem;
