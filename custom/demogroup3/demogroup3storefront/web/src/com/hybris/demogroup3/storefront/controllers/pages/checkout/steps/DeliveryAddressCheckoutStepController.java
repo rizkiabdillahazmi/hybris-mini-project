@@ -22,6 +22,11 @@ import de.hybris.platform.commercefacades.user.data.CountryData;
 import de.hybris.platform.commerceservices.address.AddressVerificationDecision;
 import de.hybris.platform.util.Config;
 import com.hybris.demogroup3.storefront.controllers.ControllerConstants;
+import de.hybris.platform.acceleratorstorefrontcommons.forms.VoucherForm;
+
+import de.hybris.platform.commerceservices.security.BruteForceAttackHandler;
+import de.hybris.platform.commercefacades.voucher.VoucherFacade;
+import de.hybris.platform.commercefacades.voucher.exceptions.VoucherOperationException;
 
 import java.util.Set;
 
@@ -29,6 +34,7 @@ import javax.annotation.Resource;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,12 +44,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
+
 @Controller
 @RequestMapping(value = "/checkout/multi/delivery-address")
 public class DeliveryAddressCheckoutStepController extends AbstractCheckoutStepController
 {
 	private static final String DELIVERY_ADDRESS = "delivery-address";
 	private static final String SHOW_SAVE_TO_ADDRESS_BOOK_ATTR = "showSaveToAddressBook";
+
+	private static final Logger LOGGER = Logger.getLogger(DeliveryAddressCheckoutStepController.class);
+
+	public static final String VOUCHER_FORM = "voucherForm";
+
+
+	@Resource(name = "bruteForceAttackHandler")
+	private BruteForceAttackHandler bruteForceAttackHandler;
+
+	@Resource(name = "voucherFacade")
+	private VoucherFacade voucherFacade;
 
 	@Resource(name = "addressDataUtil")
 	private AddressDataUtil addressDataUtil;
@@ -59,6 +80,11 @@ public class DeliveryAddressCheckoutStepController extends AbstractCheckoutStepC
 		final CartData cartData = getCheckoutFacade().getCheckoutCart();
 
 		populateCommonModelAttributes(model, cartData, new AddressForm());
+
+		if (!model.containsAttribute(VOUCHER_FORM))
+		{
+			model.addAttribute(VOUCHER_FORM, new VoucherForm());
+		}
 
 		return ControllerConstants.Views.Pages.MultiStepCheckout.AddEditDeliveryAddressPage;
 	}
@@ -93,6 +119,11 @@ public class DeliveryAddressCheckoutStepController extends AbstractCheckoutStepC
 		if (addressRequiresReview)
 		{
 			return ControllerConstants.Views.Pages.MultiStepCheckout.AddEditDeliveryAddressPage;
+		}
+
+		if (!model.containsAttribute(VOUCHER_FORM))
+		{
+			model.addAttribute(VOUCHER_FORM, new VoucherForm());
 		}
 
 		getUserFacade().addAddress(newAddress);
@@ -387,4 +418,71 @@ public class DeliveryAddressCheckoutStepController extends AbstractCheckoutStepC
 		setCheckoutStepLinksForModel(model, getCheckoutStep());
 	}
 
+	@RequestMapping(value = "/voucher/apply", method = RequestMethod.POST)
+	public String applyVoucherAction(@Valid final VoucherForm form, final BindingResult bindingResult,
+									 final HttpServletRequest request, final RedirectAttributes redirectAttributes)
+	{
+		try
+		{
+			if (bindingResult.hasErrors())
+			{
+				redirectAttributes.addFlashAttribute("errorMsg",
+						getMessageSource().getMessage("text.voucher.apply.invalid.error", null, getI18nService().getCurrentLocale()));
+			}
+			else
+			{
+				final String ipAddress = request.getRemoteAddr();
+				if (bruteForceAttackHandler.registerAttempt(ipAddress + "_voucher"))
+				{
+					redirectAttributes.addFlashAttribute("disableUpdate", Boolean.valueOf(true));
+					redirectAttributes.addFlashAttribute("errorMsg",
+							getMessageSource().getMessage("text.voucher.apply.bruteforce.error", null, getI18nService().getCurrentLocale()));
+				}
+				else
+				{
+					voucherFacade.applyVoucher(form.getVoucherCode());
+					redirectAttributes.addFlashAttribute("successMsg",
+							getMessageSource().getMessage("text.voucher.apply.applied.success", new Object[]
+									{ form.getVoucherCode() }, getI18nService().getCurrentLocale()));
+				}
+			}
+		}
+		catch (final VoucherOperationException e)
+		{
+			redirectAttributes.addFlashAttribute(VOUCHER_FORM, form);
+			redirectAttributes.addFlashAttribute("errorMsg",
+					getMessageSource().getMessage(e.getMessage(), null,
+							getMessageSource().getMessage("text.voucher.apply.invalid.error", null, getI18nService().getCurrentLocale()),
+							getI18nService().getCurrentLocale()));
+			if (LOGGER.isDebugEnabled())
+			{
+				LOGGER.debug(e.getMessage(), e);
+			}
+
+		}
+
+		return getCheckoutStep().currentStep();
+	}
+
+
+	@RequestMapping(value = "/voucher/remove", method = RequestMethod.POST)
+	public String removeVoucher(@Valid final VoucherForm form, final RedirectAttributes redirectModel)
+	{
+		try
+		{
+			voucherFacade.releaseVoucher(form.getVoucherCode());
+		}
+		catch (final VoucherOperationException e)
+		{
+			GlobalMessages.addFlashMessage(redirectModel, GlobalMessages.ERROR_MESSAGES_HOLDER, "text.voucher.release.error",
+					new Object[]
+							{ form.getVoucherCode() });
+			if (LOGGER.isDebugEnabled())
+			{
+				LOGGER.debug(e.getMessage(), e);
+			}
+
+		}
+		return getCheckoutStep().currentStep();
+	}
 }
