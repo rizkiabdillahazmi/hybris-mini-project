@@ -65,10 +65,10 @@
                 </div>
                 <div class="custom-pagination">
                     <c:if test="${paginationTestimony > 1}">
-                        <a href="/demogroup3storefront/demoGroup3/en/testimoni?page=${paginationTestimony - 1}" class="page-link">< Halaman Sebelumnya</a>
+                        <a href="/demogroup3storefront/demoGroup3/en/testimony?page=${paginationTestimony - 1}" class="page-link">< Halaman Sebelumnya</a>
                     </c:if>
                     <c:if test="${allTestimony.size() > 9 && paginationTestimony * 9 < allTestimony.size()}">
-                        <a href="/demogroup3storefront/demoGroup3/en/testimoni?page=${paginationTestimony + 1}" class="page-link">Halaman Berikutnya ></a>
+                        <a href="/demogroup3storefront/demoGroup3/en/testimony?page=${paginationTestimony + 1}" class="page-link">Halaman Berikutnya ></a>
                     </c:if>
                 </div>
             </div>
