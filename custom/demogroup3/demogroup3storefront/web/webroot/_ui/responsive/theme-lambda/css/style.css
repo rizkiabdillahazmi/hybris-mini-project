@@ -11765,7 +11765,7 @@ a.product__listing .product__listing--promo:focus {
 .product__listing.product__grid .thumb img {
   width: 100%;
   height: auto;
-  max-width: 140px;
+  max-width: 180px;
 }
 .product__listing.product__grid .details {
   text-align: center;
@@ -11788,6 +11788,9 @@ a.product__listing .product__listing--promo:focus {
   height: 70px;
   overflow: hidden;
   color: #3c3c3c;
+}
+.product__listing.product__grid .details .name:hover {
+  color: #6086c2;
 }
 .product__listing.product__grid .details .price {
   color: #6086c2;
