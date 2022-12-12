@@ -6,6 +6,9 @@
 <%@ taglib prefix="component" tagdir="/WEB-INF/tags/shared/component" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags"%>
+
+
 <spring:htmlEscape defaultHtmlEscape="true" />
 
 <c:choose>
@@ -35,7 +38,7 @@
                                                                                                         format="product" />
                                                                                                 </div>
                                                                                                 <h2 class="card-product__title">${fn:escapeXml(product.name)}</h2>
-                                                                                                <div class="card-product__desc">${fn:escapeXml(product.description)}</div>
+                                                                                                <div class="card-product__desc description">${ycommerce:sanitizeHTML(product.description)}</div>
                                                                                                 <div class="card-product__price"><format:fromPrice priceData="${product.price}" /></div>
                                                                                                 <a href="${productUrl}" class="card-product__button">Beli Sekarang</a>
 
@@ -62,7 +65,7 @@
                                                             format="product" />
                                                     </div>
                                                     <h2 class="card-product__title">${fn:escapeXml(product.name)}</h2>
-                                                    <div class="card-product__desc">${fn:escapeXml(product.description)}</div>
+                                                    <div class="card-product__desc description">${ycommerce:sanitizeHTML(product.description)}</div>
                                                     <div class="card-product__price"><format:fromPrice priceData="${product.price}" /></div>
                                                     <a href="${productUrl}" class="card-product__button">Beli Sekarang</a>
 

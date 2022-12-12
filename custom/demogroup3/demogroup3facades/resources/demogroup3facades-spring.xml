@@ -243,6 +243,11 @@
 	<bean id="defaultCustomCustomerFacade" class="com.hybris.demogroup3.facades.register.DefaultCustomCustomerFacade" parent="defaultCustomerFacade">
 	</bean>
 
+	<!-- Custom Product Carousel Facade-->
+<!--	<alias name="defaultCustomProductCarouselFacade" alias="customProductCarouselFacade"/>-->
+<!--	<bean id="defaultCustomProductCarouselFacade" class="com.hybris.demogroup3.facades.product.DefaultCustomProductCarouselFacade">-->
+<!--	</bean>-->
+
 	<!-- Kasur Variant Facade	-->
 	<alias name="defaultKasurVariantProductBasicFacade" alias="kasurVariantBasicFacade"/>
 	<bean id="defaultKasurVariantProductBasicFacade" class="com.hybris.demogroup3.facades.custom.productdetail.kasurvariantdemo.impl.DefaultKasurVariantProductBasicFacade">

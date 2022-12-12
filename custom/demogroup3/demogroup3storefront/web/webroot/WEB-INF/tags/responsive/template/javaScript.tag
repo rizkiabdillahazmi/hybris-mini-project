@@ -42,6 +42,7 @@
             <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>--%>
             <script src="${commonResourcePathHtml}/js/owl-carousel.js"></script>
             <script src="${commonResourcePathHtml}/js/acc.carouselCustom.js"></script>
+            <script src="${commonResourcePathHtml}/js/acc.homepage.js"></script>
         </c:if>
 
 		<script src="${commonResourcePathHtml}/js/acc.address.js"></script>
