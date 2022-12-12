@@ -23377,6 +23377,7 @@ hidden-sm .cpq-overview-messages {
   color: #666;
   margin-top: 1rem;
   line-height: 2.2rem;
+  height: 5rem;
 }
 .card-product__price {
   font-family: 'Palmer Lake', cursive !important;
@@ -23400,6 +23401,10 @@ hidden-sm .cpq-overview-messages {
   margin: 0 auto;
   font-size: 1.5rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+.card-product__desc br:after {
+  display: none;
+  visibility: hidden;
 }
 .card-product__button:hover {
   background-color: #7fc5f9;
