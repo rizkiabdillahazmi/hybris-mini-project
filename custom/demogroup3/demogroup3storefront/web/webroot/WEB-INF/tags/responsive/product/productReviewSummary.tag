@@ -32,7 +32,7 @@
 			arguments="${fn:length(product.reviews)}" />
 	</c:if>
 
-	<c:choose>
+	<!-- <c:choose>
 		<c:when test="${showLinks}" >
 			<c:if test="${not empty product.reviews}">
 				<a href="#tabreview" class="js-openTab"><spring:theme code="review.see.reviews" /></a>
@@ -42,6 +42,6 @@
 		<c:otherwise>
 			<spring:theme code="review.reviews" />
 		</c:otherwise>
-	</c:choose>
+	</c:choose> -->
 	
 </div>
