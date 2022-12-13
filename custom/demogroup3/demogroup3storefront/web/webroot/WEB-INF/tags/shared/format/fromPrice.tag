@@ -21,6 +21,7 @@
 		<spring:theme code="product.price.from" arguments="${priceData.formattedValue}" argumentSeparator="#~/@!�$%^"/>
 	</c:when>
 	<c:otherwise>
-	    ${fn:replace(priceData.formattedValue, ',', '.')}
+		<%--${fn:escapeXml(priceData.formattedValue)}--%>
+		${fn:replace(priceData.formattedValue, ',', '.')}
 	</c:otherwise>
 </c:choose>
