@@ -138,6 +138,20 @@
                 </attributes>
             </itemtype>
 
+            <itemtype code="AbstractOrder"
+                      autocreate="false" generate="true">
+                <description>Cart model additional attributes.</description>
+                <attributes>
+
+                    <attribute qualifier="note" type="java.lang.String">
+                        <description>catatan pembelian</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+
+                </attributes>
+            </itemtype>
+
             <itemtype code="KasurProductDemo" extends="Product"
                       autocreate="true" generate="true"
                       jaloclass="com.hybris.demogroup3.core.jalo.KasurProductDemo">

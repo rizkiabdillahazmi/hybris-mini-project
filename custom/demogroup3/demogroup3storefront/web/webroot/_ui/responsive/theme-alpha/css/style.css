@@ -19390,6 +19390,9 @@ body::-webkit-scrollbar-thumb {
     border-radius: 20px;
     font-family: 'Poppins', sans-serif;
   }
+  .checkout-voucher-hp {
+    display: none;
+  }
 }
 @media screen and (max-width: 639px) {
   .label-spacing,
@@ -19556,6 +19559,9 @@ body::-webkit-scrollbar-thumb {
   border: solid 1px white;
   padding: 30px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.checkout-voucher {
+  margin-top: 20px;
 }
 /*--Kelas Umum--*/
 .subtitle-checkout {

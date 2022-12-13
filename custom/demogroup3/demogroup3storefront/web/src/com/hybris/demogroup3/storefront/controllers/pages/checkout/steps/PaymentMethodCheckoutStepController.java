@@ -50,6 +50,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import de.hybris.platform.commercefacades.voucher.VoucherFacade;
+import de.hybris.platform.commercefacades.voucher.exceptions.VoucherOperationException;
+import de.hybris.platform.commerceservices.security.BruteForceAttackHandler;
+import de.hybris.platform.acceleratorstorefrontcommons.forms.VoucherForm;
+
+import javax.servlet.http.HttpServletRequest;
+
 
 @Controller
 @RequestMapping(value = "/checkout/multi/payment-method")
@@ -60,6 +67,15 @@ public class PaymentMethodCheckoutStepController extends AbstractCheckoutStepCon
 	private static final String CART_DATA_ATTR = "cartData";
 
 	private static final Logger LOGGER = Logger.getLogger(PaymentMethodCheckoutStepController.class);
+
+	public static final String VOUCHER_FORM = "voucherForm";
+
+
+	@Resource(name = "bruteForceAttackHandler")
+	private BruteForceAttackHandler bruteForceAttackHandler;
+
+	@Resource(name = "voucherFacade")
+	private VoucherFacade voucherFacade;
 
 	@Resource(name = "addressDataUtil")
 	private AddressDataUtil addressDataUtil;
@@ -135,6 +151,11 @@ public class PaymentMethodCheckoutStepController extends AbstractCheckoutStepCon
 		getCheckoutFacade().setDeliveryModeIfAvailable();
 		setupAddPaymentPage(model);
 
+		if (!model.containsAttribute(VOUCHER_FORM))
+		{
+			model.addAttribute(VOUCHER_FORM, new VoucherForm());
+		}
+
 		// Use the checkout PCI strategy for getting the URL for creating new subscriptions.
 		final CheckoutPciOptionEnum subscriptionPciOption = getCheckoutFlowFacade().getSubscriptionPciOption();
 		setCheckoutStepLinksForModel(model, getCheckoutStep());
@@ -176,6 +197,7 @@ public class PaymentMethodCheckoutStepController extends AbstractCheckoutStepCon
 			}
 		}
 
+
 		// If not using HOP or SOP we need to build up the payment details form
 		final PaymentDetailsForm paymentDetailsForm = new PaymentDetailsForm();
 		final AddressForm addressForm = new AddressForm();
@@ -184,6 +206,7 @@ public class PaymentMethodCheckoutStepController extends AbstractCheckoutStepCon
 
 		final CartData cartData = getCheckoutFacade().getCheckoutCart();
 		model.addAttribute(CART_DATA_ATTR, cartData);
+
 
 		return ControllerConstants.Views.Pages.MultiStepCheckout.AddPaymentMethodPage;
 	}
@@ -196,6 +219,11 @@ public class PaymentMethodCheckoutStepController extends AbstractCheckoutStepCon
 	{
 		getPaymentDetailsValidator().validate(paymentDetailsForm, bindingResult);
 		setupAddPaymentPage(model);
+
+		if (!model.containsAttribute(VOUCHER_FORM))
+		{
+			model.addAttribute(VOUCHER_FORM, new VoucherForm());
+		}
 
 		final CartData cartData = getCheckoutFacade().getCheckoutCart();
 		model.addAttribute(CART_DATA_ATTR, cartData);
@@ -238,6 +266,7 @@ public class PaymentMethodCheckoutStepController extends AbstractCheckoutStepCon
 		{
 			return ControllerConstants.Views.Pages.MultiStepCheckout.AddPaymentMethodPage;
 		}
+
 
 		model.addAttribute("paymentId", newPaymentSubscription.getId());
 		setCheckoutStepLinksForModel(model, getCheckoutStep());
@@ -373,6 +402,8 @@ public class PaymentMethodCheckoutStepController extends AbstractCheckoutStepCon
 		model.addAttribute("sopPaymentDetailsForm", sopPaymentDetailsForm);
 		model.addAttribute("paymentInfos", getUserFacade().getCCPaymentInfos(true));
 		model.addAttribute("sopCardTypes", getSopCardTypes());
+		model.addAttribute(VOUCHER_FORM, new VoucherForm());
+
 		if (StringUtils.isNotBlank(sopPaymentDetailsForm.getBillTo_country()))
 		{
 			model.addAttribute("regions", getI18NFacade().getRegionsForCountryIso(sopPaymentDetailsForm.getBillTo_country()));
@@ -410,6 +441,74 @@ public class PaymentMethodCheckoutStepController extends AbstractCheckoutStepCon
 		CYBERSOURCE_SOP_CARD_TYPES.put("amex", "003");
 		CYBERSOURCE_SOP_CARD_TYPES.put("diners", "005");
 		CYBERSOURCE_SOP_CARD_TYPES.put("maestro", "024");
+	}
+
+	@RequestMapping(value = "/voucher/apply", method = RequestMethod.POST)
+	public String applyVoucherAction(@Valid final VoucherForm form, final BindingResult bindingResult,
+									 final HttpServletRequest request, final RedirectAttributes redirectAttributes)
+	{
+		try
+		{
+			if (bindingResult.hasErrors())
+			{
+				redirectAttributes.addFlashAttribute("errorMsg",
+						getMessageSource().getMessage("text.voucher.apply.invalid.error", null, getI18nService().getCurrentLocale()));
+			}
+			else
+			{
+				final String ipAddress = request.getRemoteAddr();
+				if (bruteForceAttackHandler.registerAttempt(ipAddress + "_voucher"))
+				{
+					redirectAttributes.addFlashAttribute("disableUpdate", Boolean.valueOf(true));
+					redirectAttributes.addFlashAttribute("errorMsg",
+							getMessageSource().getMessage("text.voucher.apply.bruteforce.error", null, getI18nService().getCurrentLocale()));
+				}
+				else
+				{
+					voucherFacade.applyVoucher(form.getVoucherCode());
+					redirectAttributes.addFlashAttribute("successMsg",
+							getMessageSource().getMessage("text.voucher.apply.applied.success", new Object[]
+									{ form.getVoucherCode() }, getI18nService().getCurrentLocale()));
+				}
+			}
+		}
+		catch (final VoucherOperationException e)
+		{
+			redirectAttributes.addFlashAttribute(VOUCHER_FORM, form);
+			redirectAttributes.addFlashAttribute("errorMsg",
+					getMessageSource().getMessage(e.getMessage(), null,
+							getMessageSource().getMessage("text.voucher.apply.invalid.error", null, getI18nService().getCurrentLocale()),
+							getI18nService().getCurrentLocale()));
+			if (LOGGER.isDebugEnabled())
+			{
+				LOGGER.debug(e.getMessage(), e);
+			}
+
+		}
+
+		return getCheckoutStep().currentStep();
+	}
+
+
+	@RequestMapping(value = "/voucher/remove", method = RequestMethod.POST)
+	public String removeVoucher(@Valid final VoucherForm form, final RedirectAttributes redirectModel)
+	{
+		try
+		{
+			voucherFacade.releaseVoucher(form.getVoucherCode());
+		}
+		catch (final VoucherOperationException e)
+		{
+			GlobalMessages.addFlashMessage(redirectModel, GlobalMessages.ERROR_MESSAGES_HOLDER, "text.voucher.release.error",
+					new Object[]
+							{ form.getVoucherCode() });
+			if (LOGGER.isDebugEnabled())
+			{
+				LOGGER.debug(e.getMessage(), e);
+			}
+
+		}
+		return getCheckoutStep().currentStep();
 	}
 
 }
