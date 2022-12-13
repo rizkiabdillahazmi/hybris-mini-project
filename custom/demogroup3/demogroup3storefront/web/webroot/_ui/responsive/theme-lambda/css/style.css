@@ -23285,6 +23285,7 @@ hidden-sm .cpq-overview-messages {
 .carousel-banner .owl-nav button[class*=owl-] span {
   font-size: 3.5rem !important;
   font-weight: bold;
+  margin-top: -10px;
 }
 .carousel-banner .owl-dots {
   position: relative;

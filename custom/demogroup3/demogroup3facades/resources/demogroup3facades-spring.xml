@@ -203,7 +203,7 @@
 
 	<alias name="defaultCustomCartPopulator" alias="cartPopulator"/>
 	<bean id="defaultCustomCartPopulator" class="com.hybris.demogroup3.facades.populators.CustomCartPopulator"
-	parent="defaultCartPopulator"/>
+		  parent="defaultCartPopulator"/>
 
 	<!-- Populators -->
 
