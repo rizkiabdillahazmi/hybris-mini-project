@@ -201,9 +201,9 @@
 	<bean id="shofaVariantProductBasicPopulator"
 		  class="com.hybris.demogroup3.facades.populators.ShofaVariantProductBasicPopulator"/>
 
-	<alias name="defaultCustomCartPopulator" alias="cartPopulator"/>
+	<alias name="defaultCustomCartPopulator" alias="groupOrderEntryPopulator"/>
 	<bean id="defaultCustomCartPopulator" class="com.hybris.demogroup3.facades.populators.CustomCartPopulator"
-		  parent="defaultCartPopulator"/>
+		  parent="defaultGroupOrderEntryPopulator"/>
 
 	<!-- Populators -->
 
