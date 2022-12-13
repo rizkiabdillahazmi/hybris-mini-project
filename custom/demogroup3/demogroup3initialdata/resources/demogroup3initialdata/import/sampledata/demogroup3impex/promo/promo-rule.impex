@@ -1,0 +1,5 @@
+$productCatalog = demoGroup3ProductCatalog
+
+INSERT_UPDATE CatalogVersionToRuleEngineContextMapping;context(name)[unique=true];catalogVersion(catalog(id),version)[unique=true]
+                                                      ;promotions-context;$productCatalog:Online
+                                                      ;promotions-preview-context;$productCatalog:Staged
