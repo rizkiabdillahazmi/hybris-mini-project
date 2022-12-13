@@ -4,7 +4,7 @@
 <%@ taglib prefix="cms" uri="http://hybris.com/tld/cmstags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:url value="/testimoni" var="testimoniUrl"/>
+<c:url value="/testimony" var="testimoniUrl"/>
 <c:url value="/c/IntheBox" var="productUrl"/>
 
 <template:page pageTitle="${pageTitle}">
