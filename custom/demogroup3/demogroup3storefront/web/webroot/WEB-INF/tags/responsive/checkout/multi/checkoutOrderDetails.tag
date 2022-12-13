@@ -28,4 +28,9 @@
     <multi-checkout:paymentInfo cartData="${cartData}" paymentInfo="${cartData.paymentInfo}" showPaymentInfo="${showPaymentInfo}" />
 
     <multi-checkout:orderTotals cartData="${cartData}" showTaxEstimate="${showTaxEstimate}" showTax="${showTax}" />
+
+    <div>
+        Catatan = "${cartData.note}"
+    </div>
+
 </div>

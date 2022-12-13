@@ -47,4 +47,9 @@
 		<property name="pageUrl" type="String"/>
 		<property name="imgUrl" type="String"/>
 	</bean>
+
+	<bean class="de.hybris.platform.commercefacades.order.data.AbstractOrderData">
+		<property name="note" type="String"/>
+	</bean>
+
 </beans>
