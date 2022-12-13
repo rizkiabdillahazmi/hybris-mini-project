@@ -17,7 +17,7 @@
 <c:url value="/" var="homeUrl"/>
 <c:url value="/IntheBox/c/IntheBox" var="productUrl"/>
 <c:url value="/about" var="aboutUrl"/>
-<c:url value="/testimoni" var="testimoniUrl"/>
+<c:url value="/testimony" var="testimoniUrl"/>
 <spring:htmlEscape defaultHtmlEscape="true" />
 
 <template:master pageTitle="${pageTitle}">
