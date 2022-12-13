@@ -200,6 +200,11 @@
 	<alias name="shofaVariantProductBasicPopulator" alias="shofaVariantBasicPopulator"/>
 	<bean id="shofaVariantProductBasicPopulator"
 		  class="com.hybris.demogroup3.facades.populators.ShofaVariantProductBasicPopulator"/>
+
+	<alias name="defaultCustomCartPopulator" alias="cartPopulator"/>
+	<bean id="defaultCustomCartPopulator" class="com.hybris.demogroup3.facades.populators.CustomCartPopulator"
+	parent="defaultCartPopulator"/>
+
 	<!-- Populators -->
 
 	<!-- Converters-->
