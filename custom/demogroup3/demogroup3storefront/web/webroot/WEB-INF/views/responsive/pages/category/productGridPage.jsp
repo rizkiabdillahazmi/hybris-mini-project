@@ -9,8 +9,8 @@
 		<cms:component component="${feature}" element="div" class="yComponentWrapper map product-grid-section1-component"/>
 	</cms:pageSlot>
 
-	<div class="container px-0 image-header">
-          <img src="https://inthebox.net/images/layout-v2/catalog-header.png">
+	<div class="px-0 image-header">
+          <img class ="w-100" src="https://inthebox.net/images/layout-v2/catalog-header.png">
     </div>
 	<div class="container">
         <div class="section-header mt-4">PILIHAN PRODUK INTHEBOX</div>
