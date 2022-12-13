@@ -24,8 +24,17 @@
      }
 }
 
+@media screen and (max-width:1000px){
+    .col-lg-5 .checkout-order-summary{
+        display: none;
+    }
+}
+
 @media screen and (max-width: 639px){
-    .label-spacing, .totals, .subtotal, .shipping{
+    .col-lg-5 .checkout-order-summary{
+        display: inline-block;
+    }
+    .label-spacing, .totals, .subtotal, .shipping, .subtotals__item--state-discount{
         font-size: 12px;
     }
     .totals span{
@@ -178,12 +187,30 @@
 .details{
     font-family: 'Poppins', sans-serif;
 }
+.note-text{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    padding: 10px 0px 10px 0px;
+}
+.note-bold{
+    font-weight:bold;
+}
+.checkout-order-summary .checkout-coupon-list {
+    border:none;
+    padding-bottom: 0px;
+    padding-top: 10px;
+}
+.coupon-list__item{
+    font-size: 14px;
+    border: none;
+}
 
 /*--Ini untuk border terluar checkout--*/
 .checkout-border{
     border: solid 1px white;
     padding: 30px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-bottom: 100px;
 }
 .checkout-voucher{
     margin-top: 20px;

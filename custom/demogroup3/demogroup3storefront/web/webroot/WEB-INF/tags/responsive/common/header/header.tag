@@ -224,4 +224,87 @@
         </nav>
 </div>
 
+<div class="tablet-view">
+         <div class="upper">
+            <div class="container">
+                <div class="d-flex justify-content-between upper-hp">
+                    <div class="d-flex flex-row">
+                        <div class="upper-img">
+                            <img src="https://inthebox.net/images/layout-v2/header-icon-10y-warranty.png" alt="" class="upper-icon-img">
+                            <p class="upper-text">Garansi 10 Tahun</p>
+                        </div>
+                        <div class="upper-img">
+                            <img src="https://inthebox.net/images/layout-v2/header-icon-free-shipping.png" alt="" class="upper-icon-img">
+                            <p class="upper-text">Free Shipping pulau Jawa & Sumatra</p>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    <div class="navbar-tablet">
+      <div class="container">
+        <div class="navbar-tablet-content">
+          <div class="navbar-logo-tablet">
+            <img
+              src="https://inthebox.net/images/layout-v2/header-logo-white.png"
+              class="logo"
+            />
+          </div>
+          <div class="navbar-menu-tablet">
+            <ul class="nav-link">
+              <li><a href="${fn:escapeXml(homeUrl)}">Home</a></li>
+              <li><a href="${fn:escapeXml(productUrl)}">Produk</a></li>
+              <li><a href="${fn:escapeXml(aboutUrl)}">Tentang Kami</a></li>
+              <li><a href="${fn:escapeXml(testimoniUrl)}">Testimoni</a></li>
+              <li><a href="${fn:escapeXml(cartUrl)}">Keranjang</a></li>
+              <li class="nav-item login-item-hp">
+                    <c:if test="${empty hideHeaderLinks}">
+                        <c:if test="${uiExperienceOverride}">
+                            <li class="backToMobileLink">
+                                <c:url value="/_s/ui-experience?level=" var="backToMobileStoreUrl" />
+                                <a href="${fn:escapeXml(backToMobileStoreUrl)}">
+                                    <spring:theme code="text.backToMobileStore" />
+                                </a>
+                            </li>
+                        </c:if>
+
+                        <sec:authorize access="!hasAnyRole('ROLE_ANONYMOUS')">
+                            <c:set var="maxNumberChars" value="25" />
+                            <c:if test="${fn:length(user.firstName) gt maxNumberChars}">
+                                <c:set target="${user}" property="firstName"
+                                value="${fn:substring(user.firstName, 0, maxNumberChars)}..." />
+                            </c:if>
+                        </sec:authorize>
+
+                        <sec:authorize access="hasAnyRole('ROLE_ANONYMOUS')" >
+                            <li class="liOffcanvas mx-auto">
+                                <ycommerce:testId code="header_Login_link">
+                                    <c:url value="/login" var="loginUrl" />
+                                    <a href="${fn:escapeXml(loginUrl)}">
+                                        Login
+                                    </a>
+                               </ycommerce:testId>
+                            </li>
+                        </sec:authorize>
+
+                        <sec:authorize access="!hasAnyRole('ROLE_ANONYMOUS')" >
+                            <li class="liOffcanvas mx-auto">
+                                <ycommerce:testId code="header_signOut">
+                                    <c:url value="/logout" var="logoutUrl"/>
+                                    <a href="${fn:escapeXml(logoutUrl)}">
+                                        <spring:theme code="header.link.logout" />
+                                    </a>
+                                </ycommerce:testId>
+                            </li>
+                        </sec:authorize>
+                    </c:if>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
 

@@ -14,11 +14,19 @@ INSERT_UPDATE Zone; code[unique = true]; countries(isocode)
 
 # Zone Delivery Modes
 INSERT_UPDATE ZoneDeliveryMode; code[unique = true]    ; net  ; active[default = true]
-                              ; premium-net            ; true
-                              ; standard-net           ; true
-                              ; premium-gross          ; false
-                              ; standard-gross         ; false
-                              ; free-standard-shipping ; true ; false ;
+                              ; premium-net            ; true;false
+                              ; standard-net           ; true;false
+                              ; premium-gross          ; false;false
+                              ; standard-gross         ; false;false
+                              ; free-standard-shipping ; true ; false
+                              ; J&T                    ; false; true
+                              ; JNE                    ; false; true
+                              ; Deliveree              ; false; true
+                              ; SiCepat                ; false; true
+                              ; Wahana                 ; false; true
+                              ; Pos Indonesia          ; false; true
+
+
 
 
 # ID
@@ -27,8 +35,27 @@ INSERT_UPDATE ZoneDeliveryModeValue; deliveryMode(code)[unique = true]; zone(cod
                                    ; premium-net                      ;                                          ; $idCurrency                     ; 99,99 ; 0,00
                                    ; standard-gross                   ;                                          ; $idCurrency                     ; 5,99  ; 0,00
                                    ; standard-net                     ;                                          ; $idCurrency                     ; 59,99 ; 0,00
+                                   ; J&T                              ;                                          ; $idCurrency               ; 140,000;0,00
+                                   ; JNE                              ;                                          ; $idCurrency               ;199,400;0,00
+                                   ; Deliveree                        ;                                          ; $idCurrency               ;110,100;0,00
+                                   ; SiCepat                          ;                                          ; $idCurrency               ;120,000;0,00
+                                   ; Wahana                           ;                                          ; $idCurrency               ; 110,000;0,00
+                                   ; Pos Indonesia                    ;                                          ; $idCurrency               ; 100,00;0,00
 
 # Pickup Delivery Mode
 INSERT_UPDATE PickUpDeliveryMode; code[unique = true]; active[default = true]; supportedMode(code)
                                 ; pickup             ;
 
+INSERT_UPDATE BaseStore2DeliveryModeRel;source(uid)[unique=true];target(code)[unique=true]
+                                       ;demoGroup3;premium-net
+                                       ;demoGroup3;standard-net
+                                       ;demoGroup3;premium-gross
+                                       ;demoGroup3;standard-gross
+                                       ;demoGroup3;pickup
+                                       ;demoGroup3;free-standard-shipping
+                                        ;demoGroup3;J&T
+                                        ;demoGroup3;JNE
+                                        ;demoGroup3;Deliveree
+                                        ;demoGroup3;SiCepat
+                                        ;demoGroup3;Wahana
+                                        ;demoGroup3;Pos Indonesia
