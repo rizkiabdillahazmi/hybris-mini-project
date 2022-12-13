@@ -31,6 +31,10 @@
                                 <div class="summary-address">
                                 <multi-checkout:shipmentItems cartData="${cartData}" showDeliveryAddress="true" />
                                 </div>
+                                <div class="note-text">
+                                      <span class="note-bold">Catatan</span> = ${cartData.note}
+                                 </div>
+                                 <hr>
                                 <multi-checkout:orderTotals cartData="${cartData}" showTaxEstimate="${showTaxEstimate}" showTax="${showTax}" subtotalsCssClasses="dark"/>
                             </div>
                         </div>

@@ -99,6 +99,11 @@ public class DeliveryAddressCheckoutStepController extends AbstractCheckoutStepC
 		getAddressValidator().validate(addressForm, bindingResult);
 		populateCommonModelAttributes(model, cartData, addressForm);
 
+		if (!model.containsAttribute(VOUCHER_FORM))
+		{
+			model.addAttribute(VOUCHER_FORM, new VoucherForm());
+		}
+
 		if (bindingResult.hasErrors())
 		{
 			GlobalMessages.addErrorMessage(model, "address.error.formentry.invalid");
@@ -119,11 +124,6 @@ public class DeliveryAddressCheckoutStepController extends AbstractCheckoutStepC
 		if (addressRequiresReview)
 		{
 			return ControllerConstants.Views.Pages.MultiStepCheckout.AddEditDeliveryAddressPage;
-		}
-
-		if (!model.containsAttribute(VOUCHER_FORM))
-		{
-			model.addAttribute(VOUCHER_FORM, new VoucherForm());
 		}
 
 		getUserFacade().addAddress(newAddress);

@@ -18700,7 +18700,8 @@ a {
   text-align: right;
   display: inline-block;
 }
-.hp-view {
+.hp-view,
+.tablet-view {
   display: none;
 }
 @media screen and (max-width: 960px) {
@@ -18724,45 +18725,41 @@ a {
   .upper-link {
     margin-top: 1rem;
   }
-  .upper-link li {
+  .tablet-view {
     display: inline;
-    font-size: 0.8rem;
-    font-weight: normal;
-    margin-left: 0.2rem;
   }
-  .nav-link-head {
-    margin-top: 0.2rem;
+  .desktop-view,
+  .hp-view {
+    display: none;
   }
-  .navbar-new {
+  .navbar-tablet {
     background-color: #7fc5f9;
-    padding: 1rem 0rem 1rem;
+    padding: 10px 0px;
   }
-  .logo {
-    width: 10rem;
-    height: 2rem;
+  .navbar-tablet-content {
+    display: flex;
+    justify-content: space-between;
   }
-  .nav-link-head {
-    display: none;
+  .nav-link {
+    list-style: none;
   }
-  .nav-link-list {
-    font-size: 1.3rem;
+  .nav-link li {
+    display: inline;
+    font-size: 1.4rem;
+    padding: 1.0rem;
+    font-weight: bold;
   }
-  .login {
-    font-size: 1.3rem;
-    text-transform: lowercase;
-    color: white;
-    display: block;
+  .navbar-menu-tablet {
+    margin-top: 0.5rem;
   }
-  .navbar-right {
-    flex-direction: column;
-  }
-  .cart-img {
-    display: none;
+  .nav-link li a {
+    color: #ffff;
   }
 }
 /*navbar*/
 @media screen and (max-width: 767px) {
-  .desktop-view {
+  .desktop-view,
+  .tablet-view {
     display: none;
   }
   .hp-view {
@@ -19266,11 +19263,20 @@ body::-webkit-scrollbar-thumb {
     display: none;
   }
 }
+@media screen and (max-width: 1000px) {
+  .col-lg-5 .checkout-order-summary {
+    display: none;
+  }
+}
 @media screen and (max-width: 639px) {
+  .col-lg-5 .checkout-order-summary {
+    display: inline-block;
+  }
   .label-spacing,
   .totals,
   .subtotal,
-  .shipping {
+  .shipping,
+  .subtotals__item--state-discount {
     font-size: 12px;
   }
   .totals span {
@@ -19426,11 +19432,29 @@ body::-webkit-scrollbar-thumb {
 .details {
   font-family: 'Poppins', sans-serif;
 }
+.note-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  padding: 10px 0px 10px 0px;
+}
+.note-bold {
+  font-weight: bold;
+}
+.checkout-order-summary .checkout-coupon-list {
+  border: none;
+  padding-bottom: 0px;
+  padding-top: 10px;
+}
+.coupon-list__item {
+  font-size: 14px;
+  border: none;
+}
 /*--Ini untuk border terluar checkout--*/
 .checkout-border {
   border: solid 1px white;
   padding: 30px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin-bottom: 100px;
 }
 .checkout-voucher {
   margin-top: 20px;
@@ -19705,6 +19729,7 @@ select.form-control {
   width: 200px;
   padding: 10px;
   font-size: 14px;
+  margin-bottom: 50px;
 }
 .js-continue-shopping-button:hover {
   background: #296DCA;

@@ -116,7 +116,7 @@ a {
     display: inline-block
 }
 
-.hp-view{
+.hp-view, .tablet-view{
     display: none;
 }
 
@@ -141,47 +141,41 @@ a {
   .upper-link {
     margin-top: 1rem;
   }
-  .upper-link li {
+  .tablet-view{
     display: inline;
-    font-size: 0.8rem;
-    font-weight: normal;
-    margin-left: 0.2rem;
   }
-  .nav-link-head {
-    margin-top: 0.2rem;
+  .desktop-view, .hp-view{
+    display : none;
   }
-  .navbar-new {
-    background-color: #7fc5f9;
-    padding: 1rem 0rem 1rem;
+  .navbar-tablet{
+      background-color: #7fc5f9;
+      padding: 10px 0px;
   }
-  .logo {
-    width: 10rem;
-    height: 2rem;
+  .navbar-tablet-content{
+      display: flex;
+      justify-content: space-between;
   }
-  .nav-link-head{
-    display:none;
+  .nav-link{
+      list-style: none;
   }
-  .nav-link-list {
-    font-size: 1.3rem;
+  .nav-link li{
+      display: inline;
+      font-size: 1.4rem;
+      padding: 1.0rem;
+      font-weight: bold;
   }
-  .login {
-    font-size: 1.3rem;
-    text-transform: lowercase;
-    color: white;
-    display: block;
+  .navbar-menu-tablet{
+      margin-top: 0.5rem;
   }
-  .navbar-right{
-    flex-direction: column;
-  }
-  .cart-img {
-    display: none;
+  .nav-link li a{
+     color: #ffff;
   }
 }
 
 
 /*navbar*/
 @media screen and (max-width: 767px) {
-    .desktop-view{
+    .desktop-view, .tablet-view{
         display : none;
     }
     .hp-view{
