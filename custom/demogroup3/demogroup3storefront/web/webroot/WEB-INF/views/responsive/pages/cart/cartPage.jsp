@@ -48,7 +48,7 @@
             <cms:pageSlot position="CenterRightContentSlot" var="feature">
                 <cms:component component="${feature}" element="div" class="yComponentWrapper"/>
             </cms:pageSlot>
-            <div class="container">
+            <div class="container mb-5 pb-5">
                 <cms:pageSlot position="BottomContentSlot" var="feature">
                     <cms:component component="${feature}" element="div" class="yComponentWrapper"/>
                 </cms:pageSlot>

@@ -41,7 +41,7 @@
             <div class="carousel image-gallery__image js-gallery-image">
                 <c:forEach items="${galleryImages}" var="container" varStatus="varStatus">
                     <div class="item">
-                        <div>
+                        <div class="d-flex justify-content-center mb-5">
                             <img class="lazyOwl" data-src="${fn:escapeXml(container.product.url)}"
                                  data-zoom-image="${fn:escapeXml(container.superZoom.url)}"
                                  alt="${fn:escapeXml(container.thumbnail.altText)}" >
