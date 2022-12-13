@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-5 col-lg-6">
-            <div class="cart-voucher">
+            <div class="cart-voucher d-none">
                 <cart:cartVoucher cartData="${cartData}"/>
             </div>
         </div>
