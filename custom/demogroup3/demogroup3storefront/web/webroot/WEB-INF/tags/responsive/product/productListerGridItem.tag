@@ -52,6 +52,7 @@
 			</c:if>
 			
 			<ycommerce:testId code="product_productPrice">
+
 				<div class="price"><product:productListerItemPrice product="${product}"/></div>
 			</ycommerce:testId>
 			<c:forEach var="variantOption" items="${product.variantOptions}">
