@@ -130,6 +130,7 @@
 
 
     <c:otherwise>
+    <c:url value="/c/IntheBox" var="continueShoppingUrl" scope="session"/>
         <section class="cart-page">
           <section class="cart-section">
             <div class="container">
