@@ -45,7 +45,7 @@ INSERT_UPDATE SimpleResponsiveBannerComponent; $contentCV[unique = true]; uid[un
 
 ### SECTION 2 - PRODUCT CAROUSEL ###
 INSERT_UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];name;products(code,$productCV);scroll(code);popup;&componentRef
-                                      ;;DemoGroup3HomepageProductCarouselComponent;Demo Group 3 Homepage Product Carousel;INTHEBOX_Flip_Z_90x200,INTHEBOX_X_200x200,INTHEBOX_Alpha_140x200,INTHEBOX_Dash_90x200;allVisible;false;DemoGroup3HomepageProductCarouselComponent
+                                      ;;DemoGroup3HomepageProductCarouselComponent;Demo Group 3 Homepage Product Carousel;INTHEBOX_Flip_Z_90x200,INTHEBOX_Flip_Z_160x200,INTHEBOX_Flip_Z_200x200,INTHEBOX_Space_Jam_A_New_Legancy_Collection_90x200,INTHEBOX_Space_Jam_A_New_Legancy_Collection_100x200,INTHEBOX_Space_Jam_A_New_Legancy_Collection_180x200;allVisible;false;DemoGroup3HomepageProductCarouselComponent
 
 INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(&componentRef)
                          ;;Section2Slot-Homepage;DemoGroup3HomepageProductCarouselComponent,DemoGroup3HomepageProductCarouselComponent
