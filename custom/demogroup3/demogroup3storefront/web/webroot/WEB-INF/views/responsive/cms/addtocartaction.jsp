@@ -66,14 +66,20 @@
 			<ycommerce:testId code="addToCartButton">
 			    <div class="row mb-3 action-buttons">
                     <div class="col-md-6">
-                        <button id="addToCartButton" type="${buttonType}" class="button-6 js-add-to-cart js-enable-btn" disabled="disabled">
+                        <!-- <button id="addToCartButton" type="${buttonType}" class="button-6 js-add-to-cart js-enable-btn" disabled="disabled">
                             <spring:theme code="basket.add.to.basket"/>
-                        </button>
+                        </button> -->
+                        <div id="addToCartButton" type="${buttonType}" class="button-6 js-add-to-cart js-enable-btn js-custom-add-to-cart" disabled="disabled">
+                            <spring:theme code="basket.add.to.basket"/>
+                        </div>
                     </div>
                     <div class="col-md-6 mt-3 mt-md-0">
-                        <button id="addToCartButton" type="${buttonType}" class="button-5 js-add-to-cart js-enable-btn" disabled="disabled">
+                        <!-- <button id="addToCartButton" type="${buttonType}" class="button-5 js-add-to-cart js-enable-btn" disabled="disabled">
                             <spring:theme code="basket.buy.to.basket"/>
-                        </button>
+                        </button> -->
+                        <div id="addToCartButton" type="${buttonType}" class="button-5 js-add-to-cart js-enable-btn js-custom-goto-checkout" disabled="disabled">
+                            <spring:theme code="basket.buy.to.basket"/>
+                        </div>
                     </div>
                 </div>
 			</ycommerce:testId>
