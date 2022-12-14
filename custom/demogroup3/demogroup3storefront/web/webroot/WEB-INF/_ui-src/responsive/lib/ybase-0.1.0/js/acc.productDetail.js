@@ -121,6 +121,96 @@ ACC.productDetail = {
             window.location.href = $(this[this.selectedIndex]).val();
         });
 
+        $('.js-custom-add-to-cart').click(function (){
+            let form = $(this).closest('form');
+            //form.submit();
+            if (form.parsley().validate()) {
+                let dataResult = getJsonForm(form.serializeArray(), true);;
+                let actionUrl = form.attr('action');
+                let param = jQuery.param(dataResult);
+
+                $.ajax({
+                    url: actionUrl,
+                    method: 'post',
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: param,
+                    success: function (res, status, xhr) {
+                        if (xhr.status == 200 || xhr.status == 201) {
+                            swal({
+                                text:"Produk ditambah ke dalam keranjang",
+                                icon:"success",
+                                timer : 1000,
+                                buttons : false
+                            });
+                        } else {
+                            swal({
+                                text:"Gagal menambah produk ke dalam keranjang",
+                                icon:"error",
+                                timer : 1000,
+                                buttons : false
+                            });
+                        }
+                    },
+                    erorrr: function (err) {
+                        swal({
+                            text:"Gagal menambah produk ke dalam keranjang",
+                            icon:"error",
+                            timer : 1000,
+                            buttons : false
+                        });
+                    }
+                });
+            }
+        })
+
+        $('.js-custom-goto-checkout').click(function (){
+            let form = $(this).closest('form');
+            //form.submit();
+            if (form.parsley().validate()) {
+                let dataResult = getJsonForm(form.serializeArray(), true);;
+                let actionUrl = form.attr('action');
+                let param = jQuery.param(dataResult);
+
+                $.ajax({
+                    url: actionUrl,
+                    method: 'post',
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: param,
+                    success: function (res, status, xhr) {
+                        if (xhr.status == 200 || xhr.status == 201) {
+                            swal({
+                                text:"Produk ditambah ke dalam keranjang",
+                                icon:"success",
+                                timer : 1000,
+                                buttons : false
+                            });
+                            let delayInMilliseconds = 1500; //1 second
+
+                            setTimeout(function() {
+                              window.location = '/demogroup3storefront/demoGroup3/en/cart'
+                            }, delayInMilliseconds);
+
+                        } else {
+                            swal({
+                                text:"Gagal menambah produk ke dalam keranjang",
+                                icon:"error",
+                                timer : 1000,
+                                buttons : false
+                            });
+                        }
+                    },
+                    erorrr: function (err) {
+                        swal({
+                            text:"Gagal menambah produk ke dalam keranjang",
+                            icon:"error",
+                            timer : 1000,
+                            buttons : false
+                        });
+                    }
+                });
+            }
+        })
+
         function changeOnVariantOptionSelection(optionSelected) {
             window.location.href = optionSelected.attr('value');
         }
