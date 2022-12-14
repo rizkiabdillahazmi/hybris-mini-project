@@ -29,8 +29,8 @@
 
     <multi-checkout:orderTotals cartData="${cartData}" showTaxEstimate="${showTaxEstimate}" showTax="${showTax}" />
 
-    <div>
-        Catatan = "${cartData.note}"
+    <div class="note-text">
+        <span class="note-bold">Catatan</span> = ${cartData.note}
     </div>
 
 </div>

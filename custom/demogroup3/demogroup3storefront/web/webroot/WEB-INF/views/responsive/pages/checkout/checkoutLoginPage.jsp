@@ -3,7 +3,7 @@
 <%@ taglib prefix="cms" uri="http://hybris.com/tld/cmstags"%>
 
 <template:page pageTitle="${pageTitle}">
-	<div class="checkout-login">
+	<div class="container checkout-login">
 		<div class="row">
 			<div class="col-md-6 mx-auto login-section">
 				<cms:pageSlot position="LeftContentSlot" var="feature" element="div" class="checkout-login-left-content-slot">
