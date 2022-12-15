@@ -24,6 +24,10 @@
 		<property name="id" type="String"/>
 	</bean>
 
+<!--	<bean class="de.hybris.platform.commercefacades.user.data.CustomerData">-->
+<!--		<property name="id" type="String"/>-->
+<!--	</bean>-->
+
 	<bean class="com.hybris.demogroup3.facades.product.data.KasurVariantProductData">
 		<property name="name" type="String"/>
 		<property name="code" type="String"/>

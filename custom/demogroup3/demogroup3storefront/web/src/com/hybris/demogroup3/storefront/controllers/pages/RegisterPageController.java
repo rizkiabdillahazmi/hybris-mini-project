@@ -31,6 +31,7 @@ import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -62,6 +63,9 @@ public class RegisterPageController extends AbstractRegisterPageController
 	private static final String CONSENT_FORM_GLOBAL_ERROR = "consent.form.global.error";
 
 	private HttpSessionRequestCache httpSessionRequestCache;
+
+	@Resource(name = "customRegistrationValidator")
+	private Validator customRegistrationValidator;
 
 	@Override
 	protected AbstractPageModel getCmsPage() throws CMSItemNotFoundException
@@ -111,7 +115,7 @@ public class RegisterPageController extends AbstractRegisterPageController
 							 final BindingResult bindingResult, final Model model, final HttpServletRequest request,
 							 final HttpServletResponse response, final RedirectAttributes redirectModel) throws CMSItemNotFoundException
 	{
-		getRegistrationValidator().validate(form, bindingResult);
+		getCustomRegistrationValidator().validate(form, bindingResult);
 		return processRegisterUserRequest(referer, form, bindingResult, model, request, response, redirectModel);
 	}
 
@@ -227,5 +231,10 @@ public class RegisterPageController extends AbstractRegisterPageController
 		customerConsentDataStrategy.populateCustomerConsentDataInSession();
 
 		return REDIRECT_PREFIX + getSuccessRedirect(request, response);
+	}
+
+	protected Validator getCustomRegistrationValidator()
+	{
+		return customRegistrationValidator;
 	}
 }
